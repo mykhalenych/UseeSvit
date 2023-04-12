@@ -36,4 +36,4 @@ export enum ISlicesNames {
     common = 'common',
 }
 
-export type SliceNames = `${ISlicesNames}`;
+export type SliceNames = ISlicesNames;

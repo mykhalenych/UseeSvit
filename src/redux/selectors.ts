@@ -6,7 +6,7 @@ import {SliceNames, StatusesTypes} from './types';
 import {IGenericState} from './createGenericSlice';
 
 export const selectLoading = (sliceName: SliceNames, thunkName: string | string[]) => (state: IRootState) => {
-    const slice = state[sliceName] as unknown as IGenericState<any>;
+    const slice = state[sliceName] as IGenericState<any>;
 
     if (!slice) return false;
 
