@@ -5,7 +5,6 @@ import MainLayout from '../layouts/MainLayout';
 import {LOGIN_PATH, SIGN_IN_PATH} from './constants';
 import PublicRoute from '../components/routes/PublickRoute';
 import SignIn from '../pages/Auth/SignIn/SignIn';
-import ProtectedRoute from '../components/routes/ProtectedRoute';
 import Login from '../pages/Auth/Login/Login';
 import AuthLayout from '../layouts/AuthLayout';
 
@@ -25,9 +24,9 @@ const Routes: React.FC = () => {
                     <Route
                         path={SIGN_IN_PATH}
                         element={
-                            <ProtectedRoute>
+                            <PublicRoute>
                                 <SignIn />
-                            </ProtectedRoute>
+                            </PublicRoute>
                         }
                     />
                 </Route>
