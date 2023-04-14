@@ -5,10 +5,7 @@
 * Open a project in code redactor or web IDE<br />
 * Open console<br />
 * Go to `client` directory<br />
-* Run `npm install`<br />
-* Go to `server` directory<br />
-* Run `npm install`<br />
-* From root directory `npm start` <br />
+* Run `npm start` <br />
 
 ## React Component code styleguide
 

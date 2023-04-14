@@ -1,15 +1,15 @@
 import React from 'react';
 import {useForm, FormProvider} from 'react-hook-form';
 import {noop} from 'lodash';
-import {Grid} from '@mui/material';
+import {Button, Grid} from '@mui/material';
 import {yupResolver} from '@hookform/resolvers/yup';
 
 import {validation, defaultValues} from './form';
-import {ILoginProps} from './types';
+import {ISignInProps} from './types';
 import InputControl from '../../../components/common/form/InputControl';
 
-const Login = () => {
-    const methods = useForm<ILoginProps>({
+const SignIn = () => {
+    const methods = useForm<ISignInProps>({
         resolver: yupResolver(validation),
         defaultValues,
     });
@@ -18,9 +18,17 @@ const Login = () => {
     return (
         <FormProvider {...methods}>
             <form onSubmit={handleSubmit(noop)} noValidate>
-                <Grid container>
+                <Grid container flexDirection="column" alignItems="center">
                     <Grid item xs={6}>
                         <InputControl control={control} name="name" fullWidth />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <InputControl control={control} name="password" fullWidth />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Button type="submit" variant="contained" color="primary">
+                            Sign In
+                        </Button>
                     </Grid>
                 </Grid>
             </form>
@@ -28,4 +36,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignIn;
