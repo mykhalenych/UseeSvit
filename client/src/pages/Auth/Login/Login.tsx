@@ -1,8 +1,8 @@
 import React from 'react';
 import {useForm, FormProvider} from 'react-hook-form';
-import {noop} from 'lodash';
 import {Button, Grid} from '@mui/material';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {noop} from 'lodash';
 
 import {validation, defaultValues} from './form';
 import {ILoginProps} from './types';
@@ -20,7 +20,7 @@ const Login = () => {
             <form onSubmit={handleSubmit(noop)} noValidate>
                 <Grid container flexDirection="column" alignItems="center">
                     <Grid item xs={6}>
-                        <InputControl control={control} name="name" fullWidth />
+                        <InputControl control={control} name="email" fullWidth />
                     </Grid>
                     <Grid item xs={6}>
                         <InputControl control={control} name="password" fullWidth />

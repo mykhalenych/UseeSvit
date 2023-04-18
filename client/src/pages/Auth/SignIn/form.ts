@@ -1,11 +1,13 @@
 import {object, string} from 'yup';
 
 export const defaultValues = {
-    name: '',
+    email: '',
     password: '',
+    name: '',
 };
 
 export const validation = object().shape({
-    name: string().required(),
+    email: string().email().required(),
     password: string().required(),
+    name: string().required(),
 });
