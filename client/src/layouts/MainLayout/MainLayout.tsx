@@ -1,17 +1,24 @@
 import React from 'react';
-import {Link, Outlet} from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
+
+import LogoIcon from '../../components/icons/LogoIcon';
+import ProfileIcon from '../../components/icons/ProfileIcon';
+
+import {BgDiv, Main, Nav, Footer, ImgWrap} from './styles';
 
 const MainLayout = () => {
     return (
-        <>
-            <ul>
-                <li>
-                    <Link to="/">Public Page</Link>
-                </li>
-            </ul>
-
-            <Outlet />
-        </>
+        <BgDiv>
+            <Nav>
+                <LogoIcon />
+                <ProfileIcon />
+            </Nav>
+            <Main>
+                <ImgWrap />
+                <Outlet />
+                <Footer />
+            </Main>
+        </BgDiv>
     );
 };
 export default MainLayout;
