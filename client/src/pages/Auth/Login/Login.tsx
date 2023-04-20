@@ -6,6 +6,7 @@ import {noop} from 'lodash';
 
 import {validation, defaultValues} from './form';
 import {ILoginProps} from './types';
+import Modal from '../../../components/common/Modal/Modal';
 import InputControl from '../../../components/common/form/InputControl';
 import Button from '../../../components/common/Button/Button';
 
@@ -17,6 +18,7 @@ const Login = () => {
     const {handleSubmit, control} = methods;
 
     return (
+        // <Modal open color="primary">
         <FormProvider {...methods}>
             <form onSubmit={handleSubmit(noop)} noValidate>
                 <Grid container flexDirection="column" alignItems="center">
@@ -34,6 +36,7 @@ const Login = () => {
                 </Grid>
             </form>
         </FormProvider>
+        // </Modal>
     );
 };
 
