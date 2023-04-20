@@ -5,38 +5,28 @@ import {TextField} from '@mui/material';
 import {IInputProps} from './types';
 
 const StyledInput = styled(TextField)<IInputProps & TextFieldProps>(({theme}) => ({
-    textFieldRoot: {
-        backgroundColor: theme.palette.background.default,
-        borderRadius: 4,
-        '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.palette.primary.main,
-        },
+    width: 240,
+    marginBottom: 30,
 
-        '& .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline': {
-            borderColor:
-                theme.palette.mode === IThemeNames.light ? theme.palette.text.secondary : 'rgba(255, 255, 255, 0.3)',
-        },
+    '& .MuiInputBase-root': {
+        minHeight: 56,
     },
-    inputEndAdornment: {
-        padding: '7.5px',
-        backgroundColor: theme.palette.background.paper,
-        borderLeft: '1px solid rgb(196 196 196)',
+    ' & .MuiInputBase-input': {
+        borderRadius: 4,
     },
-    autocompleteRoot: {
-        '& .MuiAutocomplete-input': {
-            minWidth: 'auto',
-        },
+    '& .MuiInput-underline:after': {
+        borderBottomColor: theme.palette.primary.main,
     },
-    autocompleteInputRoot: {
-        '&[class*="MuiOutlinedInput-root"][class*="MuiOutlinedInput-marginDense"] .MuiAutocomplete-input': {
-            padding: '1.5px 4px',
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+            borderColor: theme.palette.primary.light,
         },
-        '&.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"][class*="MuiOutlinedInput-marginDense"]': {
-            padding: 3,
+        '&:hover fieldset': {
+            borderColor: theme.palette.primary.dark,
         },
-    },
-    autocompleteTagSizeSmall: {
-        margin: 1,
+        '&.Mui-focused fieldset': {
+            borderColor: theme.palette.primary.dark,
+        },
     },
 }));
 

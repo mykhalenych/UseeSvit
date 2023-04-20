@@ -27,14 +27,15 @@ const SignIn = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid container flexDirection="column" alignItems="center">
                     <Grid item xs={6}>
-                        <InputControl control={control} name="email" fullWidth />
+                        <InputControl control={control} label="Your name" name="name" fullWidth />
                     </Grid>
                     <Grid item xs={6}>
-                        <InputControl control={control} name="password" fullWidth />
+                        <InputControl control={control} label="Email address" name="address" fullWidth />
                     </Grid>
                     <Grid item xs={6}>
-                        <InputControl control={control} name="name" fullWidth />
+                        <InputControl control={control} label="Password" type="password" name="password" fullWidth />
                     </Grid>
+
                     <Grid item xs={6}>
                         <Button type="submit" variant="contained" color="primary">
                             Sign In

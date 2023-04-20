@@ -12,6 +12,7 @@ export const InputEndAdornment: React.FC<IInputEndAdornmentProps> = ({children})
 
 const Input: React.FC<IInputProps & TextFieldProps> = ({
     field,
+    label,
     value,
     defaultValue = '',
     onChange,
@@ -50,6 +51,7 @@ const Input: React.FC<IInputProps & TextFieldProps> = ({
             {...field}
             onChange={handleChange}
             variant="standard"
+            label={label}
             size="small"
             margin={margin}
             value={currentValue}

@@ -30,7 +30,7 @@ const InputControl: React.FC<IInputProps & TextFieldProps> = ({control, name, la
             field={field}
             onChange={field.onChange}
             value={field.value}
-            variant="standard"
+            variant="outlined"
             size="small"
             label={label}
             {...restProps}

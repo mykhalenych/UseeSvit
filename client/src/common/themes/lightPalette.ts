@@ -2,30 +2,29 @@ import {createTheme} from '@mui/material/styles';
 
 const lightPalette = createTheme({
     palette: {
-        mode: 'light',
         primary: {
-            light: '#329DFF',
-            main: '#2F80ED',
-            dark: '#2E5386',
+            light: '#58A9A5',
+            main: '#39817E',
+            dark: '#30716F',
         },
         secondary: {
-            main: '#FD6363',
-            light: '#FF9691',
-            dark: '#C42E39',
+            main: '#4CAF50',
+            light: '#6BBD6E',
+            dark: '#358438',
         },
         error: {
-            main: '#EC6A4E',
-            contrastText: '#FD6363',
-            light: '#FFEFEF',
+            main: '#B54151',
+            light: '#D1626C',
+            dark: '#9D3344',
         },
         background: {
             default: '#FFFFFF',
             paper: '#F6F6FA',
         },
         text: {
-            primary: '#263238',
-            secondary: '#607D8B',
-            disabled: '#B3C1D8',
+            primary: '#9F9EAA',
+            secondary: '#C5C4CB',
+            disabled: '#7D7A87',
         },
     },
 });
