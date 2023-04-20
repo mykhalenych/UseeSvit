@@ -27,7 +27,7 @@ const Login = () => {
                         <InputControl control={control} label="Password" type="password" name="password" fullWidth />
                     </Grid>
                     <Grid item xs={6}>
-                        <Button variant="outlined" color="primary">
+                        <Button variant="outlined" type="submit" color="primary">
                             Login
                         </Button>
                     </Grid>
