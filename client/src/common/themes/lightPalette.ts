@@ -18,7 +18,7 @@ const lightPalette = createTheme({
             dark: '#9D3344',
         },
         background: {
-            default: '#FFFFFF',
+            default: '#F3FAF8',
             paper: '#F6F6FA',
         },
         text: {

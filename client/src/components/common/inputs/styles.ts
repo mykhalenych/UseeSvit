@@ -1,7 +1,8 @@
 import {styled} from '@mui/material/styles';
 import type {TextFieldProps} from '@mui/material';
-import {IThemeNames} from '../../../redux/common/types';
 import {TextField} from '@mui/material';
+
+import {IThemeNames} from '../../../redux/common/types';
 import {IInputProps} from './types';
 
 const StyledInput = styled(TextField)<IInputProps & TextFieldProps>(({theme}) => ({
