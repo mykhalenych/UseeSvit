@@ -1,12 +1,14 @@
 import React from 'react';
 import {useForm, FormProvider} from 'react-hook-form';
-import {Button, Grid} from '@mui/material';
+import {Grid} from '@mui/material';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {noop} from 'lodash';
 
 import {validation, defaultValues} from './form';
 import {ILoginProps} from './types';
+import Modal from '../../../components/common/Modal/Modal';
 import InputControl from '../../../components/common/form/InputControl';
+import Button from '../../../components/common/Button/Button';
 
 const Login = () => {
     const methods = useForm<ILoginProps>({
@@ -16,23 +18,25 @@ const Login = () => {
     const {handleSubmit, control} = methods;
 
     return (
+        // <Modal open color="primary">
         <FormProvider {...methods}>
             <form onSubmit={handleSubmit(noop)} noValidate>
                 <Grid container flexDirection="column" alignItems="center">
                     <Grid item xs={6}>
-                        <InputControl control={control} name="email" fullWidth />
+                        <InputControl control={control} label="Email adress" name="email" fullWidth />
                     </Grid>
                     <Grid item xs={6}>
-                        <InputControl control={control} name="password" fullWidth />
+                        <InputControl control={control} label="Password" type="password" name="password" fullWidth />
                     </Grid>
                     <Grid item xs={6}>
-                        <Button type="submit" variant="contained" color="primary">
+                        <Button variant="outlined" color="primary">
                             Login
                         </Button>
                     </Grid>
                 </Grid>
             </form>
         </FormProvider>
+        // </Modal>
     );
 };
 
