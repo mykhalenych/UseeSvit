@@ -15,7 +15,7 @@ const Map = () => {
         libraries,
     });
 
-    const [markersData, setMarkersData] = useState<any[]>([]);
+    const [markersData, setMarkersData] = useState<google.maps.places.PlaceResult[]>([]);
 
     const coords = useSelector(selectUserCoords);
     const dispatch = useAppDispatch();
@@ -28,16 +28,7 @@ const Map = () => {
     );
 
     const handleSetPlaces = useCallback((results: google.maps.places.PlaceResult[]) => {
-        setMarkersData((prev) => [
-            ...prev,
-            ...results.map((item) => ({
-                ...item,
-                position: {
-                    lat: item.geometry?.location?.lat(),
-                    lng: item.geometry?.location?.lng(),
-                },
-            })),
-        ]);
+        setMarkersData((prev) => [...prev, ...results]);
     }, []);
 
     const onLoad = useCallback(
@@ -89,7 +80,13 @@ const Map = () => {
                         },
                     }}>
                     {markersData.map((item, index) => (
-                        <Marker key={index} position={item.position} />
+                        <Marker
+                            key={index}
+                            position={{
+                                lat: item.geometry?.location?.lat() || 0,
+                                lng: item.geometry?.location?.lng() || 0,
+                            }}
+                        />
                     ))}
                     <Marker position={coords} />
                 </GoogleMap>
