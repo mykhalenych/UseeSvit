@@ -16,8 +16,8 @@ const MainLayout = () => {
             <Main>
                 <ImgWrap />
                 <Outlet />
-                <Footer />
             </Main>
+            <Footer />
         </BgDiv>
     );
 };

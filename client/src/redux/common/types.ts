@@ -1,5 +1,6 @@
 export interface ICommonState {
     theme: string;
+    userCoords: {lat: number; lng: number};
 }
 
 export enum IThemeNames {

@@ -1,11 +1,16 @@
 import {ISlicesNames} from '../types';
-import createGenericSlice from '../createGenericSlice';
+import createGenericSlice, {IGenericState} from '../createGenericSlice';
 import {ICommonState, IThemeNames} from './types';
 
-const reducers = {};
+const reducers = {
+    setUserCoords: (state: IGenericState<ICommonState>, action: {payload: {lat: number; lng: number}}) => {
+        state.data.userCoords = action.payload;
+    },
+};
 
 const initialData = {
     theme: IThemeNames.light,
+    userCoords: {lat: 49.82, lng: 24.03},
 };
 
 export const commonData = createGenericSlice<ICommonState, typeof reducers>({
@@ -21,5 +26,5 @@ export const commonData = createGenericSlice<ICommonState, typeof reducers>({
     extraReducers: () => {},
 });
 
-export const {resetSlice} = commonData.actions;
+export const {resetSlice, setUserCoords} = commonData.actions;
 export default commonData.reducer;
