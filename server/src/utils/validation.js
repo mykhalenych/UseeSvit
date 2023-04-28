@@ -4,7 +4,7 @@ const validateName = (value) => {
     }
 
     if (value.length < 3) {
-        return 'Ate least 3 characters';
+        return 'At least 3 characters';
     }
 };
 
