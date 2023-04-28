@@ -7,7 +7,6 @@ const StyledButton = styled(Button)<CustomButtonProps & ButtonProps>(({theme}) =
     borderColor: theme.palette.primary.light,
     borderRadius: 20,
     minHeight: 40,
-    backgroundColor: theme.palette.background.default,
 }));
 
 export default StyledButton;

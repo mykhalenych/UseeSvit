@@ -5,9 +5,17 @@ import {CustomModalProps} from './types';
 
 const StyledModal = styled(Modal)<CustomModalProps & ModalProps>(({theme}) => ({
     borderRadius: 20,
-    minHeight: 720,
-    minWidth: 540,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: '#F6F6F7',
+    display: 'flex',
+    maxWidth: 540,
+    maxHeight: 720,
+    left: '30%',
+    '& .MuiFormControl-root': {
+        margin: 0,
+    },
+    '& .MuiFormHelperText-root': {
+        margin: 0,
+    },
 }));
 
 export default StyledModal;

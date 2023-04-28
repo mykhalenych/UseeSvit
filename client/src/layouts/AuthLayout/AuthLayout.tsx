@@ -5,7 +5,7 @@ import {SIGN_IN_PATH, LOGIN_PATH} from '../../Routes/constants';
 const AuthLayout = () => {
     return (
         <>
-            <ul>
+            {/* <ul>
                 <li>
                     <Link to="/">Public Page</Link>
                 </li>
@@ -15,8 +15,7 @@ const AuthLayout = () => {
                 <li>
                     <Link to={SIGN_IN_PATH}>Sign in Page</Link>
                 </li>
-            </ul>
-
+            </ul> */}
             <Outlet />
         </>
     );

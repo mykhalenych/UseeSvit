@@ -19,7 +19,7 @@ const register = async (req, res) => {
     ];
 
     if (errors.length) {
-        throw ApiError.BadRequest(errors.filter((item) => item));
+    throw ApiError.BadRequest(errors.filter((item) => item));
     }
 
     await userService.register(name, email, password);
