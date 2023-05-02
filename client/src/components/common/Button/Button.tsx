@@ -6,6 +6,7 @@ import {CustomButtonProps} from './types';
 
 const Button: React.FC<CustomButtonProps & ButtonProps> = ({
     minWidth = 240,
+
     variant = 'outlined',
     color = 'primary',
     children,
