@@ -22,6 +22,7 @@ export const fetchWrap = async ({
     const headers = {
         ...(!isAuth && {
             Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
         }),
         ...override,
     };
