@@ -25,7 +25,7 @@ const Login = () => {
 
     const onSubmit = (data: ILoginProps) => {
         dispatch(logInUser(data)).then((res) => {
-            res ? redirect('/') : Error('error');
+            res && redirect('/');
         });
     };
 

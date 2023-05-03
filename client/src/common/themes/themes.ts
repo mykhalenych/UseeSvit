@@ -36,6 +36,8 @@ const createCommonTheme = (theme: Theme) =>
                 fontSize: 45,
                 fontWeight: 400,
                 fontFamily: 'Georgia regular',
+                color: theme.palette.primary.contrastText,
+                background: theme.palette.primary.main,
             },
             h3: {
                 fontSize: '2.125rem',

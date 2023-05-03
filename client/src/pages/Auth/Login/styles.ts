@@ -1,8 +1,7 @@
 import {Link} from 'react-router-dom';
-import {IconButton} from '@mui/material';
 import {styled} from '@mui/material/styles';
 
-export const ContainerDiv = styled('div')(({theme}) => ({
+export const ContainerDiv = styled('div')(() => ({
     borderRadius: 20,
     backgroundColor: '#F6F6F7',
     display: 'flex',
@@ -17,7 +16,7 @@ export const ContainerDiv = styled('div')(({theme}) => ({
     },
 }));
 
-export const LoginImg = styled('img')(({theme}) => ({
+export const LoginImg = styled('img')(() => ({
     borderRadius: '20px 0 0 20px',
     width: 220,
     height: 720,
