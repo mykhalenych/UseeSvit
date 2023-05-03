@@ -9,7 +9,7 @@ import Login from '../pages/Auth/Login/Login';
 import ForgotPassword from '../pages/Auth/ForgotPassword/ForgotPassword';
 import AuthLayout from '../layouts/AuthLayout';
 import Activation from '../pages/Auth/Activation';
-import Map from '../pages/Map';
+import Plan from '../pages/Plan';
 
 const Routes: React.FC = () => {
     return (
@@ -50,7 +50,7 @@ const Routes: React.FC = () => {
                     />
                 </Route>
                 <Route path={'/'} element={<MainLayout />}>
-                    <Route path={'/'} element={<Map />} />
+                    <Route path={'/plan'} element={<Plan />} />
                 </Route>
             </RootRoutes>
         </Router>
