@@ -45,7 +45,7 @@ const SignIn = () => {
                         </Grid>
 
                         <Grid item xs={6}>
-                            <Button type="submit" variant="outlined" color="primary">
+                            <Button type="submit" color="primary">
                                 Sign In
                             </Button>
                         </Grid>

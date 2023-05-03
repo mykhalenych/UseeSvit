@@ -3,9 +3,10 @@ import {BrowserRouter as Router, Route, Routes as RootRoutes} from 'react-router
 
 import MainLayout from '../layouts/MainLayout';
 import {ACTIVATION_PATH, AUTH_PATH, LOGIN_PATH, SIGN_IN_PATH, FORGOT_PATH} from './constants';
-import PublicRoute from '../components/routes/PublickRoute';
+import PublicRoute from '../components/routes/PublicRoute';
 import SignIn from '../pages/Auth/SignIn/SignIn';
 import Login from '../pages/Auth/Login/Login';
+import ForgotPassword from '../pages/Auth/ForgotPassword/ForgotPassword';
 import AuthLayout from '../layouts/AuthLayout';
 import Activation from '../pages/Auth/Activation';
 import Map from '../pages/Map';
@@ -35,7 +36,7 @@ const Routes: React.FC = () => {
                         path={FORGOT_PATH}
                         element={
                             <PublicRoute>
-                                <ForgotPassword name="u" />
+                                <ForgotPassword />
                             </PublicRoute>
                         }
                     />

@@ -2,7 +2,7 @@ import {styled} from '@mui/material/styles';
 
 export const ContainerDiv = styled('div')(({theme}) => ({
     borderRadius: 20,
-    backgroundColor: '#F6F6F7',
+    backgroundColor: theme.palette.background.paper,
     display: 'flex',
     maxWidth: 540,
     maxHeight: 720,
@@ -20,12 +20,12 @@ export const LoginImg = styled('img')(({theme}) => ({
     height: 720,
 }));
 export const Header = styled('h2')(({theme}) => ({
-    color: '#1C1B1F',
-    fontFamily: 'Georgia regular',
-    width: 240,
+    color: theme.palette.primary.contrastText,
     height: 52,
     fontSize: 45,
     fontWeight: 400,
+    fontFamily: 'Georgia regular',
+    width: 240,
     textAlign: 'center',
     margin: '230px 0 0 0',
 }));

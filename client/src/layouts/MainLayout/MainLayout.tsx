@@ -1,6 +1,5 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom';
-
 import {IconButton} from '@mui/material';
 
 import LogoIcon from '../../components/icons/LogoIcon';

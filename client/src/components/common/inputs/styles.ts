@@ -3,13 +3,13 @@ import type {TextFieldProps} from '@mui/material';
 import {TextField} from '@mui/material';
 
 import {IInputProps} from './types';
-import {findLastIndex} from 'lodash';
 
 const StyledInput = styled(TextField)<IInputProps & TextFieldProps>(({theme}) => ({
     width: 240,
 
     '& .MuiInputBase-root': {
         minHeight: 56,
+        color: theme.palette.primary.contrastText,
     },
     '&  .MuiFormLabel-root': {
         lineHeight: '36px',
