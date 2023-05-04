@@ -1,6 +1,5 @@
-import {styled} from '@mui/material/styles';
-
 import {Link} from 'react-router-dom';
+import {styled} from '@mui/material/styles';
 
 import BackgroundImag from '../../assets/img/mainBg.png';
 import MainPerson from '../../assets/img/mainPerson.png';

@@ -1,21 +1,18 @@
 import React from 'react';
 import {useForm, FormProvider} from 'react-hook-form';
 import {Grid} from '@mui/material';
-
 import {yupResolver} from '@hookform/resolvers/yup';
 import {noop} from 'lodash';
-
 import {validation} from './form';
-import {ForgotPassProps} from './types';
 
 import InputControl from '../../../components/common/form/InputControl';
 import Button from '../../../components/common/Button/Button';
-import {LoginImg, Header, ContainerDiv} from './styles';
-
 import signInImage from './image/forgotPassImage.png';
 
-const ForgotPassword: React.FC<ForgotPassProps> = () => {
-    const methods = useForm<ForgotPassProps>({
+import {LoginImg, Header, ContainerDiv} from './styles';
+
+const ForgotPassword = () => {
+    const methods = useForm({
         resolver: yupResolver(validation),
     });
     const {handleSubmit, control} = methods;

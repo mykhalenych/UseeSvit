@@ -8,6 +8,7 @@ const reducers = {};
 
 const initialData = {
     user: {
+        id: '',
         name: '',
         email: '',
     },

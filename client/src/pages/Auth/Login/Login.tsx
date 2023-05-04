@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {redirect} from 'react-router-dom';
 import {useForm, FormProvider} from 'react-hook-form';
 import {Grid} from '@mui/material';
 
@@ -12,7 +12,7 @@ import InputControl from '../../../components/common/form/InputControl';
 import Button from '../../../components/common/Button/Button';
 import {LoginImg, Header, ForgotPassLink, SignLink, ContainerDiv} from './styles';
 import signInImage from './image/signInImage.png';
-import {FORGOT_PATH} from '../../../Routes/constants';
+import {FORGOT_PATH, SIGN_IN_PATH} from '../../../Routes/constants';
 import {useAppDispatch} from '../../../redux/store';
 
 const Login = () => {
@@ -24,7 +24,9 @@ const Login = () => {
     const {handleSubmit, control} = methods;
 
     const onSubmit = (data: ILoginProps) => {
-        dispatch(logInUser(data));
+        dispatch(logInUser(data)).then((res) => {
+            res && redirect('/');
+        });
     };
 
     return (
@@ -50,7 +52,7 @@ const Login = () => {
                                 <Button variant="outlined" type="submit" color="primary">
                                     Login
                                 </Button>
-                                <SignLink to={'/'}> Don’t have an account? Sign up</SignLink>
+                                <SignLink to={SIGN_IN_PATH}> Don’t have an account? Sign up</SignLink>
                             </Grid>
                         </form>
                     </FormProvider>
