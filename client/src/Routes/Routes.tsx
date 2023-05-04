@@ -8,6 +8,7 @@ import SignIn from '../pages/Auth/SignIn/SignIn';
 import Login from '../pages/Auth/Login/Login';
 import AuthLayout from '../layouts/AuthLayout';
 import Activation from '../pages/Auth/Activation';
+import ForgotPassword from '../pages/Auth/ForgotPassword';
 import Plan from '../pages/Plan';
 
 const Routes: React.FC = () => {

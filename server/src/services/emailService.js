@@ -32,12 +32,14 @@ const sendActivalionLink = (email, token) => {
         html: `
       <h1>Account activation</h1>
       <a href="${link}">${link}</a>
+      <p>Note: This is an automated message, please do not reply to it</p>
+      <p>The activation link will be active only for 30 minutes</p>
     `,
     });
 };
 
 const sendPasswordResetLink = (email, token) => {
-    const link = `${userOrigin}/login-app/#/reset/${token}`;
+    const link = `${userOrigin}/auth/reset-password/${token}`;
 
     return send({
         email,
@@ -45,6 +47,8 @@ const sendPasswordResetLink = (email, token) => {
         html: `
       <h1>Password reset</h1>
       <a href="${link}">${link}</a>
+      <p>Note: This is an automated message, please do not reply to it</p>
+      <p>The reset link will be active only for 30 minutes</p>
     `,
     });
 };
