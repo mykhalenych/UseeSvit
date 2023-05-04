@@ -6,7 +6,6 @@ import {ACTIVATION_PATH, AUTH_PATH, LOGIN_PATH, SIGN_IN_PATH, FORGOT_PATH} from 
 import PublicRoute from '../components/routes/PublicRoute';
 import SignIn from '../pages/Auth/SignIn/SignIn';
 import Login from '../pages/Auth/Login/Login';
-import ForgotPassword from '../pages/Auth/ForgotPassword/ForgotPassword';
 import AuthLayout from '../layouts/AuthLayout';
 import Activation from '../pages/Auth/Activation';
 import ForgotPassword from '../pages/Auth/ForgotPassword';
