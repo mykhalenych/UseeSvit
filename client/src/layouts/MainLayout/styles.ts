@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import {styled} from '@mui/material/styles';
 
 import BackgroundImag from '../../assets/img/mainBg.png';
@@ -38,4 +39,8 @@ export const ImgWrap = styled('div')(() => ({
     width: '40%',
     height: '100%',
     backgroundSize: 'cover',
+}));
+
+export const StyledLink = styled(Link)(({theme}) => ({
+    height: 24,
 }));

@@ -6,6 +6,7 @@ const lightPalette = createTheme({
             light: '#58A9A5',
             main: '#39817E',
             dark: '#30716F',
+            contrastText: '#1C1B1F',
         },
         secondary: {
             main: '#4CAF50',

@@ -2,10 +2,11 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Routes as RootRoutes} from 'react-router-dom';
 
 import MainLayout from '../layouts/MainLayout';
-import {ACTIVATION_PATH, AUTH_PATH, LOGIN_PATH, SIGN_IN_PATH} from './constants';
-import PublicRoute from '../components/routes/PublickRoute';
+import {ACTIVATION_PATH, AUTH_PATH, LOGIN_PATH, SIGN_IN_PATH, FORGOT_PATH} from './constants';
+import PublicRoute from '../components/routes/PublicRoute';
 import SignIn from '../pages/Auth/SignIn/SignIn';
 import Login from '../pages/Auth/Login/Login';
+import ForgotPassword from '../pages/Auth/ForgotPassword/ForgotPassword';
 import AuthLayout from '../layouts/AuthLayout';
 import Activation from '../pages/Auth/Activation';
 import Plan from '../pages/Plan';
@@ -28,6 +29,14 @@ const Routes: React.FC = () => {
                         element={
                             <PublicRoute>
                                 <SignIn />
+                            </PublicRoute>
+                        }
+                    />
+                    <Route
+                        path={FORGOT_PATH}
+                        element={
+                            <PublicRoute>
+                                <ForgotPassword />
                             </PublicRoute>
                         }
                     />

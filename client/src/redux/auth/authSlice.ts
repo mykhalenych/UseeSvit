@@ -1,12 +1,17 @@
 import {ISlicesNames} from '../types';
-import {fetchLogin} from './thunks';
+import {logInUser} from './thunks';
 import createGenericSlice from '../createGenericSlice';
 import {IAuthState} from './types';
+import {saveToken} from '../../services/utils';
 
 const reducers = {};
 
 const initialData = {
-    jwtToken: '',
+    user: {
+        id: '',
+        name: '',
+        email: '',
+    },
 };
 
 export const authData = createGenericSlice<IAuthState, typeof reducers>({
@@ -19,8 +24,9 @@ export const authData = createGenericSlice<IAuthState, typeof reducers>({
     },
     reducers,
     extraReducers: (builder) => {
-        builder.addCase(fetchLogin.fulfilled, (state) => {
-            state.data = initialData;
+        builder.addCase(logInUser.fulfilled, (state, action) => {
+            saveToken(action.payload.accessToken);
+            state.data.user = action.payload.user;
         });
     },
 });
