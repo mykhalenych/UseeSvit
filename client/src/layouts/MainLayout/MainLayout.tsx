@@ -2,8 +2,8 @@ import React from 'react';
 import {Outlet} from 'react-router-dom';
 import {IconButton} from '@mui/material';
 
-import LogoIcon from '../../components/icons/LogoIcon';
-import ProfileIcon from '../../components/icons/ProfileIcon';
+import {ReactComponent as LogoIcon} from '../../assets/icons/logo.svg';
+import {ReactComponent as ProfileIcon} from '../../assets/icons/profile.svg';
 
 import {BgDiv, Main, Nav, Footer, ImgWrap, StyledLink} from './styles';
 import {LOGIN_PATH} from '../../Routes/constants';
