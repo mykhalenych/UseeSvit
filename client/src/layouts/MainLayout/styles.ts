@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import {styled} from '@mui/material/styles';
 
 import BackgroundImag from '../../assets/img/mainBg.png';
@@ -7,8 +8,9 @@ export const Nav = styled('nav')(({theme}) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginInline: theme.spacing(4),
-    marginBlock: theme.spacing(2),
+    paddingInline: theme.spacing(4),
+    paddingBlock: theme.spacing(2),
+    height: 100,
 }));
 
 export const BgDiv = styled('div')(({theme}) => ({
@@ -19,7 +21,7 @@ export const BgDiv = styled('div')(({theme}) => ({
 
 export const Main = styled('main')(() => ({
     background: `url(${BackgroundImag})`,
-    height: '100vh',
+    height: 'calc(100vh - 200px)',
     overflow: 'hidden',
     backgroundSize: 'cover',
 }));
@@ -37,4 +39,8 @@ export const ImgWrap = styled('div')(() => ({
     width: '40%',
     height: '100%',
     backgroundSize: 'cover',
+}));
+
+export const StyledLink = styled(Link)(({theme}) => ({
+    height: 24,
 }));

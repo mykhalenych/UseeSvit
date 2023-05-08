@@ -16,7 +16,6 @@ const AuthLayout = () => {
                     <Link to={SIGN_IN_PATH}>Sign in Page</Link>
                 </li>
             </ul>
-
             <Outlet />
         </>
     );

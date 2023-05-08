@@ -1,42 +1,64 @@
 import React from 'react';
+import {redirect} from 'react-router-dom';
 import {useForm, FormProvider} from 'react-hook-form';
 import {Grid} from '@mui/material';
+
 import {yupResolver} from '@hookform/resolvers/yup';
-import {noop} from 'lodash';
 
 import {validation, defaultValues} from './form';
 import {ILoginProps} from './types';
-import Modal from '../../../components/common/Modal/Modal';
+import {logInUser} from '../../../redux/auth/thunks';
 import InputControl from '../../../components/common/form/InputControl';
 import Button from '../../../components/common/Button/Button';
+import {LoginImg, Header, ForgotPassLink, SignLink, ContainerDiv} from './styles';
+import signInImage from './image/signInImage.png';
+import {FORGOT_PATH, SIGN_IN_PATH} from '../../../Routes/constants';
+import {useAppDispatch} from '../../../redux/store';
 
 const Login = () => {
+    const dispatch = useAppDispatch();
     const methods = useForm<ILoginProps>({
         resolver: yupResolver(validation),
         defaultValues,
     });
     const {handleSubmit, control} = methods;
 
+    const onSubmit = (data: ILoginProps) => {
+        dispatch(logInUser(data)).then((res) => {
+            res && redirect('/');
+        });
+    };
+
     return (
-        // <Modal open color="primary">
-        <FormProvider {...methods}>
-            <form onSubmit={handleSubmit(noop)} noValidate>
-                <Grid container flexDirection="column" alignItems="center">
-                    <Grid item xs={6}>
-                        <InputControl control={control} label="Email adress" name="email" fullWidth />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <InputControl control={control} label="Password" type="password" name="password" fullWidth />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Button variant="outlined" color="primary">
-                            Login
-                        </Button>
-                    </Grid>
+        <ContainerDiv>
+            <>
+                <LoginImg src={signInImage} alt="mountains" />
+                <Grid container flexDirection="column">
+                    <FormProvider {...methods}>
+                        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                            <Grid container justifyContent="center" height="100%">
+                                <Header>Log In</Header>
+                                <InputControl control={control} label="Email adress" name="email" fullWidth />
+                                <InputControl
+                                    control={control}
+                                    label="Password"
+                                    type="password"
+                                    name="password"
+                                    fullWidth
+                                />
+                                <ForgotPassLink to={FORGOT_PATH}>Forgot password?</ForgotPassLink>
+                            </Grid>
+                            <Grid container justifyContent="center">
+                                <Button variant="outlined" type="submit" color="primary">
+                                    Login
+                                </Button>
+                                <SignLink to={SIGN_IN_PATH}> Don’t have an account? Sign up</SignLink>
+                            </Grid>
+                        </form>
+                    </FormProvider>
                 </Grid>
-            </form>
-        </FormProvider>
-        // </Modal>
+            </>
+        </ContainerDiv>
     );
 };
 

@@ -6,13 +6,17 @@ import {IInputProps} from './types';
 
 const StyledInput = styled(TextField)<IInputProps & TextFieldProps>(({theme}) => ({
     width: 240,
-    marginBottom: 30,
 
     '& .MuiInputBase-root': {
         minHeight: 56,
+        color: theme.palette.primary.contrastText,
+    },
+    '&  .MuiFormLabel-root': {
+        lineHeight: '36px',
     },
     ' & .MuiInputBase-input': {
-        borderRadius: 4,
+        padding: '0 5px 0 5px',
+        height: '100%',
     },
     '& .MuiInput-underline:after': {
         borderBottomColor: theme.palette.primary.main,

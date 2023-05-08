@@ -16,10 +16,10 @@ const register = async (req, res) => {
         validation.validateName(name),
         validation.validateEmail(email),
         validation.validatePassword(password),
-    ];
+    ].filter((item) => item);
 
     if (errors.length) {
-        throw ApiError.BadRequest(errors.filter((item) => item));
+        throw ApiError.BadRequest(errors);
     }
 
     await userService.register(name, email, password);
@@ -241,7 +241,7 @@ const changePassword = async (req, res) => {
         validation.validatePassword(newPassword),
         validation.validatePassword(passwordConfirmation),
         validation.validatePasswordsMatching(newPassword, passwordConfirmation),
-    ];
+    ].filter((item) => item);
 
     if (errors.length) {
         throw ApiError.BadRequest(
