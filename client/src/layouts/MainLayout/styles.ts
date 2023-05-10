@@ -14,7 +14,7 @@ export const Nav = styled('nav')(({theme}) => ({
 }));
 
 export const BgDiv = styled('div')(({theme}) => ({
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.paper,
     height: '100vh',
     overflow: 'hidden',
 }));
@@ -41,6 +41,6 @@ export const ImgWrap = styled('div')(() => ({
     backgroundSize: 'cover',
 }));
 
-export const StyledLink = styled(Link)(({theme}) => ({
+export const StyledLink = styled(Link)(() => ({
     height: 24,
 }));

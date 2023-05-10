@@ -24,17 +24,20 @@ const SignIn = () => {
     };
 
     return (
-        <Grid container flexDirection="column">
+        <Grid container flexDirection="column" mt={4}>
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Grid container flexDirection="column" alignItems="center">
+                        <Grid item pb={9}>
+                            <h2>Sign In</h2>
+                        </Grid>
                         <Grid item xs={6}>
                             <InputControl control={control} label="Your name" name="name" fullWidth />
                         </Grid>
                         <Grid item xs={6}>
                             <InputControl control={control} label="Email" name="email" fullWidth />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} mb={3}>
                             <InputControl
                                 control={control}
                                 label="Password"
@@ -44,7 +47,7 @@ const SignIn = () => {
                             />
                         </Grid>
 
-                        <Grid item xs={6}>
+                        <Grid item>
                             <Button type="submit" color="primary">
                                 Sign In
                             </Button>

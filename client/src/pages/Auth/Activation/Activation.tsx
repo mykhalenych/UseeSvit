@@ -11,7 +11,7 @@ const Activation = () => {
         }
     }, [activationToken]);
 
-    return <div>Activation</div>;
+    return <div>Welcome to UseeSvit</div>;
 };
 
 export default Activation;

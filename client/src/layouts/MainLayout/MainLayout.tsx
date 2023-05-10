@@ -1,25 +1,13 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom';
-import {IconButton} from '@mui/material';
 
-import LogoIcon from '../../components/icons/LogoIcon';
-import ProfileIcon from '../../components/icons/ProfileIcon';
-
-import {BgDiv, Main, Nav, Footer, ImgWrap, StyledLink} from './styles';
-import {LOGIN_PATH} from '../../Routes/constants';
+import Navigation from '../../components/common/Navigation/Navigation';
+import {BgDiv, Main, Footer, ImgWrap} from './styles';
 
 const MainLayout = () => {
     return (
         <BgDiv>
-            <Nav>
-                <LogoIcon />
-
-                <StyledLink to={LOGIN_PATH}>
-                    <IconButton color="primary">
-                        <ProfileIcon />
-                    </IconButton>
-                </StyledLink>
-            </Nav>
+            <Navigation />
             <Main>
                 <ImgWrap />
                 <Outlet />

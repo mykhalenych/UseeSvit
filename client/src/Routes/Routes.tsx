@@ -2,11 +2,12 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Routes as RootRoutes} from 'react-router-dom';
 
 import MainLayout from '../layouts/MainLayout';
-import {ACTIVATION_PATH, AUTH_PATH, LOGIN_PATH, SIGN_IN_PATH, FORGOT_PATH} from './constants';
+import {ACTIVATION_PATH, AUTH_PATH, LOGIN_PATH, SIGN_IN_PATH, FORGOT_PATH, CHECK_EMAIL_PATH} from './constants';
 import PublicRoute from '../components/routes/PublicRoute';
 import SignIn from '../pages/Auth/SignIn/SignIn';
 import Login from '../pages/Auth/Login/Login';
-import ForgotPassword from '../pages/Auth/ForgotPassword/ForgotPassword';
+import ForgotPassword from '../pages/Auth/ForgotPassword';
+import CheckEmail from '../pages/Auth/CheckEmail';
 import AuthLayout from '../layouts/AuthLayout';
 import Activation from '../pages/Auth/Activation';
 import Plan from '../pages/Plan';
@@ -37,6 +38,14 @@ const Routes: React.FC = () => {
                         element={
                             <PublicRoute>
                                 <ForgotPassword />
+                            </PublicRoute>
+                        }
+                    />
+                    <Route
+                        path={CHECK_EMAIL_PATH}
+                        element={
+                            <PublicRoute>
+                                <CheckEmail />
                             </PublicRoute>
                         }
                     />
