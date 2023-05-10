@@ -2,7 +2,6 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useForm, FormProvider} from 'react-hook-form';
 import {Grid} from '@mui/material';
-
 import {yupResolver} from '@hookform/resolvers/yup';
 
 import {validation, defaultValues} from './form';
@@ -11,7 +10,6 @@ import {logInUser} from '../../../redux/auth/thunks';
 import InputControl from '../../../components/common/form/InputControl';
 import Button from '../../../components/common/Button/Button';
 import {ForgotPassLink, SignLink} from './styles';
-
 import {FORGOT_PATH, SIGN_IN_PATH} from '../../../Routes/constants';
 import {useAppDispatch} from '../../../redux/store';
 

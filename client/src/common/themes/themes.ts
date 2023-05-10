@@ -23,45 +23,6 @@ const createCommonTheme = (theme: Theme) =>
             },
         },
         spacing: 8,
-        typography: {
-            fontFamily: 'roboto, sans-serif',
-
-            h1: {
-                fontWeight: 600,
-                fontSize: '1.5rem',
-                lineHeight: '2rem',
-            },
-            h2: {
-                height: 52,
-                fontSize: '2.125rem',
-                fontWeight: 400,
-            },
-            h3: {
-                fontSize: '2.125rem',
-                fontWeight: 400,
-                lineHeight: 1.235,
-            },
-            h4: {
-                fontSize: '1.5rem',
-                fontWeight: 700,
-                lineHeight: 1.334,
-            },
-            h5: {
-                fontSize: '1.125rem',
-                fontWeight: 600,
-                lineHeight: 1.6,
-            },
-            h6: {
-                fontSize: '1rem',
-                fontWeight: 700,
-                lineHeight: 1.5,
-            },
-        },
-    });
-
-const createMuiTheme = (theme: Theme) =>
-    createTheme({
-        ...theme,
         mixins: {
             toolbar: {
                 minHeight: toolbarHeights.mobilePortrait,
@@ -79,8 +40,15 @@ const createMuiTheme = (theme: Theme) =>
         components: {
             MuiTypography: {
                 styleOverrides: {
-                    gutterBottom: {
-                        marginBottom: '1rem',
+                    root: {
+                        fontFamily: 'roboto, sans-serif',
+                    },
+                    h2: {
+                        color: theme.palette.primary.contrastText,
+                        background: theme.palette.primary.main,
+                    },
+                    h3: {
+                        background: theme.palette.primary.contrastText,
                     },
                 },
             },
@@ -270,5 +238,5 @@ const createMuiTheme = (theme: Theme) =>
         },
     });
 
-export const lightTheme = createMuiTheme(createCommonTheme(lightPalette));
-export const darkTheme = createMuiTheme(createCommonTheme(darkPalette));
+export const lightTheme = createTheme(createCommonTheme(lightPalette));
+export const darkTheme = createTheme(createCommonTheme(darkPalette));
