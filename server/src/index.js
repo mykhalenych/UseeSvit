@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import cookieParser from 'cookie-parser';
 
 import {authRouter} from './routes/authRouter.js';
 import {errorMiddleware} from './middlewares/errorMiddleware.js';
@@ -21,13 +20,12 @@ app.use(
     }),
 );
 
-app.use(cookieParser());
 app.use(express.json());
 
 app.use(authRouter);
 app.use('/users', userRouter);
 app.use(errorMiddleware);
 
-sequelize.sync({force: true});
+sequelize.sync();
 
 app.listen(PORT);

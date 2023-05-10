@@ -8,6 +8,7 @@ import {User} from '../models/User.js';
 import jwtService from '../services/jwtService.js';
 import tokenService from '../services/tokenService.js';
 import emailService from '../services/emailService.js';
+import {getToken} from '../utils/getToken.js';
 
 const register = async (req, res) => {
     const {name, email, password} = req.body;
@@ -66,7 +67,7 @@ const login = async (req, res) => {
 };
 
 const refresh = async (req, res) => {
-    const {refreshToken} = req.cookies;
+    const refreshToken = getToken(req);
 
     const userData = jwtService.validateRefreshToken(refreshToken);
 
@@ -86,10 +87,8 @@ const refresh = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-    const {refreshToken} = req.cookies;
+    const refreshToken = getToken(req);
     const userData = jwtService.validateRefreshToken(refreshToken);
-
-    res.clearCookie('refreshToken');
 
     if (userData) {
         await tokenService.remove(userData.id);
@@ -105,15 +104,9 @@ const sendAuthentication = async (res, user) => {
 
     await tokenService.save(userData.id, refreshToken);
 
-    res.cookie('refreshToken', refreshToken, {
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-    });
-
     res.status(201).send({
         user: userData,
+        refreshToken,
         accessToken,
     });
 };
@@ -159,7 +152,7 @@ const resetPassword = async (req, res) => {
 };
 
 const changeName = async (req, res) => {
-    const {refreshToken} = req.cookies;
+    const refreshToken = getToken(req);
     const {newName} = req.body;
 
     const userData = await userService.checkIfAuthorized(refreshToken);
@@ -182,7 +175,7 @@ const changeName = async (req, res) => {
 };
 
 const changeEmail = async (req, res) => {
-    const {refreshToken} = req.cookies;
+    const refreshToken = getToken(req);
     const {password, newEmail} = req.body;
 
     const userData = await userService.checkIfAuthorized(refreshToken);
@@ -225,7 +218,7 @@ const changeEmail = async (req, res) => {
 
 const changePassword = async (req, res) => {
     const {password, newPassword, passwordConfirmation} = req.body;
-    const {refreshToken} = req.cookies;
+    const refreshToken = getToken(req);
 
     const userData = await userService.checkIfAuthorized(refreshToken);
 
