@@ -4,8 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {SnackbarProvider} from 'notistack';
 import {useSelector} from 'react-redux';
 
-import lightTheme from './common/themes/lightPalette';
-import darkTheme from './common/themes/darkPalette';
+import {lightTheme, darkTheme} from './common/themes/themes';
 import Snackbar from './layouts/Snackbar';
 import Routes from './Routes/Routes';
 import {selectTheme} from './redux/common/selectors';
