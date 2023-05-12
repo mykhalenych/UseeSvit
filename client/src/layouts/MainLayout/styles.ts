@@ -2,7 +2,6 @@ import {Link} from 'react-router-dom';
 import {styled} from '@mui/material/styles';
 
 import BackgroundImag from '../../assets/img/mainBg.png';
-import MainPerson from '../../assets/img/mainPerson.png';
 
 export const Nav = styled('nav')(({theme}) => ({
     display: 'flex',
@@ -32,13 +31,6 @@ export const Footer = styled('footer')(({theme}) => ({
     width: '100%',
     height: 100,
     backgroundColor: theme.palette.primary.main,
-}));
-
-export const ImgWrap = styled('div')(() => ({
-    background: `url(${MainPerson})`,
-    width: '40%',
-    height: '100%',
-    backgroundSize: 'cover',
 }));
 
 export const StyledLink = styled(Link)(() => ({

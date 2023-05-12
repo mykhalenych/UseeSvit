@@ -1,15 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Outlet} from 'react-router-dom';
 
 import Navigation from '../../components/common/Navigation/Navigation';
-import {BgDiv, Main, Footer, ImgWrap} from './styles';
+
+import {BgDiv, Main, Footer} from './styles';
+import {fetchUser} from '../../redux/auth/thunks';
+import {useAppDispatch} from '../../redux/store';
+import {getAuthTokens} from '../../common/utils';
 
 const MainLayout = () => {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        const token = getAuthTokens();
+
+        if (token) {
+            dispatch(fetchUser());
+        }
+    }, [dispatch]);
+
     return (
         <BgDiv>
             <Navigation />
             <Main>
-                <ImgWrap />
                 <Outlet />
             </Main>
             <Footer />

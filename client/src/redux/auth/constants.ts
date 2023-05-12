@@ -1,5 +1,8 @@
 export const authThunkNames = {
-    fetchLogin: 'fetchLogin',
+    fetchUser: 'fetchUser',
     signInUser: 'signInUser',
     forgotPassword: 'forgotPassword',
+    activateUser: 'activateUser',
+    logoutUser: 'logoutUser',
+    logInUser: 'logInUser',
 };

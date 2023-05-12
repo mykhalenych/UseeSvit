@@ -5,7 +5,6 @@ import {User} from '../models/User.js';
 import {ApiError} from '../exceptions/ApiError.js';
 import emailService from './emailService.js';
 import jwtService from './jwtService.js';
-import tokenService from './tokenService.js';
 
 const getAllActive = () => {
     return User.findAll({
@@ -61,16 +60,10 @@ const reset = async (email) => {
     await emailService.sendPasswordResetLink(email, resetToken);
 };
 
-const checkIfAuthorized = async (refreshToken) => {
-    const userData = jwtService.validateRefreshToken(refreshToken);
+const checkIfExist = async (token) => {
+    const userData = jwtService.validateRefreshToken(token);
 
     if (!userData) {
-        throw ApiError.Unauthorized();
-    }
-
-    const token = await tokenService.getByToken(refreshToken);
-
-    if (!token) {
         throw ApiError.Unauthorized();
     }
 
@@ -99,7 +92,7 @@ export default {
     getByEmail,
     register,
     normalize,
-    checkIfAuthorized,
+    checkIfExist,
     createUser,
     reset,
 };
