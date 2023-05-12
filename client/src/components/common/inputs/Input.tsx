@@ -55,6 +55,7 @@ const Input: React.FC<IInputProps & TextFieldProps> = ({
             size="small"
             margin={margin}
             value={currentValue}
+            color="primary"
             {...textFieldProps}
         />
     );

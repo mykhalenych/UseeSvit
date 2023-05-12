@@ -1,5 +1,5 @@
 import React from 'react';
-import {redirect} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useForm, FormProvider} from 'react-hook-form';
 import {Grid, Typography} from '@mui/material';
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -8,14 +8,14 @@ import {validation, defaultValues} from './form';
 import {ILoginProps} from './types';
 import {logInUser} from '../../../redux/auth/thunks';
 import InputControl from '../../../components/common/form/InputControl';
-import Button from '../../../components/common/Button/Button';
-import {LoginImg, ForgotPassLink, SignLink, ContainerDiv} from './styles';
-import signInImage from './image/signInImage.png';
+import Button from '../../../components/common/Button';
 import {FORGOT_PATH, SIGN_IN_PATH} from '../../../Routes/constants';
 import {useAppDispatch} from '../../../redux/store';
 
 const Login = () => {
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
+
     const methods = useForm<ILoginProps>({
         resolver: yupResolver(validation),
         defaultValues,
@@ -23,39 +23,44 @@ const Login = () => {
     const {handleSubmit, control} = methods;
 
     const onSubmit = (data: ILoginProps) => {
-        dispatch(logInUser(data)).then((res) => {
-            res && redirect('/');
-        });
+        dispatch(logInUser(data)).then((res) => res.meta.requestStatus === 'fulfilled' && navigate('/'));
+    };
+
+    const handleRedirect = (path: string) => {
+        navigate(path);
     };
 
     return (
-        <ContainerDiv>
-            <LoginImg src={signInImage} alt="mountains" />
-            <Grid container flexDirection="column">
-                <FormProvider {...methods}>
-                    <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                        <Grid container justifyContent="center" height="100%">
-                            <Typography variant="h2">Log In</Typography>
-                            <InputControl control={control} label="Email adress" name="email" fullWidth />
-                            <InputControl
-                                control={control}
-                                label="Password"
-                                type="password"
-                                name="password"
-                                fullWidth
-                            />
-                            <ForgotPassLink to={FORGOT_PATH}>Forgot password?</ForgotPassLink>
-                        </Grid>
-                        <Grid container justifyContent="center">
-                            <Button variant="outlined" type="submit" color="primary">
-                                Login
-                            </Button>
-                            <SignLink to={SIGN_IN_PATH}> Don’t have an account? Sign up</SignLink>
-                        </Grid>
-                    </form>
-                </FormProvider>
-            </Grid>
-        </ContainerDiv>
+        <FormProvider {...methods}>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                <Grid container px={2} spacing={2}>
+                    <Grid item xs={12}>
+                        <Typography variant="h2">Log In</Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <InputControl control={control} label="Email adress" name="email" fullWidth />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <InputControl control={control} label="Password" type="password" name="password" fullWidth />
+                    </Grid>
+                    <Grid container item xs={12} justifyContent="space-between">
+                        <Button onClick={() => handleRedirect(SIGN_IN_PATH)} color="primary" minWidth={100}>
+                            Sign In
+                        </Button>
+                        <Button
+                            onClick={() => handleRedirect(FORGOT_PATH)}
+                            variant="text"
+                            color="primary"
+                            minWidth={180}>
+                            Forgot password
+                        </Button>
+                        <Button type="submit" variant="contained" color="primary" minWidth={100}>
+                            Login
+                        </Button>
+                    </Grid>
+                </Grid>
+            </form>
+        </FormProvider>
     );
 };
 

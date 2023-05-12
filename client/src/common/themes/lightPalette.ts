@@ -20,12 +20,12 @@ const lightPalette = createTheme({
         },
         background: {
             default: '#F3FAF8',
-            paper: '#F6F6FA',
+            paper: '#F6F6F7',
         },
         text: {
-            primary: '#9F9EAA',
+            primary: '#1C1B1F',
             secondary: '#C5C4CB',
-            disabled: '#7D7A87',
+            disabled: '#9F9EAA',
         },
     },
 });

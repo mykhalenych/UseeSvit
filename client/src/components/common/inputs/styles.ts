@@ -5,32 +5,28 @@ import {TextField} from '@mui/material';
 import {IInputProps} from './types';
 
 const StyledInput = styled(TextField)<IInputProps & TextFieldProps>(({theme}) => ({
-    width: 240,
+    borderRadius: 4,
+    borderColor: theme.palette.primary.main,
 
-    '& .MuiInputBase-root': {
-        minHeight: 56,
-        color: theme.palette.primary.contrastText,
+    '& .MuiOutlinedInput-root:hover': {
+        borderColor: theme.palette.primary.main,
     },
-    '&  .MuiFormLabel-root': {
-        lineHeight: '36px',
+    '& .MuiOutlinedInput-notchedOutline': {
+        borderColor: theme.palette.primary.main,
     },
-    ' & .MuiInputBase-input': {
-        padding: '0 5px 0 5px',
-        height: '100%',
+    '& .MuiFormLabel-root': {
+        color: theme.palette.primary.main,
     },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: theme.palette.primary.main,
-    },
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: theme.palette.primary.light,
+    '& .Mui-error': {
+        color: theme.palette.error.main,
+
+        '& .MuiOutlinedInput-root .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.error.main,
         },
-        '&:hover fieldset': {
-            borderColor: theme.palette.primary.dark,
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: theme.palette.primary.dark,
-        },
+    },
+    '& .Mui-disabled': {
+        background: theme.palette.text.secondary,
+        cursor: 'not-allowed',
     },
 }));
 

@@ -1,27 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Outlet} from 'react-router-dom';
-import {IconButton} from '@mui/material';
 
-import {ReactComponent as LogoIcon} from '../../assets/icons/logo.svg';
-import {ReactComponent as ProfileIcon} from '../../assets/icons/profile.svg';
+import Navigation from '../../components/common/Navigation/Navigation';
 
-import {BgDiv, Main, Nav, Footer, ImgWrap, StyledLink} from './styles';
-import {LOGIN_PATH} from '../../Routes/constants';
+import {BgDiv, Main, Footer} from './styles';
+import {fetchUser} from '../../redux/auth/thunks';
+import {useAppDispatch} from '../../redux/store';
+import {getAuthTokens} from '../../common/utils';
 
 const MainLayout = () => {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        const token = getAuthTokens();
+
+        if (token) {
+            dispatch(fetchUser());
+        }
+    }, [dispatch]);
+
     return (
         <BgDiv>
-            <Nav>
-                <LogoIcon />
-
-                <StyledLink to={LOGIN_PATH}>
-                    <IconButton color="primary">
-                        <ProfileIcon />
-                    </IconButton>
-                </StyledLink>
-            </Nav>
+            <Navigation />
             <Main>
-                <ImgWrap />
                 <Outlet />
             </Main>
             <Footer />

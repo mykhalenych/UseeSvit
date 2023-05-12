@@ -155,7 +155,7 @@ const changeName = async (req, res) => {
     const refreshToken = getToken(req);
     const {newName} = req.body;
 
-    const userData = await userService.checkIfAuthorized(refreshToken);
+    const userData = await userService.checkIfExist(refreshToken);
 
     const errors = {
         newName: validation.validateName(newName),
@@ -178,7 +178,7 @@ const changeEmail = async (req, res) => {
     const refreshToken = getToken(req);
     const {password, newEmail} = req.body;
 
-    const userData = await userService.checkIfAuthorized(refreshToken);
+    const userData = await userService.checkIfExist(refreshToken);
 
     const errors = {
         newEmail: validation.validateEmail(newEmail),
@@ -220,7 +220,7 @@ const changePassword = async (req, res) => {
     const {password, newPassword, passwordConfirmation} = req.body;
     const refreshToken = getToken(req);
 
-    const userData = await userService.checkIfAuthorized(refreshToken);
+    const userData = await userService.checkIfExist(refreshToken);
 
     const user = await userService.getByEmail(userData.email);
 

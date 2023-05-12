@@ -44,11 +44,11 @@ const createCommonTheme = (theme: Theme) =>
                         fontFamily: 'roboto, sans-serif',
                     },
                     h2: {
-                        color: theme.palette.primary.contrastText,
-                        background: theme.palette.primary.main,
+                        fontSize: '3rem',
                     },
                     h3: {
-                        background: theme.palette.primary.contrastText,
+                        fontSize: '2.5rem',
+                        lineHeight: 1.5,
                     },
                 },
             },
@@ -86,11 +86,8 @@ const createCommonTheme = (theme: Theme) =>
                     root: {
                         padding: '2px 10px',
                     },
-                    outlined: {
-                        padding: '2px 10px',
-                    },
-                    text: {
-                        padding: '2px 10px',
+                    contained: {
+                        color: theme.palette.common.white,
                     },
                 },
             },
