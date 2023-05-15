@@ -4,7 +4,7 @@ import type {TextFieldProps} from '@mui/material';
 
 import {IInputEndAdornmentProps, IInputProps} from './types';
 
-import StyledInput from './styles';
+import StyledInput from './Styles';
 
 export const InputEndAdornment: React.FC<IInputEndAdornmentProps> = ({children}) => {
     return <div>{children}</div>;

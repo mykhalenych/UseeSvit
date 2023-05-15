@@ -80,6 +80,9 @@
                 Login.tsx
                 index.ts
                 ...otherFiles
-            
 
 
+### Branch naming
+
+* Use git-flow for naming branch https://danielkummer.github.io/git-flow-cheatsheet/
+* Commit message should include branch name.

@@ -5,7 +5,7 @@ import {Autocomplete as MUIAutocomplete} from '@mui/material';
 
 import {IAutocompleteProps} from './types';
 
-import StyledInput from './styles';
+import StyledInput from './Styles';
 
 interface IProps extends IAutocompleteProps {
     field?: ControllerRenderProps;

@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ButtonProps} from '@mui/material';
 
-import StyledButton from './styles';
+import StyledButton from './Styles';
 import {CustomButtonProps} from './types';
 
 const Button: React.FC<CustomButtonProps & ButtonProps> = ({

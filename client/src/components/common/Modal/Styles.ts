@@ -1,11 +1,12 @@
 import {styled} from '@mui/material/styles';
 import Modal from '@mui/material/Modal';
 import type {ModalProps} from '@mui/material';
+
 import {CustomModalProps} from './types';
 
 const StyledModal = styled(Modal)<CustomModalProps & ModalProps>(({theme}) => ({
     borderRadius: 20,
-    backgroundColor: '#F6F6F7',
+    backgroundColor: theme.palette.background.default,
     display: 'flex',
     maxWidth: 540,
     maxHeight: 720,
