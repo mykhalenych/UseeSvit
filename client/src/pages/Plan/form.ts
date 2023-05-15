@@ -1,9 +1,9 @@
 import {object, string} from 'yup';
 
 export const defaultValues = {
-    from: '',
+    search: '',
 };
 
 export const validation = object().shape({
-    from: string().required(),
+    search: string().required(),
 });

@@ -1,3 +1,3 @@
 export interface IPlan {
-    from: string;
+    search: string;
 }

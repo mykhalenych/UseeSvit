@@ -16,7 +16,7 @@ import {setUserTheme} from '../../../redux/common/commonSlice';
 import ProfileMenu from './ProfileMenu';
 import {selectUser} from '../../../redux/auth/selectors';
 
-import {BackgroundDiv} from './styles';
+import {BackgroundDiv} from './Styles';
 
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

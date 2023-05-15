@@ -7,7 +7,7 @@ import {useAppDispatch} from '../../redux/store';
 import {setUserCoords} from '../../redux/common/commonSlice';
 import {containerStyle, libraries} from './constants';
 
-import {MapWrap} from './styles';
+import {MapWrap} from './Styles';
 
 const Map = () => {
     const {isLoaded} = useJsApiLoader({
@@ -63,7 +63,7 @@ const Map = () => {
 
     return (
         <MapWrap>
-            {isLoaded && (
+            {isLoaded ? (
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={coords}
@@ -90,7 +90,7 @@ const Map = () => {
                     ))}
                     <Marker position={coords} />
                 </GoogleMap>
-            )}
+            ) : null}
         </MapWrap>
     );
 };

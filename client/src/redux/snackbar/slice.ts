@@ -1,5 +1,5 @@
+import type {PrepareAction, Action, SliceCaseReducers, PayloadAction} from '@reduxjs/toolkit';
 import {createSlice} from '@reduxjs/toolkit';
-import type {SliceCaseReducers, PayloadAction} from '@reduxjs/toolkit';
 
 import {IRootState} from '../store';
 import {ISlicesNames, SliceNames} from '../types';
@@ -27,7 +27,7 @@ export interface IShowSnackbarPayload {
 
 let nextId = 0;
 
-const prepareShow = (payload: any) => {
+const prepareShow = (payload: PrepareAction<Action>) => {
     nextId += 1;
     return {payload: {...payload, id: nextId}};
 };
