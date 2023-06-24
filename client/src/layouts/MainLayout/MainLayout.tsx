@@ -1,11 +1,11 @@
 import React from 'react';
-import {Outlet} from 'react-router-dom';
+import {Outlet, Link} from 'react-router-dom';
 import {IconButton} from '@mui/material';
 
 import LogoIcon from '../../components/icons/LogoIcon';
 import ProfileIcon from '../../components/icons/ProfileIcon';
 
-import {BgDiv, Main, Nav, Footer, ImgWrap, StyledLink} from './styles';
+import {BgDiv, Main, Nav, Footer, ImgWrap} from './styles';
 import {LOGIN_PATH} from '../../Routes/constants';
 
 const MainLayout = () => {
@@ -14,11 +14,11 @@ const MainLayout = () => {
             <Nav>
                 <LogoIcon />
 
-                <StyledLink to={LOGIN_PATH}>
+                <Link to={LOGIN_PATH}>
                     <IconButton color="primary">
                         <ProfileIcon />
                     </IconButton>
-                </StyledLink>
+                </Link>
             </Nav>
             <Main>
                 <ImgWrap />

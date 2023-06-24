@@ -1,5 +1,5 @@
 import React from 'react';
-import {redirect} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useForm, FormProvider} from 'react-hook-form';
 import {Grid} from '@mui/material';
 
@@ -17,6 +17,8 @@ import {useAppDispatch} from '../../../redux/store';
 
 const Login = () => {
     const dispatch = useAppDispatch();
+    const navigation = useNavigate();
+
     const methods = useForm<ILoginProps>({
         resolver: yupResolver(validation),
         defaultValues,
@@ -25,7 +27,7 @@ const Login = () => {
 
     const onSubmit = (data: ILoginProps) => {
         dispatch(logInUser(data)).then((res) => {
-            res && redirect('/');
+            res.type.endsWith('/fulfilled') && navigation('/');
         });
     };
 

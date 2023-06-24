@@ -40,3 +40,15 @@ export const logInUser = createAsyncThunk(
         }
     },
 );
+
+export const activateUser = createAsyncThunk(
+    `${ISlicesNames.auth}/${authThunkNames.activateUser}`,
+    async (activationToken: string, {rejectWithValue}) => {
+        try {
+            const request = {url: `/activation/${activationToken}`};
+            return await fetchWrap({request, isAuth: true, method: 'GET'});
+        } catch (err) {
+            return rejectWithValue({message: err});
+        }
+    },
+);
