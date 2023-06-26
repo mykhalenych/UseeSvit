@@ -40,9 +40,15 @@ const validatePasswordsMatching = (password, passwordConfirmation) => {
     }
 };
 
+const validateTheme = (theme) => theme !== 'light' && theme !== 'dark';
+
+const validateLanguage = (language) => language !== 'ua' && language !== 'en';
+
 export default {
     validateName,
     validateEmail,
     validatePassword,
     validatePasswordsMatching,
+    validateTheme,
+    validateLanguage,
 };

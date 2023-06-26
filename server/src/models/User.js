@@ -24,4 +24,12 @@ export const User = sequelize.define('user', {
         type: DataTypes.STRING,
         allowNull: true,
     },
+    language: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    theme: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
 });
