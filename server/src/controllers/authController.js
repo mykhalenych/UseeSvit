@@ -156,13 +156,10 @@ const changeName = async (req, res) => {
     const {newName} = req.body;
 
     const userData = await userService.checkIfExist(refreshToken);
+    const error = validation.validateName(newName);
 
-    const errors = {
-        newName: validation.validateName(newName),
-    };
-
-    if (errors.newName) {
-        throw ApiError.BadRequest('Invalid name', errors);
+    if (error) {
+        throw ApiError.BadRequest('Invalid name', error);
     }
 
     const user = await userService.getByEmail(userData.email);
@@ -252,6 +249,47 @@ const changePassword = async (req, res) => {
     await sendAuthentication(res, user);
 };
 
+const changeTheme = async (req, res) => {
+    const refreshToken = getToken(req);
+    const {theme} = req.body;
+
+    const userData = await userService.checkIfExist(refreshToken);
+    const error = validation.validateTheme(theme);
+
+    if (error) {
+        throw ApiError.BadRequest('Invalid theme', error);
+    }
+
+    const user = await userService.getByEmail(userData.email);
+
+    user.theme = theme;
+
+    await user.save();
+
+    await sendAuthentication(res, user);
+};
+
+const changeLanguage = async (req, res) => {
+    const refreshToken = getToken(req);
+
+    const {language} = req.body;
+
+    const userData = await userService.checkIfExist(refreshToken);
+    const error = validation.validateLanguage(language);
+
+    if (error) {
+        throw ApiError.BadRequest('Invalid language', error);
+    }
+
+    const user = await userService.getByEmail(userData.email);
+
+    user.language = language;
+
+    await user.save();
+
+    await sendAuthentication(res, user);
+};
+
 export default {
     register,
     activate,
@@ -263,4 +301,6 @@ export default {
     changeName,
     changeEmail,
     changePassword,
+    changeLanguage,
+    changeTheme,
 };

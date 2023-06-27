@@ -76,14 +76,18 @@ const createUser = ({name, email, password = null, activationToken = null}) => {
         email,
         password,
         activationToken,
+        language: 'en',
+        theme: 'light',
     });
 };
 
-const normalize = ({id, name, email}) => {
+const normalize = ({id, name, email, language, theme}) => {
     return {
         id,
         name,
         email,
+        language,
+        theme,
     };
 };
 

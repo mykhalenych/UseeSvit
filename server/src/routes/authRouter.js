@@ -15,3 +15,5 @@ authRouter.post('/reset/:resetToken', catchError(authController.resetPassword));
 authRouter.post('/change-name', catchError(authController.changeName));
 authRouter.post('/change-email', catchError(authController.changeEmail));
 authRouter.post('/change-password', catchError(authController.changePassword));
+authRouter.post('/change-theme', catchError(authController.changeTheme));
+authRouter.post('/change-language', catchError(authController.changeLanguage));
