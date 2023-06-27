@@ -1,5 +1,6 @@
 import axios, {AxiosError} from 'axios';
 import type {AxiosResponse, Method} from 'axios';
+import i18n from '../common/i18n';
 
 import {IError, IFetch} from './types';
 import {getToken, removeToken} from './utils';
@@ -41,6 +42,6 @@ export const fetchWrap = async ({
             if (err?.response?.status === 401) {
                 removeToken();
             }
-            throw err?.response?.data.message || 'Something went wrong';
+            throw err?.response?.data.message || i18n.t('somethingWentWrong');
         });
 };
