@@ -2,7 +2,7 @@ import axios, {AxiosError} from 'axios';
 import type {AxiosResponse, Method} from 'axios';
 
 import {IError, IFetch} from './types';
-import {getToken} from './utils';
+import {getToken, removeToken} from './utils';
 import {API_URL} from './constants';
 
 export const fetchWrap = async ({
@@ -38,6 +38,9 @@ export const fetchWrap = async ({
             return res.data;
         })
         .catch((err: AxiosError<IError>) => {
+            if (err?.response?.status === 401) {
+                removeToken();
+            }
             throw err?.response?.data.message || 'Something went wrong';
         });
 };
