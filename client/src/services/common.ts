@@ -1,5 +1,5 @@
-import axios, {AxiosError} from 'axios';
 import type {AxiosResponse, Method} from 'axios';
+import axios, {AxiosError} from 'axios';
 import i18n from '../common/i18n';
 
 import {IError, IFetch} from './types';
