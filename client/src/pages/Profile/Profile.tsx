@@ -41,6 +41,8 @@ const Profile = () => {
                 passwordConfirmation: data.passwordConfirmation,
             }),
         );
+
+        passwordMethods.reset();
     };
 
     return (
