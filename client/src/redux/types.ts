@@ -15,6 +15,7 @@ export enum StatusesTypes {
     loading = 'loading',
     finished = 'finished',
     error = 'error',
+    profile = 'profile',
 }
 
 export interface ErrorState {
@@ -34,6 +35,7 @@ export enum ISlicesNames {
     auth = 'auth',
     snackbar = 'snackbar',
     common = 'common',
+    profile = 'profile',
 }
 
 export type SliceNames = ISlicesNames;

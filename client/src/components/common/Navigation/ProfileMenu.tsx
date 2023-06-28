@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {resetAuthToken} from '../../../common/utils';
 import {logoutUser} from '../../../redux/auth/thunks';
 import {useAppDispatch} from '../../../redux/store';
+import {useNavigate} from 'react-router-dom';
 
 interface IProps {
     anchorEl: HTMLElement | null;
@@ -12,6 +13,7 @@ interface IProps {
 
 const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         dispatch(logoutUser()).then((res) => {
@@ -22,6 +24,8 @@ const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
         });
     };
 
+    const handleProfile = () => navigate('/profile');
+
     return (
         <Menu
             id="basic-menu"
@@ -31,7 +35,7 @@ const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
             MenuListProps={{
                 'aria-labelledby': 'basic-button',
             }}>
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleProfile}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>

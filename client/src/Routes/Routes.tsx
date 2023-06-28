@@ -10,6 +10,8 @@ import {
     FORGOT_PATH,
     CHECK_EMAIL_PATH,
     PLAN_PATH,
+    CREDENTIAL_UPDATE_PATH,
+    PROFILE_PATH,
 } from './constants';
 import PublicRoute from '../components/routes/PublicRoute';
 import SignIn from '../pages/Auth/SignIn/SignIn';
@@ -21,6 +23,8 @@ import Plan from '../pages/Plan';
 import CheckEmail from '../pages/Auth/CheckEmail';
 import Main from '../pages/Main';
 import PlanLayout from '../layouts/PlanLayout';
+import Profile from '../pages/Profile/Profile';
+import ProtectedRoute from '../components/routes/ProtectedRoute';
 
 const Routes: React.FC = () => {
     return (
@@ -65,6 +69,16 @@ const Routes: React.FC = () => {
                             <PublicRoute>
                                 <Activation />
                             </PublicRoute>
+                        }
+                    />
+                </Route>
+                <Route path={PROFILE_PATH} element={<AuthLayout />}>
+                    <Route
+                        index
+                        element={
+                            <ProtectedRoute>
+                                <Profile />
+                            </ProtectedRoute>
                         }
                     />
                 </Route>

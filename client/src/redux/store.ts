@@ -5,11 +5,13 @@ import {authData} from './auth/authSlice';
 import {snackbarData} from './snackbar/slice';
 import {snackbarMiddleware} from './snackbar/middleware';
 import {commonData} from './common/commonSlice';
+import {profileData} from './profile/profileSlice';
 
 const combinedReducer = combineReducers({
     auth: authData.reducer,
     snackbar: snackbarData.reducer,
     common: commonData.reducer,
+    profile: profileData.reducer,
 });
 
 export const store = configureStore({
