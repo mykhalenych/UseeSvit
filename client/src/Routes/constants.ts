@@ -8,4 +8,3 @@ export const CHECK_EMAIL_PATH = `${AUTH_PATH}/check-email`;
 export const PLAN_PATH = '/plan';
 
 export const PROFILE_PATH = '/profile';
-export const CREDENTIAL_UPDATE_PATH = `${PROFILE_PATH}/credential-update`;

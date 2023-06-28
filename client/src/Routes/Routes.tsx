@@ -10,7 +10,6 @@ import {
     FORGOT_PATH,
     CHECK_EMAIL_PATH,
     PLAN_PATH,
-    CREDENTIAL_UPDATE_PATH,
     PROFILE_PATH,
 } from './constants';
 import PublicRoute from '../components/routes/PublicRoute';
