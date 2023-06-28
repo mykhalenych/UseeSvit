@@ -2,10 +2,11 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useSnackbar} from 'notistack';
 import type {VariantType} from 'notistack';
+import IconButton from '@mui/material/IconButton';
 
+import {Icon} from './Styles';
 import {selectMessages, hideMessage, removeMessage} from '../../redux/snackbar/slice';
 import {useAppDispatch} from '../../redux/store';
-import {Button, Icon} from './Styles';
 
 export const Snackbar: React.FC = () => {
     const [displayed, setDisplayed] = useState<number[]>([]);
@@ -37,9 +38,9 @@ export const Snackbar: React.FC = () => {
                     removeDisplayed(Number(myKey));
                 },
                 action: () => (
-                    <Button onClick={() => closeSnackbar(item.id)}>
+                    <IconButton onClick={() => closeSnackbar(item.id)}>
                         <Icon />
-                    </Button>
+                    </IconButton>
                 ),
             });
 
