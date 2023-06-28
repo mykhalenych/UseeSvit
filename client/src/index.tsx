@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import './common/i18n';
-
 import App from './App';
 import './styles.css';
 
