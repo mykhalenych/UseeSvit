@@ -10,11 +10,11 @@
   "somethingWentWrong": "Something went wrong",
   "logIn": {
     "title": "Log In",
-    "btn": "LOGIN"
+    "btn": "Login"
   },
   "signUp": {
     "title": "Sign Up",
-    "btn": "SIGN UP"
+    "btn": "Sign up"
   },
   "forgotPassword": {
     "title": "Forgot your password?",
