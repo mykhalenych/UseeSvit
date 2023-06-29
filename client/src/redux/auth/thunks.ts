@@ -4,6 +4,7 @@ import {authThunkNames} from './constants';
 import {ISlicesNames} from '../types';
 import {SignInRequest, LogInRequest, ForgotPasswordRequest, RecoveryPasswordRequest} from '../../services/auth/types';
 import {activate, recoveryPassword, getUser, login, logout, register, resetPassword} from '../../services/auth';
+import {showSuccess} from '../snackbar/slice';
 
 export const fetchUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.fetchUser}`,
@@ -73,9 +74,23 @@ export const logoutUser = createAsyncThunk(
 
 export const newPassword = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.newPassword}`,
-    async (data: RecoveryPasswordRequest, {rejectWithValue}) => {
+    async (data: RecoveryPasswordRequest, {rejectWithValue, dispatch}) => {
         try {
-            return await recoveryPassword(data);
+            const result = await recoveryPassword(data);
+
+            dispatch(
+                showSuccess({
+                    message: 'Password changed successfully!',
+                    id: 333,
+                    from: {
+                        slice: ISlicesNames.auth,
+                        thunk: authThunkNames.newPassword,
+                        requestId: result.requestId,
+                    },
+                }),
+            );
+
+            return result;
         } catch (err) {
             return rejectWithValue({message: err});
         }
