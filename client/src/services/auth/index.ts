@@ -32,8 +32,8 @@ export const resetPassword = async (data: ForgotPasswordRequest) => {
 };
 
 export const recoveryPassword = async (data: RecoveryPasswordRequest) => {
-    const {resetToken, newPassword, confirmPassword} = data;
+    const {resetToken, newPassword, passwordConfirmation} = data;
 
-    const request = {url: `/reset/${resetToken}`, body: {newPassword, confirmPassword}};
+    const request = {url: `/reset/${resetToken}`, body: {newPassword, passwordConfirmation}};
     return await fetchWrap({method: 'POST', request, isAuth: true});
 };

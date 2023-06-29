@@ -10,6 +10,7 @@ import InputControl from '../../../components/common/form/InputControl';
 import {PasswordProps} from './types';
 import {defaultValues, validation} from './form';
 import Button from '../../../components/common/Button';
+import {LOGIN_PATH} from '../../../Routes/constants';
 
 const RecoveryPassword = () => {
     const navigate = useNavigate();
@@ -30,7 +31,9 @@ const RecoveryPassword = () => {
         if (resetToken) {
             const dataWithToken = {...data, resetToken};
 
-            dispatch(newPassword(dataWithToken)).then((res) => res.meta.requestStatus === 'fulfilled');
+            dispatch(newPassword(dataWithToken)).then(
+                (res) => res.meta.requestStatus === 'fulfilled' && navigate(LOGIN_PATH),
+            );
         }
     };
 
@@ -55,7 +58,7 @@ const RecoveryPassword = () => {
                             control={control}
                             label="Confirm password"
                             type="password"
-                            name="confirmPassword"
+                            name="passwordConfirmation"
                             fullWidth
                         />
                     </Grid>
