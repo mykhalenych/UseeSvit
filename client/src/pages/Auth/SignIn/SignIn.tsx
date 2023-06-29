@@ -3,6 +3,7 @@ import {useForm, FormProvider} from 'react-hook-form';
 import {Grid, Typography} from '@mui/material';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useNavigate} from 'react-router-dom';
+import {useTranslation} from 'react-i18next';
 
 import {validation, defaultValues} from './form';
 import {ISignInProps} from './types';
@@ -15,6 +16,7 @@ import {CHECK_EMAIL_PATH, LOGIN_PATH} from '../../../Routes/constants';
 const SignIn = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const methods = useForm<ISignInProps>({
         resolver: yupResolver(validation),
@@ -35,23 +37,29 @@ const SignIn = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={2} px={2}>
                     <Grid item xs={12}>
-                        <Typography variant="h2">Sign In</Typography>
+                        <Typography variant="h2">{t('signUp.title')}</Typography>
                     </Grid>
                     <Grid item xs={12}>
-                        <InputControl control={control} label="Your name" name="name" fullWidth />
+                        <InputControl control={control} label={t('yourName')} name="name" fullWidth />
                     </Grid>
                     <Grid item xs={12}>
-                        <InputControl control={control} label="Email" name="email" fullWidth />
+                        <InputControl control={control} label={t('emailAddress')} name="email" fullWidth />
                     </Grid>
                     <Grid item xs={12}>
-                        <InputControl control={control} label="Password" type="password" name="password" fullWidth />
+                        <InputControl
+                            control={control}
+                            label={t('password')}
+                            type="password"
+                            name="password"
+                            fullWidth
+                        />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
                         <Button onClick={handleRedirect} color="primary" minWidth={120}>
-                            Login
+                            {t('logIn.btn')}
                         </Button>
                         <Button type="submit" variant="contained" color="primary" minWidth={120}>
-                            Sign In
+                            {t('signUp.btn')}
                         </Button>
                     </Grid>
                 </Grid>

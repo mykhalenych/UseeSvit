@@ -1,0 +1,28 @@
+{
+  "planYourTrip": "Plan your trip",
+  "emailAddress": "Email address",
+  "yourName": "Your name",
+  "password": "Password",
+  "sendInstructions": "Send instructions",
+  "checkEmail": "Check your email. We have sent you some information.",
+  "goToLogin": "Go to login",
+  "welcomeToUseeSvit": "Welcome to UseeSvit.",
+  "somethingWentWrong": "Something went wrong",
+  "logIn": {
+    "title": "Log In",
+    "btn": "Login"
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "btn": "Sign up"
+  },
+  "forgotPassword": {
+    "title": "Forgot your password?",
+    "btn": "Forgot password"
+  },
+  "profileMenu": {
+    "profile": "Profile",
+    "myAccount": "My account",
+    "logOut": "Logout"
+  }
+}
