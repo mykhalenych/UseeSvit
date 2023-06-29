@@ -2,8 +2,8 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 
 import {authThunkNames} from './constants';
 import {ISlicesNames} from '../types';
-import {SignInRequest, LogInRequest, ForgotPasswordRequest} from '../../services/auth/types';
-import {activate, getUser, login, logout, register, resetPassword} from '../../services/auth';
+import {SignInRequest, LogInRequest, ForgotPasswordRequest, RecoveryPasswordRequest} from '../../services/auth/types';
+import {activate, recoveryPassword, getUser, login, logout, register, resetPassword} from '../../services/auth';
 
 export const fetchUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.fetchUser}`,
@@ -65,6 +65,17 @@ export const logoutUser = createAsyncThunk(
     async (data: void, {rejectWithValue}) => {
         try {
             return await logout();
+        } catch (err) {
+            return rejectWithValue({message: err});
+        }
+    },
+);
+
+export const newPassword = createAsyncThunk(
+    `${ISlicesNames.auth}/${authThunkNames.newPassword}`,
+    async (data: RecoveryPasswordRequest, {rejectWithValue}) => {
+        try {
+            return await recoveryPassword(data);
         } catch (err) {
             return rejectWithValue({message: err});
         }

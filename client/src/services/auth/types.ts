@@ -12,3 +12,9 @@ export interface LogInRequest {
 export interface ForgotPasswordRequest {
     email: string;
 }
+
+export interface RecoveryPasswordRequest {
+    resetToken: string;
+    newPassword: string;
+    confirmPassword: string;
+}
