@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import {Grid, Typography} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
