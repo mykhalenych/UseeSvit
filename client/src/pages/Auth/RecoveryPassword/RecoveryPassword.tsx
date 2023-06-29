@@ -3,6 +3,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {Grid, Typography} from '@mui/material';
 import {useForm, FormProvider} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useTranslation} from 'react-i18next';
 
 import {useAppDispatch} from '../../../redux/store';
 import {newPassword} from '../../../redux/auth/thunks';
@@ -16,6 +17,7 @@ const RecoveryPassword = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {resetToken} = useParams();
+    const {t} = useTranslation();
 
     const methods = useForm<PasswordProps>({
         resolver: yupResolver(validation),
@@ -42,12 +44,12 @@ const RecoveryPassword = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid container px={2} spacing={2}>
                     <Grid item xs={12}>
-                        <Typography variant="h2">Create new password</Typography>
+                        <Typography variant="h2">{t('recoveryPassword.title')}</Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <InputControl
                             control={control}
-                            label="New password"
+                            label={t('recoveryPassword.newPassword')}
                             type="password"
                             name="newPassword"
                             fullWidth
@@ -56,7 +58,7 @@ const RecoveryPassword = () => {
                     <Grid item xs={12}>
                         <InputControl
                             control={control}
-                            label="Confirm password"
+                            label={t('recoveryPassword.confirmPassword')}
                             type="password"
                             name="passwordConfirmation"
                             fullWidth
@@ -64,10 +66,10 @@ const RecoveryPassword = () => {
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
                         <Button type="submit" variant="contained" color="primary" minWidth={100}>
-                            Save
+                            {t('recoveryPassword.btnSave')}
                         </Button>
                         <Button onClick={() => handleRedirect('/')} color="primary" minWidth={100}>
-                            Cancel
+                            {t('recoveryPassword.btnCancel')}
                         </Button>
                     </Grid>
                 </Grid>

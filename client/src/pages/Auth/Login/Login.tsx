@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {useForm, FormProvider} from 'react-hook-form';
 import {Grid, Typography} from '@mui/material';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useTranslation} from 'react-i18next';
 
 import {validation, defaultValues} from './form';
 import {ILoginProps} from './types';
@@ -15,6 +16,7 @@ import {useAppDispatch} from '../../../redux/store';
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const {t} = useTranslation();
 
     const methods = useForm<ILoginProps>({
         resolver: yupResolver(validation),
@@ -35,27 +37,33 @@ const Login = () => {
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <Grid container px={2} spacing={2}>
                     <Grid item xs={12}>
-                        <Typography variant="h2">Log In</Typography>
+                        <Typography variant="h2">{t('logIn.title')}</Typography>
                     </Grid>
                     <Grid item xs={12}>
-                        <InputControl control={control} label="Email adress" name="email" fullWidth />
+                        <InputControl control={control} label={t('emailAddress')} name="email" fullWidth />
                     </Grid>
                     <Grid item xs={12}>
-                        <InputControl control={control} label="Password" type="password" name="password" fullWidth />
+                        <InputControl
+                            control={control}
+                            label={t('password')}
+                            type="password"
+                            name="password"
+                            fullWidth
+                        />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
                         <Button onClick={() => handleRedirect(SIGN_IN_PATH)} color="primary" minWidth={100}>
-                            Sign In
+                            {t('signUp.btn')}
                         </Button>
                         <Button
                             onClick={() => handleRedirect(FORGOT_PATH)}
                             variant="text"
                             color="primary"
                             minWidth={180}>
-                            Forgot password
+                            {t('forgotPassword.btn')}
                         </Button>
                         <Button type="submit" variant="contained" color="primary" minWidth={100}>
-                            Login
+                            {t('logIn.btn')}
                         </Button>
                     </Grid>
                 </Grid>

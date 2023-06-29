@@ -13,7 +13,7 @@ const Button: React.FC<CustomButtonProps & ButtonProps> = ({
     ...rest
 }) => {
     return (
-        <StyledButton sx={{width: minWidth}} variant={variant} color={color} {...rest}>
+        <StyledButton sx={{minWidth: minWidth}} variant={variant} color={color} {...rest}>
             {children}
         </StyledButton>
     );
