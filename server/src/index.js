@@ -26,6 +26,6 @@ app.use(authRouter);
 app.use('/users', userRouter);
 app.use(errorMiddleware);
 
-sequelize.sync({force: true});
+sequelize.sync();
 
 app.listen(PORT);

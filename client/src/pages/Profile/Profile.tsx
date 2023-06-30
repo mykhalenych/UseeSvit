@@ -8,9 +8,11 @@ import {nameValidation, defaultNameValue, defaultPasswordValue, passwordValidati
 import {Grid, Typography} from '@mui/material';
 import Button from '../../components/common/Button';
 import InputControl from '../../components/common/form/InputControl';
+import {useTranslation} from 'react-i18next';
 
 const Profile = () => {
     const dispatch = useAppDispatch();
+    const {t} = useTranslation();
 
     const methods = useForm({
         resolver: yupResolver(nameValidation.concat(passwordValidation)),
@@ -55,7 +57,7 @@ const Profile = () => {
         <div style={{display: 'flex', alignItems: 'center'}}>
             <Grid container spacing={2} px={2} alignItems="center">
                 <Grid item xs={12}>
-                    <Typography variant="h2">Profile</Typography>
+                    <Typography variant="h2">{t('profileMenu.profile')}</Typography>
                 </Grid>
 
                 <Grid item xs={12}>
@@ -66,7 +68,7 @@ const Profile = () => {
                                     <Grid item xs={8}>
                                         <InputControl
                                             control={methods.control}
-                                            label="New name"
+                                            label={t('profile.newName')}
                                             name="newName"
                                             fullWidth
                                         />
@@ -78,7 +80,7 @@ const Profile = () => {
                                             color="primary"
                                             minWidth={190}
                                             onClick={onNameSubmit}>
-                                            Change name
+                                            {t('profile.change')}
                                         </Button>
                                     </Grid>
                                 </Grid>
@@ -89,21 +91,21 @@ const Profile = () => {
                                 <Grid item xs={8}>
                                     <InputControl
                                         control={methods.control}
-                                        label="Current password"
+                                        label={t('profile.currentPassword')}
                                         type="password"
                                         name="password"
                                         fullWidth
                                     />
                                     <InputControl
                                         control={methods.control}
-                                        label="New password"
+                                        label={t('profile.newPassword')}
                                         type="password"
                                         name="newPassword"
                                         fullWidth
                                     />
                                     <InputControl
                                         control={methods.control}
-                                        label="Confirm password"
+                                        label={t('profile.confirmPassword')}
                                         type="password"
                                         name="passwordConfirmation"
                                         fullWidth
@@ -116,7 +118,7 @@ const Profile = () => {
                                         color="primary"
                                         minWidth={190}
                                         onClick={onPasswordSubmit}>
-                                        Change password
+                                        {t('profile.change')}
                                     </Button>
                                 </Grid>
                             </Grid>

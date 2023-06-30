@@ -11,6 +11,7 @@ import {
     CHECK_EMAIL_PATH,
     PLAN_PATH,
     PROFILE_PATH,
+    RESET_PASSWORD_PATH,
 } from './constants';
 import PublicRoute from '../components/routes/PublicRoute';
 import SignIn from '../pages/Auth/SignIn/SignIn';
@@ -18,6 +19,7 @@ import Login from '../pages/Auth/Login/Login';
 import AuthLayout from '../layouts/AuthLayout';
 import Activation from '../pages/Auth/Activation';
 import ForgotPassword from '../pages/Auth/ForgotPassword';
+import RecoveryPassword from '../pages/Auth/RecoveryPassword';
 import Plan from '../pages/Plan';
 import CheckEmail from '../pages/Auth/CheckEmail';
 import Main from '../pages/Main';
@@ -67,6 +69,14 @@ const Routes: React.FC = () => {
                         element={
                             <PublicRoute>
                                 <Activation />
+                            </PublicRoute>
+                        }
+                    />
+                    <Route
+                        path={RESET_PASSWORD_PATH}
+                        element={
+                            <PublicRoute>
+                                <RecoveryPassword />
                             </PublicRoute>
                         }
                     />

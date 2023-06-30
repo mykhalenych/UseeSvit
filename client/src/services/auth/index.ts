@@ -1,4 +1,4 @@
-import {SignInRequest, LogInRequest, ForgotPasswordRequest} from './types';
+import {SignInRequest, LogInRequest, ForgotPasswordRequest, RecoveryPasswordRequest} from './types';
 import {fetchWrap} from '../common';
 
 export const register = ({email, password, name}: SignInRequest) => {
@@ -28,5 +28,12 @@ export const getUser = () => {
 
 export const resetPassword = async (data: ForgotPasswordRequest) => {
     const request = {url: '/reset', body: data};
+    return await fetchWrap({method: 'POST', request, isAuth: true});
+};
+
+export const recoveryPassword = async (data: RecoveryPasswordRequest) => {
+    const {resetToken, newPassword, passwordConfirmation} = data;
+
+    const request = {url: `/reset/${resetToken}`, body: {newPassword, passwordConfirmation}};
     return await fetchWrap({method: 'POST', request, isAuth: true});
 };

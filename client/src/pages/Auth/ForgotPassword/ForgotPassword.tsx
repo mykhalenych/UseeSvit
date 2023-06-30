@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {useForm, FormProvider} from 'react-hook-form';
 import {Grid, Typography} from '@mui/material';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useTranslation} from 'react-i18next';
 
 import {validation} from './form';
 import {CHECK_EMAIL_PATH, LOGIN_PATH} from '../../../Routes/constants';
@@ -15,6 +16,7 @@ import {useAppDispatch} from '../../../redux/store';
 const ForgotPassword = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const methods = useForm<IForgotPassProps>({
         resolver: yupResolver(validation),
@@ -37,17 +39,17 @@ const ForgotPassword = () => {
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <Grid container spacing={2} px={2}>
                     <Grid item xs={12}>
-                        <Typography variant="h2">Forgot your password?</Typography>
+                        <Typography variant="h2">{t('forgotPassword.title')}</Typography>
                     </Grid>
                     <Grid item xs={12}>
-                        <InputControl control={control} label="Email adress" name="email" fullWidth />
+                        <InputControl control={control} label={t('emailAddress')} name="email" fullWidth />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
                         <Button onClick={handleRedirect} color="primary" minWidth={100}>
-                            Login
+                            {t('logIn.btn')}
                         </Button>
                         <Button type="submit" variant="contained" color="primary" minWidth={180}>
-                            Send instructions
+                            {t('sendInstructions')}
                         </Button>
                     </Grid>
                 </Grid>

@@ -5,4 +5,5 @@ export const authThunkNames = {
     activateUser: 'activateUser',
     logoutUser: 'logoutUser',
     logInUser: 'logInUser',
+    newPassword: 'newPassword',
 };

@@ -2,6 +2,8 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useSnackbar} from 'notistack';
 import type {VariantType} from 'notistack';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 import {selectMessages, hideMessage, removeMessage} from '../../redux/snackbar/slice';
 import {useAppDispatch} from '../../redux/store';
@@ -25,6 +27,7 @@ export const Snackbar: React.FC = () => {
                 preventDuplicate: true,
                 key: item.id,
                 variant: item.severity as VariantType,
+                hideIconVariant: true,
                 onClose: (event, reason, key) => {
                     if (reason === 'timeout' || reason === 'maxsnack') {
                         dispatch(hideMessage({id: key}));
@@ -34,6 +37,11 @@ export const Snackbar: React.FC = () => {
                     dispatch(removeMessage(myKey));
                     removeDisplayed(Number(myKey));
                 },
+                action: () => (
+                    <IconButton onClick={() => closeSnackbar(item.id)}>
+                        <CloseIcon htmlColor="white" fontSize="small" />
+                    </IconButton>
+                ),
             });
 
             storeDisplayed(item.id);

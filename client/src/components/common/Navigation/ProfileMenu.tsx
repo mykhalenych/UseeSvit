@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import {useTranslation} from 'react-i18next';
 import {resetAuthToken} from '../../../common/utils';
 import {logoutUser} from '../../../redux/auth/thunks';
 import {useAppDispatch} from '../../../redux/store';
@@ -15,6 +16,7 @@ interface IProps {
 const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const handleLogout = () => {
         dispatch(logoutUser()).then((res) => {
@@ -36,9 +38,9 @@ const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
             MenuListProps={{
                 'aria-labelledby': 'basic-button',
             }}>
-            <MenuItem onClick={handleProfile}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            <MenuItem onClick={handleProfile}>{t('profileMenu.profile')}</MenuItem>
+            <MenuItem onClick={handleClose}>{t('profileMenu.myAccount')}</MenuItem>
+            <MenuItem onClick={handleLogout}>{t('profileMenu.logOut')}</MenuItem>
         </Menu>
     );
 };
