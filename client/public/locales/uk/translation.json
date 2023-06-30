@@ -1,28 +1,35 @@
 {
-  "planYourTrip": "Плануйте свою подорож",
-  "emailAddress": "Електронна пошта",
-  "yourName": "Ім'я",
-  "password": "Пароль",
-  "sendInstructions": "Надіслати",
-  "checkEmail": "Перевірте свою електронну пошту. Ми надіслали вам інформацію.",
-  "goToLogin": "Перейти до входу",
-  "welcomeToUseeSvit": "Вітаю в UseeSvit",
-  "somethingWentWrong": "Щось пішло не так",
-  "logIn": {
-    "title": "Увійти",
-    "btn": "Увійти"
-  },
-  "signUp": {
-    "title": "Зареєструватись",
-    "btn": "Зареєструватись"
-  },
-  "forgotPassword": {
-    "title": "Забули свій пароль?",
-    "btn": "Забули пароль"
-  },
-  "profileMenu": {
-    "profile": "Профіль",
-    "myAccount": "Мій акаунт",
-    "logOut": "Вийти"
-  }
+    "planYourTrip": "Плануйте свою подорож",
+    "emailAddress": "Електронна пошта",
+    "yourName": "Ім'я",
+    "password": "Пароль",
+    "sendInstructions": "Надіслати",
+    "checkEmail": "Перевірте свою електронну пошту. Ми надіслали вам інформацію.",
+    "goToLogin": "Перейти до входу",
+    "welcomeToUseeSvit": "Вітаю в UseeSvit",
+    "somethingWentWrong": "Щось пішло не так",
+    "logIn": {
+        "title": "Увійти",
+        "btn": "Увійти"
+    },
+    "signUp": {
+        "title": "Зареєструватись",
+        "btn": "Зареєструватись"
+    },
+    "forgotPassword": {
+        "title": "Забули свій пароль?",
+        "btn": "Забули пароль"
+    },
+    "profileMenu": {
+        "profile": "Профіль",
+        "myAccount": "Мій акаунт",
+        "logOut": "Вийти"
+    },
+    "recoveryPassword": {
+        "title": "Створити новий пароль",
+        "newPassword": "Новий пароль",
+        "confirmPassword": "Підтвердити пароль",
+        "btnSave": "Зберегти",
+        "btnCancel": "Скасувати"
+    }
 }
