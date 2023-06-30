@@ -1,23 +1,37 @@
 import React from 'react';
 import type {TextFieldProps} from '@mui/material';
-import {useController, useFormContext, Control} from 'react-hook-form';
+import {
+    useController,
+    useFormContext,
+    Control,
+    FieldValues,
+    Path,
+    PathValue,
+    ControllerRenderProps,
+} from 'react-hook-form';
 import {ErrorMessage} from '@hookform/error-message';
 import {get} from 'lodash';
 
 import Input from '../inputs/Input';
 
-interface IInputProps {
-    control: Control<any>;
+interface IInputProps<T extends FieldValues> {
+    control: Control<T>;
     name: string;
 }
 
-const InputControl: React.FC<IInputProps & TextFieldProps> = ({control, name, label, defaultValue, ...restProps}) => {
+const InputControl = <T extends FieldValues>({
+    control,
+    name,
+    label,
+    defaultValue,
+    ...restProps
+}: IInputProps<T> & TextFieldProps) => {
     const {formState} = useFormContext();
     const {errors} = formState;
     const {field} = useController({
-        name,
+        name: name as Path<T>,
         control,
-        defaultValue,
+        defaultValue: defaultValue as PathValue<T, Path<T>>,
     });
 
     const errorProps = {
@@ -27,7 +41,7 @@ const InputControl: React.FC<IInputProps & TextFieldProps> = ({control, name, la
 
     return (
         <Input
-            field={field}
+            field={field as ControllerRenderProps<T, Path<T>> & ControllerRenderProps}
             onChange={field.onChange}
             value={field.value}
             variant="outlined"

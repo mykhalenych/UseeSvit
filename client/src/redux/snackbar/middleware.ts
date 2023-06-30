@@ -3,7 +3,7 @@ import type {Middleware} from 'redux';
 import {IActionWithError, showError, showSuccess} from './slice';
 import {isRejectedAction} from '../createGenericSlice';
 
-export const snackbarMiddleware: Middleware<any> =
+export const snackbarMiddleware: Middleware<string> =
     ({dispatch}) =>
     (next) =>
     (action) => {
