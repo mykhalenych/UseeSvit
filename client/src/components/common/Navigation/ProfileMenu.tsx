@@ -5,6 +5,7 @@ import {resetAuthToken} from '../../../common/utils';
 import {logoutUser} from '../../../redux/auth/thunks';
 import {useAppDispatch} from '../../../redux/store';
 import {useNavigate} from 'react-router-dom';
+import {PROFILE_PATH} from '../../../Routes/constants';
 
 interface IProps {
     anchorEl: HTMLElement | null;
@@ -24,7 +25,7 @@ const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
         });
     };
 
-    const handleProfile = () => navigate('/profile');
+    const handleProfile = () => navigate(PROFILE_PATH);
 
     return (
         <Menu

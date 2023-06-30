@@ -1,4 +1,5 @@
 import {object, string} from 'yup';
+import {validatePasswordConfirmation} from '../../yupValidationsUtils/validatePasswordConfirmation';
 
 export const defaultNameValue = {
     newName: '',
@@ -11,15 +12,11 @@ export const defaultPasswordValue = {
 };
 
 export const nameValidation = object().shape({
-    newName: string().required(),
+    newName: string().required('New name is required'),
 });
 
 export const passwordValidation = object().shape({
     password: string().required(),
     newPassword: string().required(),
-    passwordConfirmation: string()
-        .required()
-        .test('passwords-match', 'Passwords must match', function (value) {
-            return value === this.parent.newPassword;
-        }),
+    passwordConfirmation: validatePasswordConfirmation('newPassword'),
 });

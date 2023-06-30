@@ -1,9 +1,9 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {ISlicesNames} from '../types';
 import {changeName, changePassword} from '../../services/profile';
-import {NewNameRequest, NewPasswordRequest} from '../../services/profile/types';
 import {profileThunkNames} from './constants';
-import {showSuccess} from '../snackbar/slice';
+import {handleResponse} from '../utils';
+import {ISlicesNames} from '../types';
+import {NewNameRequest, NewPasswordRequest} from '../../services/profile/types';
 
 export const changeUserName = createAsyncThunk(
     `${ISlicesNames.profile}/${profileThunkNames.changeName}`,
@@ -11,17 +11,11 @@ export const changeUserName = createAsyncThunk(
         try {
             const result = await changeName(data);
 
-            dispatch(
-                showSuccess({
-                    message: 'Name changed successfully!',
-                    id: 123,
-                    from: {
-                        slice: ISlicesNames.profile,
-                        thunk: profileThunkNames.changeName,
-                        requestId: result.requestId,
-                    },
-                }),
-            );
+            handleResponse(dispatch, 'Name changed successfully!', 123, {
+                slice: ISlicesNames.profile,
+                thunk: profileThunkNames.changeName,
+                requestId: result.requestId,
+            });
 
             return result;
         } catch (err) {
@@ -36,17 +30,11 @@ export const changeUserPassword = createAsyncThunk(
         try {
             const result = await changePassword(data);
 
-            dispatch(
-                showSuccess({
-                    message: 'Password changed successfully!',
-                    id: 456,
-                    from: {
-                        slice: ISlicesNames.profile,
-                        thunk: profileThunkNames.changePassword,
-                        requestId: result.requestId,
-                    },
-                }),
-            );
+            handleResponse(dispatch, 'Password changed successfully!', 456, {
+                slice: ISlicesNames.profile,
+                thunk: profileThunkNames.changePassword,
+                requestId: result.requestId,
+            });
 
             return result;
         } catch (err) {
