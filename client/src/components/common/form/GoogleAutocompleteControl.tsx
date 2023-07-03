@@ -1,17 +1,21 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import usePlacesService from 'react-google-autocomplete/lib/usePlacesAutocompleteService';
-import {Control, useController, useFormContext} from 'react-hook-form';
+import {Control, ControllerRenderProps, FieldValues, Path, useController, useFormContext} from 'react-hook-form';
 import {ErrorMessage} from '@hookform/error-message';
 import {get} from 'lodash';
+import type {TextFieldProps} from '@mui/material';
 
 import Autocomplete from '../inputs/Autocomplete';
 
-interface IGoogleAutocompleteProps {
-    control: Control<any>;
+interface IGoogleAutocompleteProps<T extends FieldValues> {
+    control: Control<T>;
     name: string;
 }
 
-const GoogleAutocompleteControl: React.FC<IGoogleAutocompleteProps> = ({control, name}) => {
+const GoogleAutocompleteControl = <T extends FieldValues>({
+    control,
+    name,
+}: IGoogleAutocompleteProps<T> & TextFieldProps) => {
     const {placesService, placePredictions, getPlacePredictions} = usePlacesService({
         apiKey: process.env.REACT_APP_GOOGLE_API_KEY || '',
     });
@@ -21,7 +25,7 @@ const GoogleAutocompleteControl: React.FC<IGoogleAutocompleteProps> = ({control,
     const {formState} = useFormContext();
     const {errors} = formState;
     const {field} = useController({
-        name,
+        name: name as Path<T>,
         control,
     });
 
@@ -51,7 +55,7 @@ const GoogleAutocompleteControl: React.FC<IGoogleAutocompleteProps> = ({control,
 
     return (
         <Autocomplete
-            field={field}
+            field={field as ControllerRenderProps<T, Path<T>> & ControllerRenderProps}
             options={options}
             labelKey="long_name"
             valueKey="short_name"

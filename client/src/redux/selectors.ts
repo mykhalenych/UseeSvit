@@ -5,19 +5,23 @@ import {IRootState} from './store';
 import {SliceNames, StatusesTypes} from './types';
 import {IGenericState} from './createGenericSlice';
 
-export const selectLoading = (sliceName: SliceNames, thunkName: string | string[]) => (state: IRootState) => {
-    const slice = state[sliceName] as IGenericState<any>;
+export const selectLoading =
+    <T>(sliceName: SliceNames, thunkName: string | string[]) =>
+    (state: IRootState) => {
+        const slice = state[sliceName] as IGenericState<T>;
 
-    if (!slice) return false;
+        if (!slice) return false;
 
-    if (isArray(thunkName)) {
-        return Boolean(compact(thunkName.map((name: string) => slice.statuses[name] === StatusesTypes.loading)).length);
-    }
-    return slice.statuses[thunkName] === StatusesTypes.loading;
-};
+        if (isArray(thunkName)) {
+            return Boolean(
+                compact(thunkName.map((name: string) => slice.statuses[name] === StatusesTypes.loading)).length,
+            );
+        }
+        return slice.statuses[thunkName] === StatusesTypes.loading;
+    };
 
 const selectSliceErrors = (sliceName: SliceNames) => (state: IRootState) => {
-    const slice = state[sliceName] as unknown as IGenericState<any>;
+    const slice = state[sliceName] as unknown as IGenericState<string>;
 
     if (!slice) return {};
 
