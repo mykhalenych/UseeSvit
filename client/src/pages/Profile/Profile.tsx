@@ -2,7 +2,7 @@ import React from 'react';
 import {useForm, FormProvider} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 
-import {changeUserName, changeUserPassword} from '../../redux/profile/thunks';
+import {changeUserName, changeUserPassword} from '../../redux/auth/thunks';
 import {useAppDispatch} from '../../redux/store';
 import {nameValidation, defaultNameValue, defaultPasswordValue, passwordValidation} from './form';
 import {Grid, Typography} from '@mui/material';
@@ -34,7 +34,7 @@ const Profile = () => {
 
     const onNameSubmit = () => {
         if (!errors.newName && newName) {
-            dispatch(changeUserName({newName}));
+            dispatch(changeUserName(newName));
         }
     };
 
@@ -75,7 +75,6 @@ const Profile = () => {
                                     </Grid>
                                     <Grid item xs={3}>
                                         <Button
-                                            type="submit"
                                             variant="contained"
                                             color="primary"
                                             minWidth={190}
@@ -113,7 +112,6 @@ const Profile = () => {
                                 </Grid>
                                 <Grid item xs={3}>
                                     <Button
-                                        type="submit"
                                         variant="contained"
                                         color="primary"
                                         minWidth={190}

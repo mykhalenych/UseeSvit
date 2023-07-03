@@ -1,7 +1,7 @@
 /* eslint-disable import/named */
+import {Dispatch} from 'react';
 import {IRootState} from './store';
 import {IGenericState} from './createGenericSlice';
-import {showSuccess} from './snackbar/slice';
 import {AnyAction, ThunkDispatch} from '@reduxjs/toolkit';
 import {ISlicesNames, StatusesTypes} from './types';
 
@@ -24,21 +24,6 @@ export const thunkCondition =
         return !(fetchStatus === StatusesTypes.finished || fetchStatus === StatusesTypes.loading);
     };
 
-export function handleResponse(
-    dispatch: ThunkDispatch<unknown, unknown, AnyAction>,
-    message: string,
-    id: number,
-    from: {
-        slice: ISlicesNames;
-        thunk: string;
-        requestId: any;
-    },
-) {
-    dispatch(
-        showSuccess({
-            message,
-            id,
-            from,
-        }),
-    );
-}
+export const handleResponse = (message: string) => (dispatch: Dispatch<AnyAction>) => {
+    dispatch({type: 'successNotification', successNotification: message});
+};
