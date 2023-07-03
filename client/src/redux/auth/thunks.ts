@@ -106,7 +106,7 @@ export const changeUserName = createAsyncThunk(
         try {
             const result = await changeName(data);
 
-            dispatch(handleResponse('Name changed successfully!'));
+            dispatch(handleResponse('Name changed successfully!', `${ISlicesNames.auth}/${authThunkNames.changeName}`));
 
             return result;
         } catch (err) {
@@ -121,7 +121,12 @@ export const changeUserPassword = createAsyncThunk(
         try {
             const result = await changePassword(data);
 
-            dispatch(handleResponse('Password changed successfully!'));
+            dispatch(
+                handleResponse(
+                    'Password changed successfully!',
+                    `${ISlicesNames.auth}/${authThunkNames.changePassword}`,
+                ),
+            );
 
             return result;
         } catch (err) {

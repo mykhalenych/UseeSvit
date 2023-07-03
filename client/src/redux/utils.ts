@@ -24,6 +24,6 @@ export const thunkCondition =
         return !(fetchStatus === StatusesTypes.finished || fetchStatus === StatusesTypes.loading);
     };
 
-export const handleResponse = (message: string) => (dispatch: Dispatch<AnyAction>) => {
-    dispatch({type: 'successNotification', successNotification: message});
+export const handleResponse = (message: string, type: string) => (dispatch: Dispatch<AnyAction>) => {
+    dispatch({type, successNotification: message});
 };
