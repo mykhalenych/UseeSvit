@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
-import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
 import {Grid, IconButton} from '@mui/material';
 
 import {ReactComponent as ProfileIcon} from '../../../assets/icons/profile.svg';
@@ -10,14 +8,12 @@ import {ReactComponent as LogoIcon} from '../../../assets/icons/logo.svg';
 import {ReactComponent as PlanetIcon} from '../../../assets/icons/planet.svg';
 import {ReactComponent as DarkModeIcon} from '../../../assets/icons/darkMode.svg';
 import {ReactComponent as LightModeIcon} from '../../../assets/icons/lightMode.svg';
-
 import {useAppDispatch} from '../../../redux/store';
 import {selectUser} from '../../../redux/auth/selectors';
 import {languageUser, themeUser} from '../../../redux/auth/thunks';
 import {LOGIN_PATH} from '../../../Routes/constants';
 import ProfileMenu from './ProfileMenu';
 import Select from '../inputs/Select';
-
 import {IThemeNames} from '../../../redux/common/types';
 
 import {BackgroundDiv} from './Styles';
