@@ -1,2 +1,2 @@
-export const API_URL = 'http://localhost:5002';
+export const API_URL = 'https://useesvitserver.onrender.com/';
 export const TOKEN_KEY = 'token';

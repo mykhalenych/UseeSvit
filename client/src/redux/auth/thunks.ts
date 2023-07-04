@@ -145,8 +145,8 @@ export const changeUserPassword = createAsyncThunk(
     },
 );
 
-export const languageUser = createAsyncThunk(
-    `${ISlicesNames.auth}/${authThunkNames.languageUser}`,
+export const changeUserLanguage = createAsyncThunk(
+    `${ISlicesNames.auth}/${authThunkNames.changeUserLanguage}`,
     async (language: string, {rejectWithValue}) => {
         try {
             return await changeLanguage(language);
@@ -156,8 +156,8 @@ export const languageUser = createAsyncThunk(
     },
 );
 
-export const themeUser = createAsyncThunk(
-    `${ISlicesNames.auth}/${authThunkNames.themeUser}`,
+export const changeUserTheme = createAsyncThunk(
+    `${ISlicesNames.auth}/${authThunkNames.changeUserTheme}`,
     async (theme: string, {rejectWithValue}) => {
         try {
             return await changeTheme(theme);

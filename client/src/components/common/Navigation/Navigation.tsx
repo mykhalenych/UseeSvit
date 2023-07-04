@@ -10,7 +10,7 @@ import {ReactComponent as DarkModeIcon} from '../../../assets/icons/darkMode.svg
 import {ReactComponent as LightModeIcon} from '../../../assets/icons/lightMode.svg';
 import {useAppDispatch} from '../../../redux/store';
 import {selectUser} from '../../../redux/auth/selectors';
-import {languageUser, themeUser} from '../../../redux/auth/thunks';
+import {changeUserLanguage, changeUserTheme} from '../../../redux/auth/thunks';
 import {LOGIN_PATH} from '../../../Routes/constants';
 import ProfileMenu from './ProfileMenu';
 import Select from '../inputs/Select';
@@ -29,7 +29,7 @@ const Navigation = () => {
     };
 
     const handleThemeChange = () => {
-        dispatch(themeUser(user.theme === IThemeNames.light ? IThemeNames.dark : IThemeNames.light));
+        dispatch(changeUserTheme(user.theme === IThemeNames.light ? IThemeNames.dark : IThemeNames.light));
     };
 
     const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -41,7 +41,7 @@ const Navigation = () => {
     };
 
     const handleLanguage = () => {
-        dispatch(languageUser(user.language));
+        dispatch(changeUserLanguage(user.language));
     };
 
     return (
