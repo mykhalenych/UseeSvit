@@ -1,6 +1,8 @@
+import {Dispatch} from 'react';
 import {IRootState} from './store';
-import {StatusesTypes} from './types';
 import {IGenericState} from './createGenericSlice';
+import type {AnyAction} from '@reduxjs/toolkit';
+import {StatusesTypes} from './types';
 
 export interface ICommonThunkParams {
     force?: boolean;
@@ -20,3 +22,7 @@ export const thunkCondition =
 
         return !(fetchStatus === StatusesTypes.finished || fetchStatus === StatusesTypes.loading);
     };
+
+export const handleResponse = (message: string, type: string) => (dispatch: Dispatch<AnyAction>) => {
+    dispatch({type, successNotification: message});
+};

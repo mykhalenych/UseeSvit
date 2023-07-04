@@ -7,3 +7,5 @@ export const CHECK_EMAIL_PATH = `${AUTH_PATH}/check-email`;
 export const RESET_PASSWORD_PATH = `${AUTH_PATH}/reset-password/:resetToken`;
 
 export const PLAN_PATH = '/plan';
+
+export const PROFILE_PATH = '/profile';

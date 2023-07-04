@@ -10,7 +10,7 @@ export const snackbarMiddleware: Middleware<string> =
         const id = Date.now();
 
         if (action?.successNotification) {
-            dispatch(showSuccess({id, message: action?.message}));
+            dispatch(showSuccess({id, message: action?.successNotification}));
             return next(action);
         }
 

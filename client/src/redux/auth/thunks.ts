@@ -15,6 +15,9 @@ import {
     changeTheme,
 } from '../../services/auth';
 import {showSuccess} from '../snackbar/slice';
+import {changeName, changePassword} from '../../services/profile';
+import {handleResponse} from '../utils';
+import {NewPasswordRequest} from '../../services/profile/types';
 
 export const fetchUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.fetchUser}`,
@@ -98,6 +101,41 @@ export const newPassword = createAsyncThunk(
                         requestId: result.requestId,
                     },
                 }),
+            );
+
+            return result;
+        } catch (err) {
+            return rejectWithValue({message: err});
+        }
+    },
+);
+
+export const changeUserName = createAsyncThunk(
+    `${ISlicesNames.auth}/${authThunkNames.changeName}`,
+    async (data: string, {rejectWithValue, dispatch}) => {
+        try {
+            const result = await changeName(data);
+
+            dispatch(handleResponse('Name changed successfully!', `${ISlicesNames.auth}/${authThunkNames.changeName}`));
+
+            return result;
+        } catch (err) {
+            return rejectWithValue({message: err});
+        }
+    },
+);
+
+export const changeUserPassword = createAsyncThunk(
+    `${ISlicesNames.auth}/${authThunkNames.changePassword}`,
+    async (data: NewPasswordRequest, {rejectWithValue, dispatch}) => {
+        try {
+            const result = await changePassword(data);
+
+            dispatch(
+                handleResponse(
+                    'Password changed successfully!',
+                    `${ISlicesNames.auth}/${authThunkNames.changePassword}`,
+                ),
             );
 
             return result;
