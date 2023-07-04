@@ -1,9 +1,8 @@
-/* eslint-disable import/named */
 import {Dispatch} from 'react';
 import {IRootState} from './store';
 import {IGenericState} from './createGenericSlice';
-import {AnyAction, ThunkDispatch} from '@reduxjs/toolkit';
-import {ISlicesNames, StatusesTypes} from './types';
+import type {AnyAction} from '@reduxjs/toolkit';
+import {StatusesTypes} from './types';
 
 export interface ICommonThunkParams {
     force?: boolean;
