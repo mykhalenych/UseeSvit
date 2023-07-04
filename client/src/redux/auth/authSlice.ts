@@ -11,6 +11,8 @@ const initialData = {
         id: '',
         name: '',
         email: '',
+        language: '',
+        theme: '',
     },
 };
 
@@ -32,6 +34,8 @@ export const authData = createGenericSlice<IAuthState, typeof reducers>({
                 id: '',
                 name: '',
                 email: '',
+                language: '',
+                theme: '',
             };
         });
         builder.addMatcher(

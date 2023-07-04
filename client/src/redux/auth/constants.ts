@@ -6,4 +6,6 @@ export const authThunkNames = {
     logoutUser: 'logoutUser',
     logInUser: 'logInUser',
     newPassword: 'newPassword',
+    activateLanguageUser: 'activateLanguageUser',
+    themeUser: 'themeUser',
 };

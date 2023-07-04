@@ -9,11 +9,15 @@ const reducers = {
     setUserTheme: (state: IGenericState<ICommonState>, action: {payload: IThemeNames}) => {
         state.data.theme = action.payload;
     },
+    setUserLanguage: (state: IGenericState<ICommonState>, action: {payload: {id: string; displayName: string}}) => {
+        state.data.language = action.payload;
+    },
 };
 
 const initialData = {
     theme: IThemeNames.light,
     userCoords: {lat: 49.82, lng: 24.03},
+    language: {id: 'ua', displayName: 'Ukrainian'},
 };
 
 export const commonData = createGenericSlice<ICommonState, typeof reducers>({
