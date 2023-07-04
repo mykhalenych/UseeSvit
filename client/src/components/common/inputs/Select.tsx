@@ -6,9 +6,9 @@ import type {SelectProps, SelectChangeEvent} from '@mui/material';
 interface IProps {
     field?: ControllerRenderProps;
     name: string;
-    options: any[];
+    options: {id: string; displayName: string}[];
     label?: string;
-    value?: any;
+    value?: string;
     onChange: (value: string) => void;
     defaultValue?: string;
 }

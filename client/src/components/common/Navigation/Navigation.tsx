@@ -1,27 +1,27 @@
-/* eslint-disable max-len */
 import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {Grid, IconButton} from '@mui/material';
 import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {Grid, IconButton} from '@mui/material';
 
-import {LOGIN_PATH} from '../../../Routes/constants';
 import {ReactComponent as ProfileIcon} from '../../../assets/icons/profile.svg';
 import {ReactComponent as LogoIcon} from '../../../assets/icons/logo.svg';
 import {ReactComponent as PlanetIcon} from '../../../assets/icons/planet.svg';
 import {ReactComponent as DarkModeIcon} from '../../../assets/icons/darkMode.svg';
 import {ReactComponent as LightModeIcon} from '../../../assets/icons/lightMode.svg';
-import {useAppDispatch} from '../../../redux/store';
-import {IThemeNames} from '../../../redux/common/types';
-import ProfileMenu from './ProfileMenu';
-import {selectUser} from '../../../redux/auth/selectors';
 
-import {BackgroundDiv} from './Styles';
-import Select from '../inputs/Select';
-import {useForm} from 'react-hook-form';
-import {ILoginProps} from '../../../pages/Auth/Login/types';
-import {yupResolver} from '@hookform/resolvers/yup';
+import {useAppDispatch} from '../../../redux/store';
+import {selectUser} from '../../../redux/auth/selectors';
+import {languageUser, themeUser} from '../../../redux/auth/thunks';
 import {validation} from '../../../pages/Plan/form';
-import {activateLanguageUser, themeUser} from '../../../redux/auth/thunks';
+import {LOGIN_PATH} from '../../../Routes/constants';
+import ProfileMenu from './ProfileMenu';
+import Select from '../inputs/Select';
+
+import {IThemeNames} from '../../../redux/common/types';
+import {ILoginProps} from '../../../pages/Auth/Login/types';
+import {BackgroundDiv} from './Styles';
 
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -33,7 +33,7 @@ const Navigation = () => {
         navigate(path);
     };
 
-    const handleThemeChange = (user: any) => {
+    const handleThemeChange = () => {
         dispatch(themeUser(user.theme === IThemeNames.light ? IThemeNames.dark : IThemeNames.light));
     };
 
@@ -51,31 +51,35 @@ const Navigation = () => {
 
     const {control} = methods;
 
-    const handleLanguage = (language: any) => {
-        dispatch(activateLanguageUser(language));
+    const handleLanguage = () => {
+        dispatch(languageUser(user.language));
     };
 
     return (
         <BackgroundDiv>
             <Grid container justifyContent="space-between" px={2}>
                 <Grid item display="flex" alignItems="center">
-                    <IconButton color="primary" onClick={handleThemeChange}>
-                        {user.theme === IThemeNames.light ? <DarkModeIcon /> : <LightModeIcon />}
-                    </IconButton>
-                    <IconButton color="primary" onClick={() => setIsEditing(true)}>
-                        <PlanetIcon />
-                    </IconButton>
-                    {isEditing && (
-                        <Select
-                            defaultValue={user.language}
-                            onChange={handleLanguage}
-                            name="language"
-                            options={[
-                                {id: 'en', displayName: 'English'},
-                                {id: 'ua', displayName: 'Ukrainian'},
-                            ]}
-                            label=""
-                        />
+                    {user.id && (
+                        <>
+                            <IconButton color="primary" onClick={handleThemeChange}>
+                                {user.theme === IThemeNames.light ? <DarkModeIcon /> : <LightModeIcon />}
+                            </IconButton>
+                            <IconButton color="primary" onClick={() => setIsEditing(true)}>
+                                <PlanetIcon />
+                            </IconButton>
+                            {isEditing && (
+                                <Select
+                                    defaultValue={user.language}
+                                    onChange={handleLanguage}
+                                    name="language"
+                                    options={[
+                                        {id: 'en', displayName: 'English'},
+                                        {id: 'ua', displayName: 'Ukrainian'},
+                                    ]}
+                                    label="Translation"
+                                />
+                            )}
+                        </>
                     )}
                 </Grid>
                 <IconButton color="primary" onClick={() => handleRedirect('/')}>

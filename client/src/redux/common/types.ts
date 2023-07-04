@@ -1,7 +1,7 @@
 export interface ICommonState {
     theme: string;
     userCoords: {lat: number; lng: number};
-    language: {id: string; displayName: string};
+    language: string;
 }
 
 export enum IThemeNames {

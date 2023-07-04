@@ -1,8 +1,9 @@
 import {ISlicesNames} from '../types';
 import {activateUser, fetchUser, logInUser, logoutUser} from './thunks';
 import createGenericSlice from '../createGenericSlice';
-import {IAuthState} from './types';
 import {saveToken} from '../../services/utils';
+import {IAuthState} from './types';
+import {IThemeNames} from '../common/types';
 
 const reducers = {};
 
@@ -34,8 +35,8 @@ export const authData = createGenericSlice<IAuthState, typeof reducers>({
                 id: '',
                 name: '',
                 email: '',
-                language: '',
-                theme: '',
+                language: IThemeNames.light,
+                theme: 'en',
             };
         });
         builder.addMatcher(
