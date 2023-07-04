@@ -11,7 +11,6 @@ const reducers = {
 const initialData = {
     theme: IThemeNames.light,
     userCoords: {lat: 49.82, lng: 24.03},
-    language: 'en',
 };
 
 export const commonData = createGenericSlice<ICommonState, typeof reducers>({

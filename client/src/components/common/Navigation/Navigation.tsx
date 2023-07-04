@@ -14,13 +14,12 @@ import {ReactComponent as LightModeIcon} from '../../../assets/icons/lightMode.s
 import {useAppDispatch} from '../../../redux/store';
 import {selectUser} from '../../../redux/auth/selectors';
 import {languageUser, themeUser} from '../../../redux/auth/thunks';
-import {validation} from '../../../pages/Plan/form';
 import {LOGIN_PATH} from '../../../Routes/constants';
 import ProfileMenu from './ProfileMenu';
 import Select from '../inputs/Select';
 
 import {IThemeNames} from '../../../redux/common/types';
-import {ILoginProps} from '../../../pages/Auth/Login/types';
+
 import {BackgroundDiv} from './Styles';
 
 const Navigation = () => {
@@ -44,12 +43,6 @@ const Navigation = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    const methods = useForm<ILoginProps>({
-        resolver: yupResolver(validation),
-    });
-
-    const {control} = methods;
 
     const handleLanguage = () => {
         dispatch(languageUser(user.language));
