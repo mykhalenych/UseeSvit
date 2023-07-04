@@ -1,5 +1,5 @@
 import {ISlicesNames} from '../types';
-import {activateUser, fetchUser, logInUser, logoutUser} from './thunks';
+import {activateUser, changeUserName, fetchUser, logInUser, logoutUser} from './thunks';
 import createGenericSlice from '../createGenericSlice';
 import {IAuthState} from './types';
 import {saveToken} from '../../services/utils';
@@ -33,6 +33,9 @@ export const authData = createGenericSlice<IAuthState, typeof reducers>({
                 name: '',
                 email: '',
             };
+        });
+        builder.addCase(changeUserName.fulfilled, (state, action) => {
+            state.data.user.name = action.payload;
         });
         builder.addMatcher(
             (action) => action.type === logInUser.fulfilled.type || action.type === activateUser.fulfilled.type,

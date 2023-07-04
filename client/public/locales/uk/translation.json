@@ -31,5 +31,12 @@
         "confirmPassword": "Підтвердити пароль",
         "btnSave": "Зберегти",
         "btnCancel": "Скасувати"
+    },
+    "profile": {
+        "newPassword": "Новий пароль",
+        "currentPassword": "Поточний пароль",
+        "newName": "Нове ім'я",
+        "confirmPassword": "Новий пароль",
+        "change": "Змінити"
     }
 }

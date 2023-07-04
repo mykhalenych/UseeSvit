@@ -31,5 +31,12 @@
         "confirmPassword": "Confirm password",
         "btnSave": "Save",
         "btnCancel": "Cancel"
+    },
+    "profile": {
+        "newPassword": "New password",
+        "currentPassword": "Current password",
+        "newName": "New name",
+        "confirmPassword": "Confirm password",
+        "change": "Change"
     }
 }
