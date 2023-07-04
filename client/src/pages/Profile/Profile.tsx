@@ -32,25 +32,21 @@ const Profile = () => {
     ]);
     const {errors} = formState;
 
-    const onNameSubmit = () => {
-        if (!errors.newName && newName) {
-            dispatch(changeUserName(newName));
-        }
+    const isPasswordFilled = password && passwordConfirmation && newPassword;
+    const isPasswordCorrect = !errors.password && !errors.passwordConfirmation && !errors.newPassword;
+
+    const handleChangeName = () => {
+        dispatch(changeUserName(newName));
     };
 
-    const onPasswordSubmit = () => {
-        const isPasswordFilled = password && passwordConfirmation && newPassword;
-        const isPasswordCorrect = !errors.password && !errors.passwordConfirmation && !errors.newPassword;
-
-        if (isPasswordCorrect && isPasswordFilled) {
-            dispatch(
-                changeUserPassword({
-                    password,
-                    newPassword,
-                    passwordConfirmation,
-                }),
-            );
-        }
+    const handleChangePassword = () => {
+        dispatch(
+            changeUserPassword({
+                password,
+                newPassword,
+                passwordConfirmation,
+            }),
+        );
     };
 
     return (
@@ -78,7 +74,8 @@ const Profile = () => {
                                             variant="contained"
                                             color="primary"
                                             minWidth={190}
-                                            onClick={onNameSubmit}>
+                                            disabled={!newName || !!errors.newName}
+                                            onClick={handleChangeName}>
                                             {t('profile.change')}
                                         </Button>
                                     </Grid>
@@ -115,7 +112,8 @@ const Profile = () => {
                                         variant="contained"
                                         color="primary"
                                         minWidth={190}
-                                        onClick={onPasswordSubmit}>
+                                        disabled={!isPasswordCorrect || !isPasswordFilled}
+                                        onClick={handleChangePassword}>
                                         {t('profile.change')}
                                     </Button>
                                 </Grid>
