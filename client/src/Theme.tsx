@@ -7,14 +7,13 @@ import {useSelector} from 'react-redux';
 import {lightTheme, darkTheme} from './common/themes/themes';
 import Snackbar from './layouts/Snackbar';
 import Routes from './Routes/Routes';
-import {selectTheme} from './redux/common/selectors';
 import {IThemeNames} from './redux/common/types';
+import {selectUser} from './redux/auth/selectors';
 
 const Theme: FC = () => {
-    const userTheme = useSelector(selectTheme);
-
+    const user = useSelector(selectUser);
     const theme = useMemo(() => {
-        switch (userTheme) {
+        switch (user.theme) {
             case IThemeNames.light:
                 return lightTheme;
             case IThemeNames.dark:
@@ -22,7 +21,7 @@ const Theme: FC = () => {
             default:
                 return createTheme();
         }
-    }, [userTheme]);
+    }, [user.theme]);
 
     return (
         <ThemeProvider theme={theme}>

@@ -1,9 +1,19 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
+import {changeLanguage} from 'i18next';
 
 import {authThunkNames} from './constants';
 import {ISlicesNames} from '../types';
 import {SignInRequest, LogInRequest, ForgotPasswordRequest, RecoveryPasswordRequest} from '../../services/auth/types';
-import {activate, recoveryPassword, getUser, login, logout, register, resetPassword} from '../../services/auth';
+import {
+    activate,
+    recoveryPassword,
+    getUser,
+    login,
+    logout,
+    register,
+    resetPassword,
+    changeTheme,
+} from '../../services/auth';
 import {showSuccess} from '../snackbar/slice';
 import {changeName, changePassword} from '../../services/profile';
 import {handleResponse} from '../utils';
@@ -129,6 +139,28 @@ export const changeUserPassword = createAsyncThunk(
             );
 
             return result;
+        } catch (err) {
+            return rejectWithValue({message: err});
+        }
+    },
+);
+
+export const changeUserLanguage = createAsyncThunk(
+    `${ISlicesNames.auth}/${authThunkNames.changeUserLanguage}`,
+    async (language: string, {rejectWithValue}) => {
+        try {
+            return await changeLanguage(language);
+        } catch (err) {
+            return rejectWithValue({message: err});
+        }
+    },
+);
+
+export const changeUserTheme = createAsyncThunk(
+    `${ISlicesNames.auth}/${authThunkNames.changeUserTheme}`,
+    async (theme: string, {rejectWithValue}) => {
+        try {
+            return await changeTheme(theme);
         } catch (err) {
             return rejectWithValue({message: err});
         }

@@ -6,9 +6,6 @@ const reducers = {
     setUserCoords: (state: IGenericState<ICommonState>, action: {payload: {lat: number; lng: number}}) => {
         state.data.userCoords = action.payload;
     },
-    setUserTheme: (state: IGenericState<ICommonState>, action: {payload: IThemeNames}) => {
-        state.data.theme = action.payload;
-    },
 };
 
 const initialData = {
@@ -29,5 +26,5 @@ export const commonData = createGenericSlice<ICommonState, typeof reducers>({
     extraReducers: () => {},
 });
 
-export const {resetSlice, setUserCoords, setUserTheme} = commonData.actions;
+export const {resetSlice, setUserCoords} = commonData.actions;
 export default commonData.reducer;

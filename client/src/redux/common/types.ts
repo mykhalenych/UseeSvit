@@ -1,5 +1,4 @@
 export interface ICommonState {
-    theme: string;
     userCoords: {lat: number; lng: number};
 }
 

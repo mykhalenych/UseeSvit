@@ -8,4 +8,6 @@ export const authThunkNames = {
     newPassword: 'newPassword',
     changeName: 'changeName',
     changePassword: 'changePassword',
+    changeUserLanguage: 'changeUserLanguage',
+    changeUserTheme: 'changeUserTheme',
 };

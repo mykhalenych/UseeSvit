@@ -37,3 +37,13 @@ export const recoveryPassword = async (data: RecoveryPasswordRequest) => {
     const request = {url: `/reset/${resetToken}`, body: {newPassword, passwordConfirmation}};
     return await fetchWrap({method: 'POST', request, isAuth: true});
 };
+
+export const changeLanguage = async (language: string) => {
+    const request = {url: '/change-language', body: {language}};
+    return fetchWrap({request, isAuth: true, method: 'POST'});
+};
+
+export const changeTheme = async (theme: string) => {
+    const request = {url: '/change-theme', body: {theme}};
+    return fetchWrap({request, isAuth: true, method: 'POST'});
+};
