@@ -23,7 +23,6 @@ import RecoveryPassword from '../pages/Auth/RecoveryPassword';
 import Plan from '../pages/Plan';
 import CheckEmail from '../pages/Auth/CheckEmail';
 import Main from '../pages/Main';
-import PlanLayout from '../layouts/PlanLayout';
 import Profile from '../pages/Profile/Profile';
 import ProtectedRoute from '../components/routes/ProtectedRoute';
 
@@ -93,9 +92,7 @@ const Routes: React.FC = () => {
                 </Route>
                 <Route path="/" element={<MainLayout />}>
                     <Route path={'/'} element={<Main />} />
-                    <Route path={PLAN_PATH} element={<PlanLayout />}>
-                        <Route path={PLAN_PATH} element={<Plan />} />
-                    </Route>
+                    <Route path={PLAN_PATH} element={<Plan />} />
                 </Route>
             </RootRoutes>
         </Router>
