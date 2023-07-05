@@ -40,10 +40,10 @@ export const recoveryPassword = async (data: RecoveryPasswordRequest) => {
 
 export const changeLanguage = async (language: string) => {
     const request = {url: '/change-language', body: {language}};
-    return fetchWrap({request, isAuth: true, method: 'POST'});
+    return fetchWrap({request, method: 'POST'});
 };
 
 export const changeTheme = async (theme: string) => {
     const request = {url: '/change-theme', body: {theme}};
-    return fetchWrap({request, isAuth: true, method: 'POST'});
+    return fetchWrap({request, method: 'POST'});
 };

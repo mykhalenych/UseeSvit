@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {Grid, IconButton} from '@mui/material';
+import {changeLanguage} from 'i18next';
 
 import {ReactComponent as ProfileIcon} from '../../../assets/icons/profile.svg';
 import {ReactComponent as LogoIcon} from '../../../assets/icons/logo.svg';
@@ -24,6 +25,7 @@ const Navigation = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const user = useSelector(selectUser);
+
     const handleRedirect = (path: string) => {
         navigate(path);
     };
@@ -40,8 +42,12 @@ const Navigation = () => {
         setAnchorEl(null);
     };
 
-    const handleLanguage = () => {
-        dispatch(changeUserLanguage(user.language));
+    const handleLanguage = (value: string) => {
+        if (value === user.language) return;
+
+        dispatch(changeUserLanguage(value)).then((res) => {
+            res.meta.requestStatus === 'fulfilled' && changeLanguage(res.payload as string);
+        });
     };
 
     return (
@@ -59,7 +65,7 @@ const Navigation = () => {
                             {isEditing && (
                                 <Select
                                     defaultValue={user.language}
-                                    onChange={handleLanguage}
+                                    parentOnChange={(value) => handleLanguage(value)}
                                     name="language"
                                     options={[
                                         {id: 'en', displayName: 'English'},

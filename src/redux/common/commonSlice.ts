@@ -1,6 +1,6 @@
 import {ISlicesNames} from '../types';
 import createGenericSlice, {IGenericState} from '../createGenericSlice';
-import {ICommonState, IThemeNames} from './types';
+import {ICommonState} from './types';
 
 const reducers = {
     setUserCoords: (state: IGenericState<ICommonState>, action: {payload: {lat: number; lng: number}}) => {
@@ -9,7 +9,6 @@ const reducers = {
 };
 
 const initialData = {
-    theme: IThemeNames.light,
     userCoords: {lat: 49.82, lng: 24.03},
 };
 

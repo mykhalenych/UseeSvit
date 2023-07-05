@@ -9,7 +9,7 @@ interface IProps {
     options: {id: string; displayName: string}[];
     label?: string;
     value?: string;
-    onChange: (value: string) => void;
+    parentOnChange?: (value: string) => void;
     defaultValue?: string;
 }
 
@@ -20,16 +20,16 @@ const Select: React.FC<IProps & SelectProps> = ({
     defaultValue = '',
     label,
     value,
-    onChange,
+    parentOnChange,
     ...textFieldProps
 }) => {
-    const [selectedValue, setSelectedValue] = useState(defaultValue);
+    const [selectedValue, setSelectedValue] = useState('');
 
     const handleChange = useCallback(
-        (e: SelectChangeEvent<unknown>) => {
-            const value = e.target.value as string;
-            if (onChange) {
-                onChange(value);
+        (e: SelectChangeEvent<string>) => {
+            const value = e.target.value;
+            if (parentOnChange) {
+                parentOnChange(value);
             }
 
             if (field?.onChange) {
@@ -38,12 +38,12 @@ const Select: React.FC<IProps & SelectProps> = ({
 
             setSelectedValue(value);
         },
-        [field, onChange],
+        [field, parentOnChange],
     );
 
     const initValue = useCallback(() => {
-        setSelectedValue(value || field?.value || '');
-    }, [value, field]);
+        setSelectedValue(value || field?.value || defaultValue || '');
+    }, [value, field?.value, defaultValue]);
 
     useEffect(() => {
         initValue();
