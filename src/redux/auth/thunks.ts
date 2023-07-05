@@ -33,7 +33,7 @@ export const signInUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.signInUser}`,
     async (data: SignInRequest, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('You are signed in!', `${ISlicesNames.auth}/${authThunkNames.signInUser}`));
+            dispatch(handleResponse('You are signed in!', `${authThunkNames.signInUser}`));
 
             return await register(data);
         } catch (err) {
@@ -46,7 +46,7 @@ export const logInUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.logInUser}`,
     async (data: LogInRequest, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('You are logged in!', `${ISlicesNames.auth}/${authThunkNames.logInUser}`));
+            dispatch(handleResponse('You are logged in!', `${authThunkNames.logInUser}`));
 
             return await login(data);
         } catch (err) {
@@ -59,12 +59,7 @@ export const forgotPassword = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.forgotPassword}`,
     async (data: ForgotPasswordRequest, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(
-                handleResponse(
-                    'Your password has been reset!',
-                    `${ISlicesNames.auth}/${authThunkNames.forgotPassword}`,
-                ),
-            );
+            dispatch(handleResponse('Your password has been reset!', `${authThunkNames.forgotPassword}`));
 
             return await resetPassword(data);
         } catch (err) {
@@ -88,7 +83,7 @@ export const logoutUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.logoutUser}`,
     async (data: void, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('You are logged out!', `${ISlicesNames.auth}/${authThunkNames.logoutUser}`));
+            dispatch(handleResponse('You are logged out!', `${authThunkNames.logoutUser}`));
 
             return await logout();
         } catch (err) {
@@ -103,9 +98,7 @@ export const newPassword = createAsyncThunk(
         try {
             const result = await recoveryPassword(data);
 
-            dispatch(
-                handleResponse('Password changed successfully!', `${ISlicesNames.auth}/${authThunkNames.newPassword}`),
-            );
+            dispatch(handleResponse('Password changed successfully!', `${authThunkNames.newPassword}`));
 
             return result;
         } catch (err) {
@@ -120,7 +113,7 @@ export const changeUserName = createAsyncThunk(
         try {
             const result = await changeName(data);
 
-            dispatch(handleResponse('Name changed successfully!', `${ISlicesNames.auth}/${authThunkNames.changeName}`));
+            dispatch(handleResponse('Name changed successfully!', `${authThunkNames.changeName}`));
 
             return result;
         } catch (err) {
@@ -135,12 +128,7 @@ export const changeUserPassword = createAsyncThunk(
         try {
             const result = await changePassword(data);
 
-            dispatch(
-                handleResponse(
-                    'Password changed successfully!',
-                    `${ISlicesNames.auth}/${authThunkNames.changePassword}`,
-                ),
-            );
+            dispatch(handleResponse('Password changed successfully!', `${authThunkNames.changePassword}`));
 
             return result;
         } catch (err) {
@@ -153,7 +141,7 @@ export const changeUserLanguage = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changeUserLanguage}`,
     async (language: string, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('Language changed!', `${ISlicesNames.auth}/${authThunkNames.changeUserLanguage}`));
+            dispatch(handleResponse('Language changed!', `${authThunkNames.changeUserLanguage}`));
 
             return await changeLanguage(language);
         } catch (err) {
@@ -166,7 +154,7 @@ export const changeUserTheme = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changeUserTheme}`,
     async (theme: string, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('Theme changed!', `${ISlicesNames.auth}/${authThunkNames.changeUserTheme}`));
+            dispatch(handleResponse('Theme changed!', `${authThunkNames.changeUserTheme}`));
 
             return await changeTheme(theme);
         } catch (err) {
