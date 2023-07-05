@@ -14,7 +14,7 @@ import {useTranslation} from 'react-i18next';
 
 const Profile = () => {
     const dispatch = useAppDispatch();
-    const {name} = useSelector(selectUser);
+    const {name, id} = useSelector(selectUser);
     const {t} = useTranslation();
 
     const methods = useForm({
@@ -36,12 +36,12 @@ const Profile = () => {
     const {errors} = formState;
 
     useEffect(() => {
-        if (!newName) {
+        if (id) {
             reset({
                 newName: name,
             });
         }
-    }, [name]);
+    }, [reset, id, name]);
 
     const isPasswordFilled = password && passwordConfirmation && newPassword;
     const isPasswordCorrect = !errors.password && !errors.passwordConfirmation && !errors.newPassword;
