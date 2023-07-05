@@ -40,7 +40,7 @@ export const authData = createGenericSlice<IAuthState, typeof reducers>({
             };
         });
         builder.addCase(changeUserName.fulfilled, (state, action) => {
-            state.data.user.name = action.payload;
+            state.data.user.name = action.payload.name;
         });
         builder.addMatcher(
             (action) => action.type === logInUser.fulfilled.type || action.type === activateUser.fulfilled.type,
