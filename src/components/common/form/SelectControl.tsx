@@ -25,18 +25,7 @@ export const SelectControl: React.FC<IProps> = ({control, name, options, label, 
         helperText: <ErrorMessage errors={errors} name={name} render={({message}) => message} />,
     };
 
-    return (
-        <Select
-            field={field}
-            onChange={field.onChange}
-            value={field.value}
-            name={name}
-            options={options}
-            label={label}
-            {...restProps}
-            {...errorProps}
-        />
-    );
+    return <Select field={field} name={name} options={options} label={label} {...restProps} {...errorProps} />;
 };
 
 export default SelectControl;
