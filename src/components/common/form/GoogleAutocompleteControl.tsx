@@ -16,9 +16,7 @@ const GoogleAutocompleteControl = <T extends FieldValues>({
     control,
     name,
 }: IGoogleAutocompleteProps<T> & TextFieldProps) => {
-    const {placesService, placePredictions, getPlacePredictions} = usePlacesService({
-        apiKey: process.env.REACT_APP_GOOGLE_API_KEY || '',
-    });
+    const {placesService, placePredictions, getPlacePredictions} = usePlacesService({});
 
     const [options, setOptions] = useState<google.maps.GeocoderAddressComponent[]>([]);
 

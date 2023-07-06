@@ -1,5 +1,4 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {changeLanguage} from 'i18next';
 
 import {authThunkNames} from './constants';
 import {ISlicesNames} from '../types';
@@ -13,6 +12,7 @@ import {
     register,
     resetPassword,
     changeTheme,
+    changeLanguage,
 } from '../../services/auth';
 import {changeName, changePassword} from '../../services/profile';
 import {handleResponse} from '../utils';

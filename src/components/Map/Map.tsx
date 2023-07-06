@@ -1,20 +1,15 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {GoogleMap, useJsApiLoader, Marker} from '@react-google-maps/api';
+import {GoogleMap, Marker} from '@react-google-maps/api';
 import {useSelector} from 'react-redux';
 
 import {selectUserCoords} from '../../redux/common/selectors';
 import {useAppDispatch} from '../../redux/store';
 import {setUserCoords} from '../../redux/common/commonSlice';
-import {containerStyle, libraries} from './constants';
+import {containerStyle} from './constants';
 
 import {MapWrap} from './Styles';
 
 const Map = () => {
-    const {isLoaded} = useJsApiLoader({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY || '',
-        libraries,
-    });
-
     const [markersData, setMarkersData] = useState<google.maps.places.PlaceResult[]>([]);
 
     const coords = useSelector(selectUserCoords);
@@ -63,34 +58,32 @@ const Map = () => {
 
     return (
         <MapWrap>
-            {isLoaded ? (
-                <GoogleMap
-                    mapContainerStyle={containerStyle}
-                    center={coords}
-                    zoom={10}
-                    onLoad={onLoad}
-                    clickableIcons={false}
-                    options={{
-                        scrollwheel: true,
-                        streetViewControl: false,
-                        zoomControl: false,
-                        mapTypeControlOptions: {
-                            position: 7.0,
-                            style: 2.0,
-                        },
-                    }}>
-                    {markersData.map((item, index) => (
-                        <Marker
-                            key={index}
-                            position={{
-                                lat: item.geometry?.location?.lat() || 0,
-                                lng: item.geometry?.location?.lng() || 0,
-                            }}
-                        />
-                    ))}
-                    <Marker position={coords} />
-                </GoogleMap>
-            ) : null}
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={coords}
+                zoom={10}
+                onLoad={onLoad}
+                clickableIcons={false}
+                options={{
+                    scrollwheel: true,
+                    streetViewControl: false,
+                    zoomControl: false,
+                    mapTypeControlOptions: {
+                        position: 7.0,
+                        style: 2.0,
+                    },
+                }}>
+                {markersData.map((item, index) => (
+                    <Marker
+                        key={index}
+                        position={{
+                            lat: item.geometry?.location?.lat() || 0,
+                            lng: item.geometry?.location?.lng() || 0,
+                        }}
+                    />
+                ))}
+                <Marker position={coords} />
+            </GoogleMap>
         </MapWrap>
     );
 };
