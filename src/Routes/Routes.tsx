@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes as RootRoutes} from 'react-router-dom';
+import {Route, Routes as RootRoutes} from 'react-router-dom';
 
 import MainLayout from '../layouts/MainLayout';
 import {
@@ -28,74 +28,72 @@ import ProtectedRoute from '../components/routes/ProtectedRoute';
 
 const Routes: React.FC = () => {
     return (
-        <Router>
-            <RootRoutes>
-                <Route path={AUTH_PATH} element={<AuthLayout />}>
-                    <Route
-                        path={LOGIN_PATH}
-                        element={
-                            <PublicRoute>
-                                <Login />
-                            </PublicRoute>
-                        }
-                    />
-                    <Route
-                        path={SIGN_IN_PATH}
-                        element={
-                            <PublicRoute>
-                                <SignIn />
-                            </PublicRoute>
-                        }
-                    />
-                    <Route
-                        path={FORGOT_PATH}
-                        element={
-                            <PublicRoute>
-                                <ForgotPassword />
-                            </PublicRoute>
-                        }
-                    />
-                    <Route
-                        path={CHECK_EMAIL_PATH}
-                        element={
-                            <PublicRoute>
-                                <CheckEmail />
-                            </PublicRoute>
-                        }
-                    />
-                    <Route
-                        path={ACTIVATION_PATH}
-                        element={
-                            <PublicRoute>
-                                <Activation />
-                            </PublicRoute>
-                        }
-                    />
-                    <Route
-                        path={RESET_PASSWORD_PATH}
-                        element={
-                            <PublicRoute>
-                                <RecoveryPassword />
-                            </PublicRoute>
-                        }
-                    />
-                </Route>
-                <Route path={PROFILE_PATH} element={<AuthLayout />}>
-                    <Route
-                        index
-                        element={
-                            <ProtectedRoute>
-                                <Profile />
-                            </ProtectedRoute>
-                        }
-                    />
-                </Route>
-                <Route path="/" element={<MainLayout />}>
-                    <Route path={'/'} element={<Main />} />
-                    <Route path={PLAN_PATH} element={<Plan />} />
-                </Route>
-            </RootRoutes>
-        </Router>
+        <RootRoutes>
+            <Route path={AUTH_PATH} element={<AuthLayout />}>
+                <Route
+                    path={LOGIN_PATH}
+                    element={
+                        <PublicRoute>
+                            <Login />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path={SIGN_IN_PATH}
+                    element={
+                        <PublicRoute>
+                            <SignIn />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path={FORGOT_PATH}
+                    element={
+                        <PublicRoute>
+                            <ForgotPassword />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path={CHECK_EMAIL_PATH}
+                    element={
+                        <PublicRoute>
+                            <CheckEmail />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path={ACTIVATION_PATH}
+                    element={
+                        <PublicRoute>
+                            <Activation />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path={RESET_PASSWORD_PATH}
+                    element={
+                        <PublicRoute>
+                            <RecoveryPassword />
+                        </PublicRoute>
+                    }
+                />
+            </Route>
+            <Route path={PROFILE_PATH} element={<AuthLayout />}>
+                <Route
+                    index
+                    element={
+                        <ProtectedRoute>
+                            <Profile />
+                        </ProtectedRoute>
+                    }
+                />
+            </Route>
+            <Route path="/" element={<MainLayout />}>
+                <Route path={'/'} element={<Main />} />
+                <Route path={PLAN_PATH} element={<Plan />} />
+            </Route>
+        </RootRoutes>
     );
 };
 
