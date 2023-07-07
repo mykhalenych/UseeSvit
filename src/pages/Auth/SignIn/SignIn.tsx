@@ -13,7 +13,6 @@ import {signInUser} from '../../../redux/auth/thunks';
 import {useAppDispatch} from '../../../redux/store';
 import {CHECK_EMAIL_PATH, LOGIN_PATH} from '../../../Routes/constants';
 import {authThunkNames} from '../../../redux/auth/constants';
-import {Progress} from '../../../components/common/Progress';
 import {selectLoading} from '../../../redux/selectors';
 import {ISlicesNames} from '../../../redux/types';
 import {ISignInProps} from './types';
@@ -62,11 +61,11 @@ const SignIn = () => {
                         />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
-                        <Button onClick={handleRedirect} color="primary" minWidth={120}>
-                            {isLoading ? <Progress /> : t('logIn.btn')}
+                        <Button isLoading={isLoading} onClick={handleRedirect} color="primary" minWidth={120}>
+                            {t('logIn.btn')}
                         </Button>
-                        <Button type="submit" variant="contained" color="primary" minWidth={120}>
-                            {isLoading ? <Progress /> : t('signUp.btn')}
+                        <Button isLoading={isLoading} type="submit" variant="contained" color="primary" minWidth={120}>
+                            {t('signUp.btn')}
                         </Button>
                     </Grid>
                 </Grid>

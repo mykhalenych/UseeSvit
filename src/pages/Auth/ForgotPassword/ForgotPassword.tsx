@@ -13,7 +13,6 @@ import {useAppDispatch} from '../../../redux/store';
 import {forgotPassword} from '../../../redux/auth/thunks';
 import InputControl from '../../../components/common/form/InputControl';
 import Button from '../../../components/common/Button';
-import {Progress} from '../../../components/common/Progress';
 import {selectLoading} from '../../../redux/selectors';
 import {IForgotPassProps} from './types';
 import {ISlicesNames} from '../../../redux/types';
@@ -50,8 +49,8 @@ const ForgotPassword = () => {
                         <InputControl control={control} label={t('emailAddress')} name="email" fullWidth />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
-                        <Button onClick={handleRedirect} color="primary" minWidth={100}>
-                            {isLoading ? <Progress /> : t('logIn.btn')}
+                        <Button isLoading={isLoading} onClick={handleRedirect} color="primary" minWidth={100}>
+                            {t('logIn.btn')}
                         </Button>
                         <Button type="submit" variant="contained" color="primary" minWidth={180}>
                             {t('sendInstructions')}

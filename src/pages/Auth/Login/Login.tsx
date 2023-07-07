@@ -9,7 +9,6 @@ import {useTranslation} from 'react-i18next';
 import {validation, defaultValues} from './form';
 import {useAppDispatch} from '../../../redux/store';
 import {logInUser} from '../../../redux/auth/thunks';
-import {Progress} from '../../../components/common/Progress';
 import InputControl from '../../../components/common/form/InputControl';
 import Button from '../../../components/common/Button';
 import {FORGOT_PATH, SIGN_IN_PATH} from '../../../Routes/constants';
@@ -58,19 +57,18 @@ const Login = () => {
                         />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
-                        {isLoading && <Progress />}
                         <Button onClick={() => handleRedirect(SIGN_IN_PATH)} color="primary" minWidth={100}>
-                            {isLoading ? <Progress /> : t('signUp.btn')}
+                            {t('signUp.btn')}
                         </Button>
                         <Button
                             onClick={() => handleRedirect(FORGOT_PATH)}
                             variant="text"
                             color="primary"
                             minWidth={180}>
-                            {isLoading ? <Progress /> : t('forgotPassword.btn')}
+                            {t('forgotPassword.btn')}
                         </Button>
-                        <Button type="submit" variant="contained" color="primary" minWidth={100}>
-                            {isLoading ? <Progress /> : t('logIn.btn')}
+                        <Button isLoading={isLoading} type="submit" variant="contained" color="primary" minWidth={100}>
+                            {t('logIn.btn')}
                         </Button>
                     </Grid>
                 </Grid>
