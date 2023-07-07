@@ -29,8 +29,7 @@ const Activation = () => {
     return (
         <Grid container spacing={2} px={2} justifyContent="center" alignItems="center">
             <Grid item xs={12}>
-                <Typography variant="h3">{t('welcomeToUseeSvit')}</Typography>
-                {isLoading && <Progress />}
+                <Typography variant="h3">{isLoading ? <Progress /> : t('welcomeToUseeSvit')}</Typography>
             </Grid>
         </Grid>
     );

@@ -60,17 +60,17 @@ const Login = () => {
                     <Grid container item xs={12} justifyContent="space-between">
                         {isLoading && <Progress />}
                         <Button onClick={() => handleRedirect(SIGN_IN_PATH)} color="primary" minWidth={100}>
-                            {t('signUp.btn')}
+                            {isLoading ? <Progress /> : t('signUp.btn')}
                         </Button>
                         <Button
                             onClick={() => handleRedirect(FORGOT_PATH)}
                             variant="text"
                             color="primary"
                             minWidth={180}>
-                            {t('forgotPassword.btn')}
+                            {isLoading ? <Progress /> : t('forgotPassword.btn')}
                         </Button>
                         <Button type="submit" variant="contained" color="primary" minWidth={100}>
-                            {t('logIn.btn')}
+                            {isLoading ? <Progress /> : t('logIn.btn')}
                         </Button>
                     </Grid>
                 </Grid>

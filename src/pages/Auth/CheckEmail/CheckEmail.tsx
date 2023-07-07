@@ -26,9 +26,8 @@ const CheckEmail = () => {
                 <Typography variant="h3">{t('checkEmail')}</Typography>
             </Grid>
             <Grid item container justifyContent="center" xs={12}>
-                {isLoading && <Progress />}
                 <Button onClick={handleRedirect} color="primary" minWidth={180}>
-                    {t('goToLogin')}
+                    {isLoading ? <Progress /> : t('goToLogin')}
                 </Button>
             </Grid>
         </Grid>
