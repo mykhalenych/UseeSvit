@@ -1,5 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 
+import i18n from '../../common/i18n';
 import {authThunkNames} from './constants';
 import {ISlicesNames} from '../types';
 import {SignInRequest, LogInRequest, ForgotPasswordRequest, RecoveryPasswordRequest} from '../../services/auth/types';
@@ -33,7 +34,7 @@ export const signInUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.signInUser}`,
     async (data: SignInRequest, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('You are signed in!', `${authThunkNames.signInUser}`));
+            dispatch(handleResponse(i18n.t('signedIn', {ns: 'notification'}), `${authThunkNames.signInUser}`));
 
             return await register(data);
         } catch (err) {
@@ -46,7 +47,7 @@ export const logInUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.logInUser}`,
     async (data: LogInRequest, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('You are logged in!', `${authThunkNames.logInUser}`));
+            dispatch(handleResponse(i18n.t('loggedIn', {ns: 'notification'}), `${authThunkNames.logInUser}`));
 
             return await login(data);
         } catch (err) {
@@ -59,7 +60,12 @@ export const forgotPassword = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.forgotPassword}`,
     async (data: ForgotPasswordRequest, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('Your password has been reset!', `${authThunkNames.forgotPassword}`));
+            dispatch(
+                handleResponse(
+                    i18n.t('passwordHasBeenReset', {ns: 'notification'}),
+                    `${authThunkNames.forgotPassword}`,
+                ),
+            );
 
             return await resetPassword(data);
         } catch (err) {
@@ -83,7 +89,7 @@ export const logoutUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.logoutUser}`,
     async (data: void, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('You are logged out!', `${authThunkNames.logoutUser}`));
+            dispatch(handleResponse(i18n.t('loggedOut', {ns: 'notification'}), `${authThunkNames.logoutUser}`));
 
             return await logout();
         } catch (err) {
@@ -98,7 +104,12 @@ export const newPassword = createAsyncThunk(
         try {
             const result = await recoveryPassword(data);
 
-            dispatch(handleResponse('Password changed successfully!', `${authThunkNames.newPassword}`));
+            dispatch(
+                handleResponse(
+                    i18n.t('passwordChangedSuccessfully', {ns: 'notification'}),
+                    `${authThunkNames.newPassword}`,
+                ),
+            );
 
             return result;
         } catch (err) {
@@ -113,7 +124,9 @@ export const changeUserName = createAsyncThunk(
         try {
             const result = await changeName(data);
 
-            dispatch(handleResponse('Name changed successfully!', `${authThunkNames.changeName}`));
+            dispatch(
+                handleResponse(i18n.t('nameChangedSuccessfully', {ns: 'notification'}), `${authThunkNames.changeName}`),
+            );
 
             return result;
         } catch (err) {
@@ -128,7 +141,12 @@ export const changeUserPassword = createAsyncThunk(
         try {
             const result = await changePassword(data);
 
-            dispatch(handleResponse('Password changed successfully!', `${authThunkNames.changePassword}`));
+            dispatch(
+                handleResponse(
+                    i18n.t('passwordChangedSuccessfully', {ns: 'notification'}),
+                    `${authThunkNames.changePassword}`,
+                ),
+            );
 
             return result;
         } catch (err) {
@@ -141,7 +159,9 @@ export const changeUserLanguage = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changeUserLanguage}`,
     async (language: string, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('Language changed!', `${authThunkNames.changeUserLanguage}`));
+            dispatch(
+                handleResponse(i18n.t('languageChanged', {ns: 'notification'}), `${authThunkNames.changeUserLanguage}`),
+            );
 
             return await changeLanguage(language);
         } catch (err) {
@@ -154,7 +174,7 @@ export const changeUserTheme = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changeUserTheme}`,
     async (theme: string, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('Theme changed!', `${authThunkNames.changeUserTheme}`));
+            dispatch(handleResponse(i18n.t('themeChanged', {ns: 'notification'}), `${authThunkNames.changeUserTheme}`));
 
             return await changeTheme(theme);
         } catch (err) {
