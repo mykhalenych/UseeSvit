@@ -1,7 +1,7 @@
 {
-  "signedIn": "Ви ввійшли!",
+  "signedIn": "Ви увійшли!",
   "loggedIn": "Ви увійшли в систему!",
-  "passwordHasBeenReset": "Your password has been reset!",
+  "passwordHasBeenReset": "Ваш пароль скинуто!",
   "loggedOut": "Ваш пароль скинуто",
   "passwordChangedSuccessfully": "Пароль успішно змінено!",
   "nameChangedSuccessfully": "Ім'я успішно змінено!",

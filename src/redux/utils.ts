@@ -1,5 +1,6 @@
 import {Dispatch} from 'react';
 import {IRootState} from './store';
+import i18n from '../common/i18n';
 import {IGenericState} from './createGenericSlice';
 import type {AnyAction} from '@reduxjs/toolkit';
 import {StatusesTypes} from './types';
@@ -24,5 +25,5 @@ export const thunkCondition =
     };
 
 export const handleResponse = (message: string, type: string) => (dispatch: Dispatch<AnyAction>) => {
-    dispatch({type, successNotification: message});
+    dispatch({type, successNotification: i18n.t(message, {ns: 'notification'})});
 };
