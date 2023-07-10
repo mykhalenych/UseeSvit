@@ -21,7 +21,7 @@ export const commonData = createGenericSlice<ICommonState, typeof reducers>({
         lastRequestId: {},
     },
     reducers,
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    // ts-ignore
     extraReducers: () => {},
 });
 
