@@ -1,10 +1,12 @@
-import Image from "next/image";
-import Main from "./components/home/main";
+import Image from 'next/image';
+import Main from './components/home/main';
 
-export default function Home() {
-  return (
-    <main>
-      <Main />
-    </main>
-  );
-}
+const Home = () => {
+    return (
+        <main>
+            <Main />
+        </main>
+    );
+};
+
+export default Home;
