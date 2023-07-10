@@ -5,11 +5,6 @@ import StyledButton from './Styles';
 import {CustomButtonProps} from './types';
 import {Progress} from '../Progress';
 
-// type ButtonPropsWithoutColor = Omit<ButtonProps, 'color'>;
-
-// interface ButtonWithLoadingProps extends Omit<CustomButtonProps, 'children'>, ButtonPropsWithoutColor {
-//     isLoading?: boolean;
-// }
 const Button: React.FC<CustomButtonProps & ButtonProps> = ({
     minWidth = 240,
 

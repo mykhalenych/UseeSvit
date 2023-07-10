@@ -22,7 +22,9 @@ const RecoveryPassword = () => {
     const dispatch = useAppDispatch();
     const {resetToken} = useParams();
     const {t} = useTranslation();
-    const isLoading = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.changePassword));
+    const isLoading = useSelector(
+        selectLoading(ISlicesNames.auth, [authThunkNames.changePassword, authThunkNames.forgotPassword]),
+    );
     const methods = useForm<PasswordProps>({
         resolver: yupResolver(validation),
         defaultValues,

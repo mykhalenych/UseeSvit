@@ -17,7 +17,7 @@ export const Progress = () => {
 
     return (
         <Box sx={{display: 'flex'}}>
-            <CircularProgress variant="determinate" value={level} color="inherit" size={35} thickness={4} />
+            <CircularProgress variant="determinate" value={level} color="inherit" size={35} thickness={5} />
         </Box>
     );
 };

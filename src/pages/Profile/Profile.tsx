@@ -38,7 +38,11 @@ const Profile = () => {
 
     const isPasswordFilled = password && passwordConfirmation && newPassword;
     const isPasswordCorrect = !errors.password && !errors.passwordConfirmation && !errors.newPassword;
-    const isLoading = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.changePassword));
+
+    const isLoading = useSelector(
+        selectLoading(ISlicesNames.auth, [authThunkNames.changeName, authThunkNames.changePassword]),
+    );
+
     const handleChangeName = () => {
         dispatch(changeUserName(newName));
     };
@@ -75,6 +79,7 @@ const Profile = () => {
                                     </Grid>
                                     <Grid item xs={3}>
                                         <Button
+                                            isLoading={isLoading}
                                             variant="contained"
                                             color="primary"
                                             minWidth={190}

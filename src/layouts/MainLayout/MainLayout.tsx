@@ -10,7 +10,7 @@ import {selectLoading} from '../../redux/selectors';
 import {ISlicesNames} from '../../redux/types';
 import {Progress} from '../../components/common/Progress';
 
-import {BgDiv, Main, Footer} from './Styles';
+import {BgDiv, Main, Footer, BoxLoader} from './Styles';
 
 const MainLayout = () => {
     const dispatch = useAppDispatch();
@@ -28,7 +28,12 @@ const MainLayout = () => {
         <BgDiv>
             <Navigation />
             <Main>
-                {isLoading && <Progress />}
+                {isLoading && (
+                    <BoxLoader>
+                        {' '}
+                        <Progress />
+                    </BoxLoader>
+                )}
                 <Outlet />
             </Main>
             <Footer />
