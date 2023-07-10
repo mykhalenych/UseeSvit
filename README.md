@@ -1,78 +1,34 @@
-# README #
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-### Prepare for running app local
+## Getting Started
 
-* Run `npm install`<br />
-* Run `npm start` <br />
+First, run the development server:
 
-## React Component code styleguide
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-### Component structure
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-    import React, { useEffect, useState, useMemo, useCallback } from 'react';
-    import { useSelector } from 'react-redux';
-    import lib from 'lib';
-    
-    import { fetchData } from '../fetchData'
-    import { selectList, selectLoading } from '../selectors'
-    import { useAppDispatch } from '../../store';
-    import hooks from './hooks';
-    import utils from './utils';
-    import helper from './helper';
-    import config from './config';
-    import constants from './constants';
-    import Component from './Component';
-    import Button from '../common/Button';
-    import IValues from './types';
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-    const MyComponent = () => {
-        const [editMode, setEditMode] = useState(false);
-        const [values, setValues] = useState<IValues[]>([]);
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-        const dispatch = useAppDispatch();
-        const list = useSelector(selectList)
-        const isLoading = useSelector(selectLoading(slicesName, thunksName || thunksNames[]));
+## Learn More
 
-        const valuesIds = useMemo(() => values.map(value => value.id), [values]);
+To learn more about Next.js, take a look at the following resources:
 
-        ...hooks, ...localStorage, ...constants;
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-        const getData = useCallback(() => {}, []);
-        
-        const handleClick = useCallback((item) => setValues(item),[]);
- 
-        useEffect(() => {
-            dispatch(fetchData());
-        }, [dispatch]);
-        
-        return (
-            <>
-                <Component getData={getData} />
-                <Button onClick={handleClick}>Click</Button>
-            </>
-        );
-    };
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-    export default MyComponent;
+## Deploy on Vercel
 
-### Project folder/file structure
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-    components
-        common
-            Button
-                index.ts
-                Button.tsx
-                ...otherFiles
-            Modal
-            ...
-        pages
-            Login
-                Login.tsx
-                index.ts
-                ...otherFiles
-
-
-### Branch naming
-
-* Use git-flow for naming branch https://danielkummer.github.io/git-flow-cheatsheet/
-* Commit message should include branch name.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
