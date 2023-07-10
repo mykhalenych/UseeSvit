@@ -14,7 +14,6 @@ import {
     changeTheme,
     changeLanguage,
 } from '../../services/auth';
-import {showSuccess} from '../snackbar/slice';
 import {changeName, changePassword} from '../../services/profile';
 import {handleResponse} from '../utils';
 import {NewPasswordRequest} from '../../services/profile/types';
@@ -32,8 +31,10 @@ export const fetchUser = createAsyncThunk(
 
 export const signInUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.signInUser}`,
-    async (data: SignInRequest, {rejectWithValue}) => {
+    async (data: SignInRequest, {rejectWithValue, dispatch}) => {
         try {
+            dispatch(handleResponse('You are signed in!', `${authThunkNames.signInUser}`));
+
             return await register(data);
         } catch (err) {
             return rejectWithValue({message: err});
@@ -43,8 +44,10 @@ export const signInUser = createAsyncThunk(
 
 export const logInUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.logInUser}`,
-    async (data: LogInRequest, {rejectWithValue}) => {
+    async (data: LogInRequest, {rejectWithValue, dispatch}) => {
         try {
+            dispatch(handleResponse('You are logged in!', `${authThunkNames.logInUser}`));
+
             return await login(data);
         } catch (err) {
             return rejectWithValue({message: err});
@@ -54,8 +57,10 @@ export const logInUser = createAsyncThunk(
 
 export const forgotPassword = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.forgotPassword}`,
-    async (data: ForgotPasswordRequest, {rejectWithValue}) => {
+    async (data: ForgotPasswordRequest, {rejectWithValue, dispatch}) => {
         try {
+            dispatch(handleResponse('Your password has been reset!', `${authThunkNames.forgotPassword}`));
+
             return await resetPassword(data);
         } catch (err) {
             return rejectWithValue({message: err});
@@ -76,8 +81,10 @@ export const activateUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.logoutUser}`,
-    async (data: void, {rejectWithValue}) => {
+    async (data: void, {rejectWithValue, dispatch}) => {
         try {
+            dispatch(handleResponse('You are logged out!', `${authThunkNames.logoutUser}`));
+
             return await logout();
         } catch (err) {
             return rejectWithValue({message: err});
@@ -91,17 +98,7 @@ export const newPassword = createAsyncThunk(
         try {
             const result = await recoveryPassword(data);
 
-            dispatch(
-                showSuccess({
-                    message: 'Password changed successfully!',
-                    id: 333,
-                    from: {
-                        slice: ISlicesNames.auth,
-                        thunk: authThunkNames.newPassword,
-                        requestId: result.requestId,
-                    },
-                }),
-            );
+            dispatch(handleResponse('Password changed successfully!', `${authThunkNames.newPassword}`));
 
             return result;
         } catch (err) {
@@ -116,7 +113,7 @@ export const changeUserName = createAsyncThunk(
         try {
             const result = await changeName(data);
 
-            dispatch(handleResponse('Name changed successfully!', `${ISlicesNames.auth}/${authThunkNames.changeName}`));
+            dispatch(handleResponse('Name changed successfully!', `${authThunkNames.changeName}`));
 
             return result;
         } catch (err) {
@@ -131,12 +128,7 @@ export const changeUserPassword = createAsyncThunk(
         try {
             const result = await changePassword(data);
 
-            dispatch(
-                handleResponse(
-                    'Password changed successfully!',
-                    `${ISlicesNames.auth}/${authThunkNames.changePassword}`,
-                ),
-            );
+            dispatch(handleResponse('Password changed successfully!', `${authThunkNames.changePassword}`));
 
             return result;
         } catch (err) {
@@ -147,11 +139,11 @@ export const changeUserPassword = createAsyncThunk(
 
 export const changeUserLanguage = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changeUserLanguage}`,
-    async (language: string, {rejectWithValue}) => {
+    async (language: string, {rejectWithValue, dispatch}) => {
         try {
-            await changeLanguage(language);
+            dispatch(handleResponse('Language changed!', `${authThunkNames.changeUserLanguage}`));
 
-            return language;
+            return await changeLanguage(language);
         } catch (err) {
             return rejectWithValue({message: err});
         }
@@ -160,11 +152,11 @@ export const changeUserLanguage = createAsyncThunk(
 
 export const changeUserTheme = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changeUserTheme}`,
-    async (theme: string, {rejectWithValue}) => {
+    async (theme: string, {rejectWithValue, dispatch}) => {
         try {
-            await changeTheme(theme);
+            dispatch(handleResponse('Theme changed!', `${authThunkNames.changeUserTheme}`));
 
-            return theme;
+            return await changeTheme(theme);
         } catch (err) {
             return rejectWithValue({message: err});
         }

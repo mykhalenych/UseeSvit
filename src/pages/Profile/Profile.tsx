@@ -1,12 +1,9 @@
-import React from 'react';
-import {useTranslation} from 'react-i18next';
-import {useSelector} from 'react-redux';
-import {ISlicesNames} from '../../redux/types';
 import {useForm, FormProvider} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Grid, Typography} from '@mui/material';
 
 import {changeUserName, changeUserPassword} from '../../redux/auth/thunks';
+import {selectUser} from '../../redux/auth/selectors';
 import {useAppDispatch} from '../../redux/store';
 import {nameValidation, defaultNameValue, defaultPasswordValue, passwordValidation} from './form';
 import {authThunkNames} from '../../redux/auth/constants';
@@ -16,6 +13,7 @@ import InputControl from '../../components/common/form/InputControl';
 
 const Profile = () => {
     const dispatch = useAppDispatch();
+    const {name, id} = useSelector(selectUser);
     const {t} = useTranslation();
 
     const methods = useForm({
@@ -27,7 +25,7 @@ const Profile = () => {
         mode: 'onChange',
     });
 
-    const {formState, watch} = methods;
+    const {formState, reset, watch} = methods;
     const [newName, password, passwordConfirmation, newPassword] = watch([
         'newName',
         'password',
@@ -35,6 +33,14 @@ const Profile = () => {
         'newPassword',
     ]);
     const {errors} = formState;
+
+    useEffect(() => {
+        if (id) {
+            reset({
+                newName: name,
+            });
+        }
+    }, [reset, id, name]);
 
     const isPasswordFilled = password && passwordConfirmation && newPassword;
     const isPasswordCorrect = !errors.password && !errors.passwordConfirmation && !errors.newPassword;
@@ -83,7 +89,7 @@ const Profile = () => {
                                             variant="contained"
                                             color="primary"
                                             minWidth={190}
-                                            disabled={!newName || !!errors.newName}
+                                            disabled={!newName || !!errors.newName || name === newName}
                                             onClick={handleChangeName}>
                                             {t('profile.change')}
                                         </Button>

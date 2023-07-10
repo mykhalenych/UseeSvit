@@ -2,18 +2,8 @@
 
 ### Prepare for running app local
 
-* download postgresql from https://www.postgresql.org/download/ <br />
-* Open a project in code redactor or web IDE<br />
-* Open console<br />
-* Go to `client` directory<br />
 * Run `npm install`<br />
-* Go to `server` directory<br />
-* create .env file with your credential in `server` directory<br />
-* Run `npm install`<br />
-* Go to `root` directory<br />
-* Run `npm install`<br />
-* From `root` directory `npm start` <br />
-
+* Run `npm start` <br />
 
 ## React Component code styleguide
 
