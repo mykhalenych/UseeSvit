@@ -3,7 +3,6 @@
 import React, {FC} from 'react';
 import {Provider} from 'react-redux';
 
-import {Theme} from '../Theme';
 import {store} from './store';
 
 type Props = {

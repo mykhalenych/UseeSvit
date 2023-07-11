@@ -1,24 +1,35 @@
-import {Inter} from 'next/font/google';
+import {Roboto} from 'next/font/google';
 
 import type {Metadata} from 'next';
 import ReduxProvider from './redux/redux-provider';
 import Theme from './Theme';
 
-const inter = Inter({subsets: ['latin']});
+const roboto = Roboto({
+    subsets: ['cyrillic', 'latin'],
+    weight: ['300', '400', '500', '700', '900'],
+    variable: '--roboto',
+    display: 'swap',
+});
 
 export const metadata: Metadata = {
     title: 'UseeSvit',
     description: 'UseeSvit',
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+type Props = {
+    children: React.ReactNode;
+};
+
+const RootLayout: React.FC<Props> = ({children}) => {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={roboto.className}>
                 <ReduxProvider>
                     <Theme>{children}</Theme>
                 </ReduxProvider>
             </body>
         </html>
     );
-}
+};
+
+export default RootLayout;
