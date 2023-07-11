@@ -1,33 +1,36 @@
+'use client';
+
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
 import {Grid, IconButton} from '@mui/material';
 import {changeLanguage} from 'i18next';
+import {useRouter} from 'next/navigation';
 
-import {ReactComponent as ProfileIcon} from '../../../assets/icons/profile.svg';
-import {ReactComponent as LogoIcon} from '../../../assets/icons/logo.svg';
-import {ReactComponent as PlanetIcon} from '../../../assets/icons/planet.svg';
-import {ReactComponent as DarkModeIcon} from '../../../assets/icons/darkMode.svg';
-import {ReactComponent as LightModeIcon} from '../../../assets/icons/lightMode.svg';
 import {useAppDispatch} from '../../../redux/store';
 import {selectUser} from '../../../redux/auth/selectors';
 import {changeUserLanguage, changeUserTheme} from '../../../redux/auth/thunks';
-import {LOGIN_PATH} from '../../../Routes/constants';
 import ProfileMenu from './ProfileMenu';
 import Select from '../inputs/Select';
 import {IThemeNames} from '../../../redux/common/types';
+import {LOGIN_PATH} from '@/Routes/constants';
 
 import {BackgroundDiv} from './Styles';
+import {ProfileIcon} from '@/icons/profile-icon';
+import {LogoIcon} from '@/icons/logo-icon';
+import {DarkModeIcon} from '@/icons/dark-mode-icon';
+import {LightModeIcon} from '@/icons/light-mode-icon';
+import {PlanetIcon} from '@/icons/planet-icon';
 
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [isEditing, setIsEditing] = useState(false);
-    const navigate = useNavigate();
+    const router = useRouter();
+
     const dispatch = useAppDispatch();
     const user = useSelector(selectUser);
 
     const handleRedirect = (path: string) => {
-        navigate(path);
+        router.push(path);
     };
 
     const handleThemeChange = () => {

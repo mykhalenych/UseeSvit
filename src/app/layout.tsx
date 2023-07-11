@@ -3,6 +3,7 @@ import {Roboto} from 'next/font/google';
 import type {Metadata} from 'next';
 import ReduxProvider from './redux/redux-provider';
 import Theme from './Theme';
+import Navigation from './components/common/Navigation/Navigation';
 
 const roboto = Roboto({
     subsets: ['cyrillic', 'latin'],
@@ -25,7 +26,10 @@ const RootLayout: React.FC<Props> = ({children}) => {
         <html lang="en">
             <body className={roboto.className}>
                 <ReduxProvider>
-                    <Theme>{children}</Theme>
+                    <Theme>
+                        <Navigation />
+                        {children}
+                    </Theme>
                 </ReduxProvider>
             </body>
         </html>
