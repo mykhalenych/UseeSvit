@@ -11,7 +11,7 @@ import Snackbar from './layouts/Snackbar';
 import {IThemeNames} from './redux/common/types';
 import {selectUser} from './redux/auth/selectors';
 
-const Theme: FC = ({children}: {children: ReactNode}) => {
+const Theme = ({children}: {children: ReactNode}) => {
     const user = useSelector(selectUser);
     const theme = useMemo(() => {
         switch (user.theme) {

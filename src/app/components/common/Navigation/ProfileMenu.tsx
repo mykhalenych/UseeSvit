@@ -1,12 +1,15 @@
+'use client';
+
 import React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {useTranslation} from 'react-i18next';
+import {useRouter} from 'next/navigation';
+
 import {resetAuthToken} from '../../../common/utils';
 import {logoutUser} from '../../../redux/auth/thunks';
 import {useAppDispatch} from '../../../redux/store';
-import {useNavigate} from 'react-router-dom';
-import {PROFILE_PATH} from '../../../Routes/constants';
+import {PROFILE_PATH} from '@/Routes/constants';
 
 interface IProps {
     anchorEl: HTMLElement | null;
@@ -15,7 +18,7 @@ interface IProps {
 
 const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
+    const router = useRouter();
     const {t} = useTranslation();
 
     const handleLogout = () => {
@@ -27,7 +30,7 @@ const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
         });
     };
 
-    const handleProfile = () => navigate(PROFILE_PATH);
+    const handleProfile = () => router.push(PROFILE_PATH);
 
     return (
         <Menu
