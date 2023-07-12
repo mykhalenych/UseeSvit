@@ -1,4 +1,5 @@
 import {object, string} from 'yup';
+import '../../common/yupLocale';
 
 export const defaultValues = {
     search: '',

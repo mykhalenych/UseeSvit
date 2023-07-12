@@ -9,10 +9,15 @@ i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
+        ns: ['translation', 'validation', 'notification'],
+        defaultNS: 'translation',
         fallbackLng: 'en',
         debug: false,
         interpolation: {
             escapeValue: false,
+        },
+        backend: {
+            loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
     });
 

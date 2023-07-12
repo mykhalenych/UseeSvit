@@ -1,4 +1,5 @@
 import {object, string} from 'yup';
+import '../../../common/yupLocale';
 
 export const defaultValues = {
     password: '',
@@ -6,6 +7,6 @@ export const defaultValues = {
 };
 
 export const validation = object().shape({
-    password: string().required(),
+    password: string().required().min(8),
     email: string().email().required(),
 });
