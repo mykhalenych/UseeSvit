@@ -4,6 +4,7 @@ import type {Metadata} from 'next';
 import ReduxProvider from './redux/redux-provider';
 import Theme from './Theme';
 import Navigation from './components/common/Navigation/Navigation';
+import {Footer, Main} from './layouts/MainLayout/Styles';
 
 const roboto = Roboto({
     subsets: ['cyrillic', 'latin'],
@@ -28,7 +29,8 @@ const RootLayout: React.FC<Props> = ({children}) => {
                 <ReduxProvider>
                     <Theme>
                         <Navigation />
-                        {children}
+                        <Main>{children}</Main>
+                        <Footer />
                     </Theme>
                 </ReduxProvider>
             </body>

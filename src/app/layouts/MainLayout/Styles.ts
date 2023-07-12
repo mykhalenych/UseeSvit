@@ -1,7 +1,7 @@
-import {Link} from 'react-router-dom';
-import {styled} from '@mui/material/styles';
+'use client';
 
-import BackgroundImag from '../../assets/img/mainBg.png';
+import Link from 'next/link';
+import {styled} from '@mui/material/styles';
 
 export const Nav = styled('nav')(({theme}) => ({
     display: 'flex',
@@ -19,7 +19,7 @@ export const BgDiv = styled('div')(({theme}) => ({
 }));
 
 export const Main = styled('main')(() => ({
-    background: `url(${BackgroundImag})`,
+    background: `url(./assets/img/mainBg.png)`,
     height: 'calc(100vh - 160px)',
     overflow: 'hidden',
     backgroundSize: 'cover',

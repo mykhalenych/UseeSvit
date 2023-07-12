@@ -1,11 +1,10 @@
-import React from 'react';
 import {LoadScript} from '@react-google-maps/api';
 import {Grid} from '@mui/material';
 import {FormProvider, UseFormReturn} from 'react-hook-form';
 
 import GoogleAutocompleteControl from '../../components/common/form/GoogleAutocompleteControl';
 import Map from '../../components/Map';
-import {IPlan} from '../../pages/Plan/types';
+import {IPlan} from '@/app/plan/types';
 import {libraries} from './constants';
 
 type Props = {
