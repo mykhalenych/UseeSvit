@@ -2,32 +2,24 @@
 
 import React from 'react';
 import {Grid, Typography} from '@mui/material';
-// import {useNavigate} from 'react-router-dom';
-// import { useTranslation } from "react-i18next";
-import Button from '../../common/Button';
-import {useRouter} from 'next/navigation';
+import {useTranslation} from 'react-i18next';
 
-// import {PLAN_PATH} from '../../Routes/constants';
+import Button from '../../common/Button';
+import {PLAN_PATH} from '@/Routes/constants';
+import Link from 'next/link';
 
 const Main = () => {
-    const router = useRouter();
-    //   const { t } = useTranslation();
-
-    const handleRedirect = () => {
-        router.push('/');
-    };
+    const {t} = useTranslation();
 
     return (
         <Grid container alignItems="center" height="100%" flexDirection="column" py={2}>
             <Grid item xs={6}>
-                <Typography variant="h2">PLAN YOUR TRIP</Typography>
-                {/* <Typography variant="h2">{t("planYourTrip")}</Typography> */}
+                <Typography variant="h2">{t('planYourTrip')}</Typography>
             </Grid>
             <Grid item xs={6}>
-                <Button onClick={handleRedirect} color="primary">
-                    PLAN YOUR TRIP
-                    {/* {t("planYourTrip")} */}
-                </Button>
+                <Link href={PLAN_PATH}>
+                    <Button color="primary">{t('planYourTrip')}</Button>
+                </Link>
             </Grid>
         </Grid>
     );
