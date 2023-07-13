@@ -18,7 +18,7 @@ export const Progress = () => {
 
     return (
         <BoxLoader>
-            <CircularProgress variant="determinate" value={level} color="inherit" size={35} thickness={5} />
+            <CircularProgress variant="determinate" value={level} color="inherit" size={60} thickness={3} />
         </BoxLoader>
     );
 };
