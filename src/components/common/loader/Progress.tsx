@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
-import Box from '@mui/material/Box';
 import {CircularProgress} from '@mui/material';
+import {BoxLoader} from './Styles';
 
 export const Progress = () => {
     const [level, setLevel] = React.useState(0);
@@ -15,9 +15,5 @@ export const Progress = () => {
         };
     }, []);
 
-    return (
-        <Box sx={{display: 'flex'}}>
-            <CircularProgress variant="determinate" value={level} color="inherit" size={35} thickness={5} />
-        </Box>
-    );
+    return <CircularProgress variant="determinate" value={level} color="inherit" size={35} thickness={5} />;
 };

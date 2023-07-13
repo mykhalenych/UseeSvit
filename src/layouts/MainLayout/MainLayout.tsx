@@ -8,9 +8,10 @@ import {authThunkNames} from '../../redux/auth/constants';
 import {getAuthTokens} from '../../common/utils';
 import {selectLoading} from '../../redux/selectors';
 import {ISlicesNames} from '../../redux/types';
-import {Progress} from '../../components/common/Progress';
+import {Progress} from '../../components/common/loader/Progress';
 
-import {BgDiv, Main, Footer, BoxLoader} from './Styles';
+import {BgDiv, Main, Footer} from './Styles';
+import {BoxLoader} from '../../components/common/loader/Styles';
 
 const MainLayout = () => {
     const dispatch = useAppDispatch();
@@ -27,13 +28,12 @@ const MainLayout = () => {
     return (
         <BgDiv>
             <Navigation />
+            {isLoading && (
+                <BoxLoader>
+                    <Progress />
+                </BoxLoader>
+            )}
             <Main>
-                {isLoading && (
-                    <BoxLoader>
-                        {' '}
-                        <Progress />
-                    </BoxLoader>
-                )}
                 <Outlet />
             </Main>
             <Footer />

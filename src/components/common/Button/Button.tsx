@@ -3,7 +3,7 @@ import type {ButtonProps} from '@mui/material';
 
 import StyledButton from './Styles';
 import {CustomButtonProps} from './types';
-import {Progress} from '../Progress';
+import {Progress} from '../loader/Progress';
 
 const Button: React.FC<CustomButtonProps & ButtonProps> = ({
     minWidth = 240,

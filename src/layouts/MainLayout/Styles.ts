@@ -27,17 +27,6 @@ export const Main = styled('main')(() => ({
     position: 'relative',
 }));
 
-export const BoxLoader = styled('div')(({theme}) => ({
-    display: 'flex',
-    position: 'absolute',
-    top: '80%',
-    left: '48%',
-    transform: 'translateY(-50%)',
-    backgroundColor: theme.palette.primary.main,
-    padding: '20px',
-    borderRadius: '50%',
-}));
-
 export const Footer = styled('footer')(({theme}) => ({
     position: 'fixed',
     bottom: 0,

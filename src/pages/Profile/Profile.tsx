@@ -1,4 +1,8 @@
+import React, {useEffect} from 'react';
 import {useForm, FormProvider} from 'react-hook-form';
+import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
+import {ISlicesNames} from '../../redux/types';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Grid, Typography} from '@mui/material';
 
@@ -45,9 +49,9 @@ const Profile = () => {
     const isPasswordFilled = password && passwordConfirmation && newPassword;
     const isPasswordCorrect = !errors.password && !errors.passwordConfirmation && !errors.newPassword;
 
-    const isLoading = useSelector(
-        selectLoading(ISlicesNames.auth, [authThunkNames.changeName, authThunkNames.changePassword]),
-    );
+    const isLoadingChangeName = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.changeName));
+
+    const isLoadingChangePassword = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.changePassword));
 
     const handleChangeName = () => {
         dispatch(changeUserName(newName));
@@ -85,7 +89,7 @@ const Profile = () => {
                                     </Grid>
                                     <Grid item xs={3}>
                                         <Button
-                                            isLoading={isLoading}
+                                            isLoading={isLoadingChangeName}
                                             variant="contained"
                                             color="primary"
                                             minWidth={190}
@@ -124,7 +128,7 @@ const Profile = () => {
                                 </Grid>
                                 <Grid item xs={3}>
                                     <Button
-                                        isLoading={isLoading}
+                                        isLoading={isLoadingChangePassword}
                                         variant="contained"
                                         color="primary"
                                         minWidth={190}

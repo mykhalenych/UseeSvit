@@ -8,7 +8,7 @@ import {useAppDispatch} from '../../../redux/store';
 import {activateUser} from '../../../redux/auth/thunks';
 import {authThunkNames} from '../../../redux/auth/constants';
 import {selectLoading} from '../../../redux/selectors';
-import {Progress} from '../../../components/common/Progress';
+import {Progress} from '../../../components/common/loader/Progress';
 import {ISlicesNames} from '../../../redux/types';
 
 const Activation = () => {
