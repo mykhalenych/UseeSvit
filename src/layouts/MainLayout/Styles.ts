@@ -23,8 +23,6 @@ export const Main = styled('main')(() => ({
     height: 'calc(100vh - 160px)',
     overflow: 'hidden',
     backgroundSize: 'cover',
-    display: 'flex',
-    position: 'relative',
 }));
 
 export const Footer = styled('footer')(({theme}) => ({

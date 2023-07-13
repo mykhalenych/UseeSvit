@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {CircularProgress} from '@mui/material';
+
 import {BoxLoader} from './Styles';
 
 export const Progress = () => {
@@ -15,5 +16,9 @@ export const Progress = () => {
         };
     }, []);
 
-    return <CircularProgress variant="determinate" value={level} color="inherit" size={35} thickness={5} />;
+    return (
+        <BoxLoader>
+            <CircularProgress variant="determinate" value={level} color="inherit" size={35} thickness={5} />
+        </BoxLoader>
+    );
 };

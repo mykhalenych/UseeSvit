@@ -8,10 +8,10 @@ import {Grid, Typography} from '@mui/material';
 
 import {changeUserName, changeUserPassword} from '../../redux/auth/thunks';
 import {selectUser} from '../../redux/auth/selectors';
+import {selectLoading} from '../../redux/selectors';
 import {useAppDispatch} from '../../redux/store';
 import {nameValidation, defaultNameValue, defaultPasswordValue, passwordValidation} from './form';
 import {authThunkNames} from '../../redux/auth/constants';
-import {selectLoading} from '../../redux/selectors';
 import Button from '../../components/common/Button';
 import InputControl from '../../components/common/form/InputControl';
 

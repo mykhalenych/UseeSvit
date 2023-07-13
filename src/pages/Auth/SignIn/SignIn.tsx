@@ -21,9 +21,9 @@ const SignIn = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {t} = useTranslation();
-    const isLoading = useSelector(
-        selectLoading(ISlicesNames.auth, [authThunkNames.logInUser, authThunkNames.signInUser]),
-    );
+    const isLoadingLogIn = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.logInUser));
+    const isLoadingSignInUser = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.signInUser));
+
     const methods = useForm<ISignInProps>({
         resolver: yupResolver(validation),
         defaultValues,
@@ -61,10 +61,15 @@ const SignIn = () => {
                         />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
-                        <Button isLoading={isLoading} onClick={handleRedirect} color="primary" minWidth={120}>
+                        <Button isLoading={isLoadingLogIn} onClick={handleRedirect} color="primary" minWidth={120}>
                             {t('logIn.btn')}
                         </Button>
-                        <Button isLoading={isLoading} type="submit" variant="contained" color="primary" minWidth={120}>
+                        <Button
+                            isLoading={isLoadingSignInUser}
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            minWidth={120}>
                             {t('signUp.btn')}
                         </Button>
                     </Grid>
