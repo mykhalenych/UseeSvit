@@ -1,4 +1,6 @@
 import * as yup from 'yup';
+import i18n from '../../../common/i18n';
+import '../../../common/yupLocale';
 
 export const defaultValues = {
     newPassword: '',
@@ -6,9 +8,9 @@ export const defaultValues = {
 };
 
 export const validation = yup.object().shape({
-    newPassword: yup.string().required('Required field').min(8, 'Password is too short - should be 8 chars minimum'),
+    newPassword: yup.string().required().min(8),
     passwordConfirmation: yup
         .string()
-        .required('Required field')
-        .oneOf([yup.ref('newPassword')], 'The password does not match'),
+        .required()
+        .oneOf([yup.ref('newPassword')], () => i18n.t('isMatch', {ns: 'validation'})),
 });
