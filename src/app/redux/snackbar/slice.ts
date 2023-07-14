@@ -1,8 +1,7 @@
 import type {PrepareAction, Action, SliceCaseReducers, PayloadAction} from '@reduxjs/toolkit';
 import {createSlice} from '@reduxjs/toolkit';
 
-import {IRootState} from '../store';
-import {ISlicesNames, SliceNames} from '../types';
+import {ISlicesNames, SliceNames, IRootState} from '../types';
 
 export interface IActionWithError {
     payload: {message?: string};

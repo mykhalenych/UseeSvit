@@ -1,8 +1,7 @@
 import {isArray, compact, isEqual, keys} from 'lodash';
 import {createSelectorCreator, defaultMemoize} from 'reselect';
 
-import {IRootState} from './store';
-import {SliceNames, StatusesTypes} from './types';
+import {SliceNames, StatusesTypes, IRootState} from './types';
 import {IGenericState} from './createGenericSlice';
 
 export const selectLoading =

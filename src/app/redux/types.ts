@@ -1,5 +1,7 @@
 import type {AsyncThunk} from '@reduxjs/toolkit';
 
+import store from './store';
+
 type GenericAsyncThunk = AsyncThunk<unknown, unknown, any>;
 
 export type PendingAction = ReturnType<GenericAsyncThunk['pending']>;
@@ -37,3 +39,5 @@ export enum ISlicesNames {
 }
 
 export type SliceNames = ISlicesNames;
+
+export type IRootState = ReturnType<typeof store.getState>;

@@ -4,13 +4,13 @@ import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {useForm, FormProvider} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-
-import { changeUserName, changeUserPassword } from '../redux/auth/thunks';
-import { selectUser } from '../redux/auth/selectors';
-import { useAppDispatch } from '../redux/store';
-import { defaultNameValue, defaultPasswordValue, nameValidation, passwordValidation } from './form';
 import {useTranslation} from 'react-i18next';
-import { Grid, Typography } from '@mui/material';
+import {Grid, Typography} from '@mui/material';
+
+import {changeUserName, changeUserPassword} from '../redux/auth/thunks';
+import {selectUser} from '../redux/auth/selectors';
+import {useAppDispatch} from '../redux/store';
+import {defaultNameValue, defaultPasswordValue, nameValidation, passwordValidation} from './form';
 import Button from '../components/common/Button';
 import InputControl from '../components/common/form/InputControl';
 
@@ -63,7 +63,7 @@ const Profile = () => {
     };
 
     return (
-        <div style={{display: 'flex', alignItems: 'center'}}>
+        <Grid container alignItems="center" p={2}>
             <Grid container spacing={2} px={2} alignItems="center">
                 <Grid item xs={12}>
                     <Typography variant="h2">{t('profileMenu.profile')}</Typography>
@@ -135,7 +135,7 @@ const Profile = () => {
                     </FormProvider>
                 </Grid>
             </Grid>
-        </div>
+        </Grid>
     );
 };
 

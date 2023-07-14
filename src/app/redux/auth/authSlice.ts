@@ -48,13 +48,22 @@ export const authData = createGenericSlice<IAuthState, typeof reducers>({
             };
         });
         builder.addCase(changeUserName.fulfilled, (state, action) => {
-            state.data.user.name = action.payload.name;
+            state.data.user.name = {
+                ...state.data.user,
+                name: action.payload,
+            };
         });
         builder.addCase(changeUserTheme.fulfilled, (state, action) => {
-            state.data.user.theme = action.payload;
+            state.data.user = {
+                ...state.data.user,
+                theme: action.payload,
+            };
         });
         builder.addCase(changeUserLanguage.fulfilled, (state, action) => {
-            state.data.user.language = action.payload;
+            state.data.user = {
+                ...state.data.user,
+                language: action.payload,
+            };
         });
         builder.addMatcher(
             (action) => action.type === logInUser.fulfilled.type || action.type === activateUser.fulfilled.type,

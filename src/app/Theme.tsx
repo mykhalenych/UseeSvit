@@ -1,6 +1,6 @@
 'use client';
 
-import React, {FC, useMemo, ReactNode} from 'react';
+import React, {useMemo, ReactNode} from 'react';
 import {ThemeProvider, createTheme} from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import {SnackbarProvider} from 'notistack';

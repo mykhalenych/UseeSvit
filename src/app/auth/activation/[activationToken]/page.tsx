@@ -3,7 +3,7 @@
 import {useEffect} from 'react';
 import {Grid, Typography} from '@mui/material';
 import {useTranslation} from 'react-i18next';
-import { useParams, useRouter } from 'next/navigation';
+import {useParams, useRouter} from 'next/navigation';
 
 import {useAppDispatch} from '../../../redux/store';
 import {activateUser} from '../../../redux/auth/thunks';

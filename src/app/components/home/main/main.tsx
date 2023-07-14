@@ -1,15 +1,28 @@
 'use client';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Grid, Typography} from '@mui/material';
 import {useTranslation} from 'react-i18next';
+import Link from 'next/link';
 
 import Button from '../../common/Button';
 import {PLAN_PATH} from '@/Routes/constants';
-import Link from 'next/link';
+import {useAppDispatch} from '@redux/store';
+import {getAuthTokens} from '@/app/common/utils';
+import {fetchUser} from '@redux/auth/thunks';
 
 const Main = () => {
     const {t} = useTranslation();
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        const token = getAuthTokens();
+
+        if (token) {
+            dispatch(fetchUser());
+        }
+    }, [dispatch]);
 
     return (
         <Grid container alignItems="center" height="100%" flexDirection="column" py={2}>

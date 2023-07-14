@@ -12,7 +12,7 @@ const combinedReducer = combineReducers({
     common: commonData.reducer,
 });
 
-export const store = configureStore({
+const store = configureStore({
     reducer: combinedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
@@ -23,7 +23,5 @@ export const store = configureStore({
 
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
-
-export type IRootState = ReturnType<typeof store.getState>;
 
 export default store;

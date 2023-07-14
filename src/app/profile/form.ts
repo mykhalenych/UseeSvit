@@ -1,5 +1,6 @@
 import {object, string} from 'yup';
-import { validatePasswordConfirmation } from '../common/yupValidationsUtils/validatePasswordConfirmation';
+
+import {validatePasswordConfirmation} from '../common/yupValidationsUtils/validatePasswordConfirmation';
 
 export const defaultNameValue = {
     newName: '',

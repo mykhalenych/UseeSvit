@@ -1,8 +1,8 @@
 import {Dispatch} from 'react';
-import {IRootState} from './store';
+
 import {IGenericState} from './createGenericSlice';
 import type {AnyAction} from '@reduxjs/toolkit';
-import {StatusesTypes} from './types';
+import {StatusesTypes, IRootState} from './types';
 
 export interface ICommonThunkParams {
     force?: boolean;

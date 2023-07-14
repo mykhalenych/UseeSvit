@@ -33,9 +33,11 @@ export const signInUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.signInUser}`,
     async (data: SignInRequest, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('You are signed in!', `${authThunkNames.signInUser}`));
+            const res = await register(data);
 
-            return await register(data);
+            if (res) {
+                dispatch(handleResponse('You are signed in!', `${authThunkNames.signInUser}`));
+            }
         } catch (err) {
             return rejectWithValue({message: err});
         }
@@ -46,9 +48,13 @@ export const logInUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.logInUser}`,
     async (data: LogInRequest, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('You are logged in!', `${authThunkNames.logInUser}`));
+            const res = await login(data);
 
-            return await login(data);
+            if (res) {
+                dispatch(handleResponse('You are logged in!', `${authThunkNames.logInUser}`));
+            }
+
+            return res;
         } catch (err) {
             return rejectWithValue({message: err});
         }
@@ -59,9 +65,13 @@ export const forgotPassword = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.forgotPassword}`,
     async (data: ForgotPasswordRequest, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('Your password has been reset!', `${authThunkNames.forgotPassword}`));
+            const res = await resetPassword(data);
 
-            return await resetPassword(data);
+            if (res) {
+                dispatch(handleResponse('Your password has been reset!', `${authThunkNames.forgotPassword}`));
+            }
+
+            return res;
         } catch (err) {
             return rejectWithValue({message: err});
         }
@@ -83,9 +93,13 @@ export const logoutUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.logoutUser}`,
     async (data: void, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('You are logged out!', `${authThunkNames.logoutUser}`));
+            const res = await logout();
 
-            return await logout();
+            if (res) {
+                dispatch(handleResponse('You are logged out!', `${authThunkNames.logoutUser}`));
+            }
+
+            return res;
         } catch (err) {
             return rejectWithValue({message: err});
         }
@@ -96,9 +110,11 @@ export const newPassword = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.newPassword}`,
     async (data: RecoveryPasswordRequest, {rejectWithValue, dispatch}) => {
         try {
-            const result = await recoveryPassword(data);
+            const res = await recoveryPassword(data);
 
-            dispatch(handleResponse('Password changed successfully!', `${authThunkNames.newPassword}`));
+            if (res) {
+                dispatch(handleResponse('Password changed successfully!', `${authThunkNames.newPassword}`));
+            }
 
             return result;
         } catch (err) {
@@ -109,13 +125,15 @@ export const newPassword = createAsyncThunk(
 
 export const changeUserName = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changeName}`,
-    async (data: string, {rejectWithValue, dispatch}) => {
+    async (name: string, {rejectWithValue, dispatch}) => {
         try {
-            const result = await changeName(data);
+            const res = await changeName(name);
 
-            dispatch(handleResponse('Name changed successfully!', `${authThunkNames.changeName}`));
+            if (res) {
+                dispatch(handleResponse('Name changed successfully!', `${authThunkNames.changeName}`));
+            }
 
-            return result;
+            return res.user.name;
         } catch (err) {
             return rejectWithValue({message: err});
         }
@@ -126,9 +144,11 @@ export const changeUserPassword = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changePassword}`,
     async (data: NewPasswordRequest, {rejectWithValue, dispatch}) => {
         try {
-            const result = await changePassword(data);
+            const res = await changePassword(data);
 
-            dispatch(handleResponse('Password changed successfully!', `${authThunkNames.changePassword}`));
+            if (res) {
+                dispatch(handleResponse('Password changed successfully!', `${authThunkNames.changePassword}`));
+            }
 
             return result;
         } catch (err) {
@@ -141,9 +161,13 @@ export const changeUserLanguage = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changeUserLanguage}`,
     async (language: string, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('Language changed!', `${authThunkNames.changeUserLanguage}`));
+            const res = await changeLanguage(language);
 
-            return await changeLanguage(language);
+            if (res) {
+                dispatch(handleResponse('Language changed!', `${authThunkNames.changeUserLanguage}`));
+            }
+
+            return res.user.language;
         } catch (err) {
             return rejectWithValue({message: err});
         }
@@ -154,9 +178,13 @@ export const changeUserTheme = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.changeUserTheme}`,
     async (theme: string, {rejectWithValue, dispatch}) => {
         try {
-            dispatch(handleResponse('Theme changed!', `${authThunkNames.changeUserTheme}`));
+            const res = await changeTheme(theme);
 
-            return await changeTheme(theme);
+            if (res) {
+                dispatch(handleResponse('Theme changed!', `${authThunkNames.changeUserTheme}`));
+            }
+
+            return res.user.theme;
         } catch (err) {
             return rejectWithValue({message: err});
         }

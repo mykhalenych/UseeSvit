@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, {useCallback, useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
