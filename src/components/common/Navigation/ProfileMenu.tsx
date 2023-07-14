@@ -1,14 +1,18 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {useTranslation} from 'react-i18next';
 
-import {resetAuthToken} from '../../../common/utils';
+import {authThunkNames} from '../../../redux/auth/constants';
 import {logoutUser} from '../../../redux/auth/thunks';
-import {useAppDispatch} from '../../../redux/store';
-import {useNavigate} from 'react-router-dom';
+import {resetAuthToken} from '../../../common/utils';
 import {PROFILE_PATH} from '../../../Routes/constants';
 import {Progress} from '../loader/Progress';
+import {useAppDispatch} from '../../../redux/store';
+import {selectLoading} from '../../../redux/selectors';
+import {ISlicesNames} from '../../../redux/types';
 
 interface IProps {
     anchorEl: HTMLElement | null;
@@ -16,21 +20,18 @@ interface IProps {
 }
 
 const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
-    const [isLoading, setIsLoading] = React.useState(false);
+    const isLoading = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.logoutUser));
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {t} = useTranslation();
 
     const handleLogout = () => {
-        setIsLoading(true);
-
         dispatch(logoutUser()).then((res) => {
             if (res.meta.requestStatus === 'fulfilled') {
                 resetAuthToken();
                 handleClose();
             }
-            setIsLoading(false);
         });
     };
 

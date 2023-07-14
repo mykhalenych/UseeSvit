@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {CircularProgress} from '@mui/material';
 
 import {BoxLoader} from './Styles';
 
 export const Progress = () => {
-    const [level, setLevel] = React.useState(0);
+    const [level, setLevel] = useState(0);
 
     useEffect(() => {
         const timer = setInterval(() => {
