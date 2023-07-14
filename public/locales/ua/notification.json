@@ -1,10 +1,6 @@
 {
-  "signedIn": "Ви увійшли!",
-  "loggedIn": "Ви увійшли в систему!",
-  "passwordHasBeenReset": "Ваш пароль скинуто!",
-  "loggedOut": "Ваш пароль скинуто",
-  "passwordChangedSuccessfully": "Пароль успішно змінено!",
-  "nameChangedSuccessfully": "Ім'я успішно змінено!",
-  "languageChanged": "Мова змінена!",
-  "themeChanged": "Тема змінена!"
+  "isRequired": "Поле є обов'язковим",
+  "isMatch": "Пароль не збігається",
+  "isValidEmail": "Електронна адреса має бути дійсною",
+  "minLength": "Поле є закоротке - має містити мінімум {{min}} символів"
 }

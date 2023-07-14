@@ -5,7 +5,9 @@
     "plugin:react/recommended",
     "plugin:import/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "next",
+    "next/core-web-vitals"
   ],
   "settings": {
     "react": {
@@ -34,8 +36,8 @@
   "plugins": [
     "prettier",
     "react",
-    "react-hooks",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "@next/eslint-plugin-next"
   ],
   "env": {
     "browser": true,

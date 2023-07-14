@@ -3,7 +3,7 @@
 ### Prepare for running app local
 
 * Run `npm install`<br />
-* Run `npm start` <br />
+* Run `npm run dev` <br />
 
 ## React Component code styleguide
 
@@ -56,19 +56,19 @@
     export default MyComponent;
 
 ### Project folder/file structure
-
-    components
-        common
-            Button
-                index.ts
-                Button.tsx
-                ...otherFiles
-            Modal
-            ...
-        pages
-            Login
-                Login.tsx
-                index.ts
+   
+    app 
+       components
+            common
+                Button
+                    index.ts
+                    Button.tsx
+                    ...otherFiles
+                Modal
+                ...
+        auth
+            login
+                page.tsx
                 ...otherFiles
 
 
