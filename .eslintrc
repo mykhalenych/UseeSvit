@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": [
     "plugin:prettier/recommended",
     "eslint:recommended",
@@ -36,8 +37,8 @@
   "plugins": [
     "prettier",
     "react",
-    "@typescript-eslint",
-    "@next/eslint-plugin-next"
+    "@next/eslint-plugin-next",
+    "@typescript-eslint"
   ],
   "env": {
     "browser": true,
@@ -77,5 +78,8 @@
     "import/namespace": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off"
+  },
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
   }
 }

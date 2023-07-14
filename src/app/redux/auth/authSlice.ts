@@ -48,7 +48,7 @@ export const authData = createGenericSlice<IAuthState, typeof reducers>({
             };
         });
         builder.addCase(changeUserName.fulfilled, (state, action) => {
-            state.data.user.name = {
+            state.data.user = {
                 ...state.data.user,
                 name: action.payload,
             };

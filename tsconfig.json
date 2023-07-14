@@ -23,10 +23,11 @@
       "@/*": ["./src/*"],
       "@images*": ["./public/assets/img/*"],
       "@icons*": ["./public/assets/icons/*"],
-      "@redux*": ["./src/app/redux*"],
+      "@redux*": ["./src/app/redux*"]
 
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.js"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "indent": 2
 }

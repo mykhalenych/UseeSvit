@@ -116,7 +116,7 @@ export const newPassword = createAsyncThunk(
                 dispatch(handleResponse('Password changed successfully!', `${authThunkNames.newPassword}`));
             }
 
-            return result;
+            return res;
         } catch (err) {
             return rejectWithValue({message: err});
         }
@@ -150,7 +150,7 @@ export const changeUserPassword = createAsyncThunk(
                 dispatch(handleResponse('Password changed successfully!', `${authThunkNames.changePassword}`));
             }
 
-            return result;
+            return res;
         } catch (err) {
             return rejectWithValue({message: err});
         }

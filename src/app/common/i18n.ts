@@ -8,29 +8,32 @@ import NotificationEn from '../../../public/locales/en/notification.json';
 import NotificationUa from '../../../public/locales/ua/notification.json';
 import ValidationUa from '../../../public/locales/ua/validation.json';
 import ValidationEn from '../../../public/locales/en/validation.json';
-
+import {buildYupLocale} from './buildYupLocale';
 // eslint-disable-next-line import/no-named-as-default-member
 i18n.use(Backend)
     .use(initReactI18next)
-    .init({
-        lng: 'en',
-        fallbackLng: 'en',
-        debug: false,
-        interpolation: {
-            escapeValue: false,
-        },
-        resources: {
-            en: {
-                translation: TranslationEn,
-                notification: NotificationEn,
-                validation: ValidationUa,
+    .init(
+        {
+            lng: 'en',
+            fallbackLng: 'en',
+            debug: false,
+            interpolation: {
+                escapeValue: false,
             },
-            ua: {
-                translation: TranslationUa,
-                notification: NotificationUa,
-                validation: ValidationEn,
+            resources: {
+                en: {
+                    translation: TranslationEn,
+                    notification: NotificationEn,
+                    validation: ValidationUa,
+                },
+                ua: {
+                    translation: TranslationUa,
+                    notification: NotificationUa,
+                    validation: ValidationEn,
+                },
             },
         },
-    });
+        buildYupLocale,
+    );
 
 export default i18n;
