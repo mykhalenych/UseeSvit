@@ -1,3 +1,5 @@
+'use client';
+
 import React, {useEffect, useState} from 'react';
 import {CircularProgress} from '@mui/material';
 
@@ -18,7 +20,7 @@ export const Progress = () => {
 
     return (
         <BoxLoader>
-            <CircularProgress variant="determinate" value={level} color="inherit" size={60} thickness={3} />
+            <CircularProgress variant="determinate" value={level} color="primary" size={60} thickness={3} />
         </BoxLoader>
     );
 };
