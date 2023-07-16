@@ -4,7 +4,8 @@ import type {Metadata} from 'next';
 import ReduxProvider from './redux/redux-provider';
 import Theme from './Theme';
 import Navigation from './components/common/Navigation/Navigation';
-import {Footer, Main} from './layouts/MainLayout/Styles';
+import {Main} from './components/main/Styles';
+import {Footer} from './components/footer/Styles';
 
 const roboto = Roboto({
     subsets: ['cyrillic', 'latin'],

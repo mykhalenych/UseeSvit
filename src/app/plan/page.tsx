@@ -5,7 +5,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 
 import {IPlan} from './types';
 import {defaultValues, validation} from './form';
-import GoogleMapsLoader from '../layouts/GoogleMapsLoader';
+import GoogleMapsLoader from './GoogleMapsLoader';
 
 const Plan = () => {
     const methods = useForm<IPlan>({
