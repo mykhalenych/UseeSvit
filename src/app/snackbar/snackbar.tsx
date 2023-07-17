@@ -3,12 +3,12 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useSnackbar} from 'notistack';
-import type {VariantType} from 'notistack';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
-import {selectMessages, hideMessage, removeMessage} from '../../redux/snackbar/slice';
-import {useAppDispatch} from '../../redux/store';
+import type {VariantType} from 'notistack';
+import {selectMessages, hideMessage, removeMessage} from '../redux/snackbar/slice';
+import {useAppDispatch} from '../redux/store';
 
 export const Snackbar: React.FC = () => {
     const [displayed, setDisplayed] = useState<number[]>([]);

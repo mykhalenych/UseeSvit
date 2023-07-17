@@ -7,9 +7,9 @@ import {SnackbarProvider} from 'notistack';
 import {useSelector} from 'react-redux';
 
 import {lightTheme, darkTheme} from './common/themes/themes';
-import Snackbar from './layouts/Snackbar';
 import {IThemeNames} from './redux/common/types';
 import {selectUser} from './redux/auth/selectors';
+import Snackbar from './snackbar';
 
 const Theme = ({children}: {children: ReactNode}) => {
     const user = useSelector(selectUser);

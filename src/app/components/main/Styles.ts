@@ -8,11 +8,3 @@ export const Main = styled('main')(() => ({
     overflow: 'hidden',
     backgroundSize: 'cover',
 }));
-
-export const Footer = styled('footer')(({theme}) => ({
-    position: 'fixed',
-    bottom: 0,
-    width: '100%',
-    height: 80,
-    backgroundColor: theme.palette.primary.main,
-}));
