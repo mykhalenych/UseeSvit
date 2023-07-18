@@ -8,12 +8,13 @@ const Button: React.FC<CustomButtonProps & ButtonProps> = ({
     minWidth = 240,
     variant = 'outlined',
     color = 'primary',
+    isLoading = false,
     children,
     ...rest
 }) => {
     return (
         <StyledButton sx={{minWidth: minWidth}} variant={variant} color={color} {...rest}>
-            <CircularProgress color="primary" size={23} thickness={3} /> {children}
+            {isLoading ? <CircularProgress color="secondary" size={24} thickness={3} /> : children}
         </StyledButton>
     );
 };

@@ -1,18 +1,22 @@
 'use client';
 
+import {useSelector} from 'react-redux';
 import {useForm, FormProvider} from 'react-hook-form';
 import {Grid, Typography} from '@mui/material';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useTranslation} from 'react-i18next';
 import {useRouter} from 'next/navigation';
 
-import {validation} from './form';
-import {CHECK_EMAIL_PATH, LOGIN_PATH} from '../../../Routes/constants';
-import {IForgotPassProps} from './types';
+import {selectLoading} from '@/app/redux/selectors';
+import {authThunkNames} from '@/app/redux/auth/constants';
 import {useAppDispatch} from '@/app/redux/store';
 import {forgotPassword} from '@/app/redux/auth/thunks';
+import {ISlicesNames} from '@/app/redux/types';
+import {validation} from './form';
+import {CHECK_EMAIL_PATH, LOGIN_PATH} from '../../../Routes/constants';
 import InputControl from '@/app/components/common/form/InputControl';
 import Button from '@/app/components/common/Button';
+import {IForgotPassProps} from './types';
 
 const ForgotPassword = () => {
     const dispatch = useAppDispatch();
@@ -35,6 +39,8 @@ const ForgotPassword = () => {
         router.push(LOGIN_PATH);
     };
 
+    const isLoading = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.forgotPassword));
+
     return (
         <FormProvider {...methods}>
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -46,7 +52,7 @@ const ForgotPassword = () => {
                         <InputControl control={control} label={t('emailAddress')} name="email" fullWidth />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
-                        <Button onClick={handleRedirect} color="primary" minWidth={100}>
+                        <Button isLoading={isLoading} onClick={handleRedirect} color="primary" minWidth={100}>
                             {t('logIn.btn')}
                         </Button>
                         <Button type="submit" variant="contained" color="primary" minWidth={180}>
