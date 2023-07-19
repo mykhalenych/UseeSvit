@@ -52,10 +52,10 @@ const ForgotPassword = () => {
                         <InputControl control={control} label={t('emailAddress')} name="email" fullWidth />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
-                        <Button isLoading={isLoading} onClick={handleRedirect} color="primary" minWidth={100}>
+                        <Button onClick={handleRedirect} color="primary" minWidth={100}>
                             {t('logIn.btn')}
                         </Button>
-                        <Button type="submit" variant="contained" color="primary" minWidth={180}>
+                        <Button isLoading={isLoading} type="submit" variant="contained" color="primary" minWidth={180}>
                             {t('sendInstructions')}
                         </Button>
                     </Grid>

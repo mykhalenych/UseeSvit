@@ -8,11 +8,14 @@ import {useTranslation} from 'react-i18next';
 import {Grid, Typography} from '@mui/material';
 
 import {changeUserName, changeUserPassword} from '../redux/auth/thunks';
+import {authThunkNames} from '../redux/auth/constants';
 import {selectUser} from '../redux/auth/selectors';
 import {useAppDispatch} from '../redux/store';
 import {defaultNameValue, defaultPasswordValue, nameValidation, passwordValidation} from './form';
 import Button from '../components/common/Button';
 import InputControl from '../components/common/form/InputControl';
+import {selectLoading} from '../redux/selectors';
+import {ISlicesNames} from '../redux/types';
 
 const Profile = () => {
     const dispatch = useAppDispatch();
@@ -62,6 +65,9 @@ const Profile = () => {
         );
     };
 
+    const isLoadingChangeName = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.changeName));
+    const isLoadingChangePassword = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.changePassword));
+
     return (
         <Grid container alignItems="center" p={2}>
             <Grid container spacing={2} px={2} alignItems="center">
@@ -84,6 +90,7 @@ const Profile = () => {
                                     </Grid>
                                     <Grid item xs={3}>
                                         <Button
+                                            isLoading={isLoadingChangeName}
                                             variant="contained"
                                             color="primary"
                                             minWidth={190}
@@ -122,6 +129,7 @@ const Profile = () => {
                                 </Grid>
                                 <Grid item xs={3}>
                                     <Button
+                                        isLoading={isLoadingChangePassword}
                                         variant="contained"
                                         color="primary"
                                         minWidth={190}
