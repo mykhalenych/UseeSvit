@@ -1,3 +1,5 @@
+import {changeLanguage as i18nextChangeLanguage} from 'i18next';
+
 import {createAsyncThunk} from '@reduxjs/toolkit';
 
 import {authThunkNames} from './constants';
@@ -20,9 +22,14 @@ import {NewPasswordRequest} from '../../services/profile/types';
 
 export const fetchUser = createAsyncThunk(
     `${ISlicesNames.auth}/${authThunkNames.fetchUser}`,
-    async (data: void, {rejectWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
-            return await getUser();
+            const userData = await getUser();
+            if (userData.language) {
+                i18nextChangeLanguage(userData.language as string);
+            }
+
+            return userData;
         } catch (err) {
             return rejectWithValue({message: err});
         }
