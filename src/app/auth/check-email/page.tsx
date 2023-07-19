@@ -19,15 +19,13 @@ const CheckEmail = () => {
         router.push(LOGIN_PATH);
     };
 
-    const isLoading = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.fetchUser));
-
     return (
         <Grid container spacing={2} px={2} justifyContent="center" alignItems="center">
             <Grid item xs={12}>
                 <Typography variant="h3">{t('checkEmail')}</Typography>
             </Grid>
             <Grid item container justifyContent="center" xs={12}>
-                <Button isLoading={isLoading} onClick={handleRedirect} color="primary" minWidth={180}>
+                <Button onClick={handleRedirect} color="primary" minWidth={180}>
                     {t('goToLogin')}
                 </Button>
             </Grid>

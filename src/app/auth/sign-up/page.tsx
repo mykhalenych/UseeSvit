@@ -39,7 +39,6 @@ const SignUp = () => {
         router.push(LOGIN_PATH);
     };
 
-    const isLoadingLogIn = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.logInUser));
     const isLoadingSignIn = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.signInUser));
 
     return (
@@ -65,7 +64,7 @@ const SignUp = () => {
                         />
                     </Grid>
                     <Grid container item xs={12} justifyContent="space-between">
-                        <Button isLoading={isLoadingLogIn} onClick={handleRedirect} color="primary" minWidth={120}>
+                        <Button onClick={handleRedirect} color="primary" minWidth={120}>
                             {t('logIn.btn')}
                         </Button>
                         <Button

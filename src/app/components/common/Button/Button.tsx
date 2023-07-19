@@ -13,7 +13,7 @@ const Button: React.FC<CustomButtonProps & ButtonProps> = ({
     ...rest
 }) => {
     return (
-        <StyledButton sx={{minWidth: minWidth}} variant={variant} color={color} {...rest}>
+        <StyledButton sx={{minWidth: minWidth}} variant={variant} color={color} {...rest} disabled={isLoading}>
             {isLoading ? <CircularProgress color="inherit" size={24} thickness={3} /> : children}
         </StyledButton>
     );
