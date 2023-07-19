@@ -1,8 +1,9 @@
 'use client';
 
-import {BoxLoader} from '@/components/common/loader/Styles';
 import {CSSProperties} from 'react';
 import {RingLoader} from 'react-spinners';
+
+import {BoxLoader} from '@/components/common/loader/Styles';
 
 const override: CSSProperties = {
     display: 'block',

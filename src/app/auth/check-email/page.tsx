@@ -3,11 +3,7 @@
 import {Grid, Typography} from '@mui/material';
 import {useTranslation} from 'react-i18next';
 import {useRouter} from 'next/navigation';
-import {useSelector} from 'react-redux';
 
-import {selectLoading} from '@/app/redux/selectors';
-import {ISlicesNames} from '@/app/redux/types';
-import {authThunkNames} from '@/app/redux/auth/constants';
 import Button from '@/app/components/common/Button';
 import {LOGIN_PATH} from '@/Routes/constants';
 
