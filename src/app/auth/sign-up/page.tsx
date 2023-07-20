@@ -5,14 +5,18 @@ import {Grid, Typography} from '@mui/material';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useTranslation} from 'react-i18next';
 import {useRouter} from 'next/navigation';
+import {useSelector} from 'react-redux';
 
 import {validation, defaultValues} from './form';
-import {ISignInProps} from './types';
 import {useAppDispatch} from '@/app/redux/store';
+import {authThunkNames} from '@/app/redux/auth/constants';
+import {selectLoading} from '@/app/redux/selectors';
 import {CHECK_EMAIL_PATH, LOGIN_PATH} from '@/Routes/constants';
 import {signInUser} from '@/app/redux/auth/thunks';
 import InputControl from '@/app/components/common/form/InputControl';
 import Button from '@/app/components/common/Button';
+import {ISlicesNames} from '@/app/redux/types';
+import {ISignInProps} from './types';
 
 const SignUp = () => {
     const dispatch = useAppDispatch();
@@ -34,6 +38,8 @@ const SignUp = () => {
     const handleRedirect = () => {
         router.push(LOGIN_PATH);
     };
+
+    const isLoadingSignIn = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.signInUser));
 
     return (
         <FormProvider {...methods}>
@@ -61,7 +67,12 @@ const SignUp = () => {
                         <Button onClick={handleRedirect} color="primary" minWidth={120}>
                             {t('logIn.btn')}
                         </Button>
-                        <Button type="submit" variant="contained" color="primary" minWidth={120}>
+                        <Button
+                            isLoading={isLoadingSignIn}
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            minWidth={120}>
                             {t('signUp.btn')}
                         </Button>
                     </Grid>

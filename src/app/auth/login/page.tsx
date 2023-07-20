@@ -13,6 +13,10 @@ import {useAppDispatch} from '@/app/redux/store';
 import {logInUser} from '@/app/redux/auth/thunks';
 import InputControl from '@/app/components/common/form/InputControl';
 import Button from '@/app/components/common/Button';
+import {selectLoading} from '@/app/redux/selectors';
+import {useSelector} from 'react-redux';
+import {ISlicesNames} from '@/app/redux/types';
+import {authThunkNames} from '@/app/redux/auth/constants';
 
 const Login = () => {
     const router = useRouter();
@@ -32,6 +36,8 @@ const Login = () => {
     const handleRedirect = (path: string) => {
         router.push(path);
     };
+
+    const isLoading = useSelector(selectLoading(ISlicesNames.auth, authThunkNames.logInUser));
 
     return (
         <FormProvider {...methods}>
@@ -63,7 +69,7 @@ const Login = () => {
                             minWidth={180}>
                             {t('forgotPassword.btn')}
                         </Button>
-                        <Button type="submit" variant="contained" color="primary" minWidth={100}>
+                        <Button isLoading={isLoading} type="submit" variant="contained" color="primary" minWidth={100}>
                             {t('logIn.btn')}
                         </Button>
                     </Grid>
