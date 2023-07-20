@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
-import {Grid, IconButton} from '@mui/material';
+import {Box, Grid, IconButton} from '@mui/material';
 import {changeLanguage} from 'i18next';
 import {useRouter} from 'next/navigation';
 
@@ -10,17 +10,16 @@ import {useAppDispatch} from '../../../redux/store';
 import {selectUser} from '../../../redux/auth/selectors';
 import {changeUserLanguage, changeUserTheme} from '../../../redux/auth/thunks';
 import ProfileMenu from './ProfileMenu';
-import Select from '../inputs/Select';
-import {IThemeNames} from '../../../redux/common/types';
 import {LOGIN_PATH} from '@/Routes/constants';
-
-import {BackgroundDiv} from './Styles';
 import {ProfileIcon} from '@/icons/profile-icon';
 import {LogoIcon} from '@/icons/logo-icon';
 import {DarkModeIcon} from '@/icons/dark-mode-icon';
 import {LightModeIcon} from '@/icons/light-mode-icon';
 import {PlanetIcon} from '@/icons/planet-icon';
+import CustomizedSwitches from '../Switch/Switch';
+import {IThemeNames} from '../../../redux/common/types';
 
+import {BackgroundDiv} from './Styles';
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [isEditing, setIsEditing] = useState(false);
@@ -45,9 +44,7 @@ const Navigation = () => {
         setAnchorEl(null);
     };
 
-    const handleLanguage = (value: string) => {
-        if (value === user.language) return;
-
+    const handleLanguageChange = (value: string) => {
         dispatch(changeUserLanguage(value)).then((res) => {
             res.meta.requestStatus === 'fulfilled' && changeLanguage(res.payload as string);
         });
@@ -58,7 +55,7 @@ const Navigation = () => {
             <Grid container justifyContent="space-between" px={2}>
                 <Grid item display="flex" alignItems="center">
                     {user.id && (
-                        <>
+                        <Box style={{width: 220}}>
                             <IconButton color="primary" onClick={handleThemeChange}>
                                 {user.theme === IThemeNames.light ? <DarkModeIcon /> : <LightModeIcon />}
                             </IconButton>
@@ -66,18 +63,9 @@ const Navigation = () => {
                                 <PlanetIcon />
                             </IconButton>
                             {isEditing && (
-                                <Select
-                                    defaultValue={user.language}
-                                    parentOnChange={(value) => handleLanguage(value)}
-                                    name="language"
-                                    options={[
-                                        {id: 'en', displayName: 'English'},
-                                        {id: 'ua', displayName: 'Ukrainian'},
-                                    ]}
-                                    label="Translation"
-                                />
+                                <CustomizedSwitches onLanguageChange={handleLanguageChange} language={user.language} />
                             )}
-                        </>
+                        </Box>
                     )}
                 </Grid>
                 <IconButton color="primary" onClick={() => handleRedirect('/')}>
