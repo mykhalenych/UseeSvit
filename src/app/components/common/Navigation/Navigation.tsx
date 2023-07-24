@@ -15,14 +15,13 @@ import {ProfileIcon} from '@/icons/profile-icon';
 import {LogoIcon} from '@/icons/logo-icon';
 import {DarkModeIcon} from '@/icons/dark-mode-icon';
 import {LightModeIcon} from '@/icons/light-mode-icon';
-import {PlanetIcon} from '@/icons/planet-icon';
-import CustomizedSwitches from '../Switch/Switch';
+import ColorToggleButton from '../Toggle';
 import {IThemeNames} from '../../../redux/common/types';
 
 import {BackgroundDiv} from './Styles';
+
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const [isEditing, setIsEditing] = useState(false);
     const router = useRouter();
 
     const dispatch = useAppDispatch();
@@ -55,16 +54,12 @@ const Navigation = () => {
             <Grid container justifyContent="space-between" px={2}>
                 <Grid item display="flex" alignItems="center">
                     {user.id && (
-                        <Box style={{width: 220}}>
+                        <Box style={{width: 120}}>
                             <IconButton color="primary" onClick={handleThemeChange}>
                                 {user.theme === IThemeNames.light ? <DarkModeIcon /> : <LightModeIcon />}
                             </IconButton>
-                            <IconButton color="primary" onClick={() => setIsEditing(true)}>
-                                <PlanetIcon />
-                            </IconButton>
-                            {isEditing && (
-                                <CustomizedSwitches onLanguageChange={handleLanguageChange} language={user.language} />
-                            )}
+
+                            <ColorToggleButton language={user.language} onLanguageChange={handleLanguageChange} />
                         </Box>
                     )}
                 </Grid>
