@@ -4,6 +4,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
+import {t} from 'i18next';
 import {useStateMachine} from 'little-state-machine';
 import {SetStateAction} from 'react';
 import {useForm} from 'react-hook-form';
@@ -33,7 +34,7 @@ const SecondStep: React.FC<Props> = ({expanded, handleChange, setExpanded}) => {
     return (
         <Accordion expanded={expanded === StepTypes.secondStep} onChange={handleChange(StepTypes.secondStep)}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2bh-content" id="panel2bh-header">
-                <Typography sx={{width: '33%', flexShrink: 0}}>Location</Typography>
+                <Typography sx={{width: '33%', flexShrink: 0}}>{t('plan.location')}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -43,7 +44,7 @@ const SecondStep: React.FC<Props> = ({expanded, handleChange, setExpanded}) => {
                         </Grid>
                     </Grid>
                     <Button variant="contained" color="primary" type="submit" minWidth={100}>
-                        NEXT
+                        {t('plan.nextButton')}
                     </Button>
                 </form>
             </AccordionDetails>

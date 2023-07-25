@@ -3,6 +3,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
+import {t} from 'i18next';
 import {useStateMachine} from 'little-state-machine';
 import {SetStateAction} from 'react';
 import {useForm} from 'react-hook-form';
@@ -32,12 +33,12 @@ const ThirdStep: React.FC<Props> = ({expanded, handleChange, setExpanded}) => {
     return (
         <Accordion expanded={expanded === StepTypes.thirdStep} onChange={handleChange(StepTypes.thirdStep)}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3bh-content" id="panel3bh-header">
-                <Typography sx={{width: '33%', flexShrink: 0}}>Search</Typography>
+                <Typography sx={{width: '33%', flexShrink: 0}}>{t('plan.searchButton')}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
                     <Button variant="contained" color="primary" type="submit" minWidth={100}>
-                        Search
+                        {t('plan.searchButton')}
                     </Button>
                 </form>
             </AccordionDetails>

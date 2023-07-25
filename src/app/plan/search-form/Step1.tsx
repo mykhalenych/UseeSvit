@@ -4,6 +4,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
+import {t} from 'i18next';
 import {useStateMachine} from 'little-state-machine';
 import {SetStateAction} from 'react';
 import {useForm} from 'react-hook-form';
@@ -20,6 +21,7 @@ type Props = {
 };
 
 const FirstStep: React.FC<Props> = ({expanded, handleChange, setExpanded}) => {
+    //TODO: Add types after it's known what will be in the useForm
     const methods = useForm<any>();
     const {handleSubmit, control} = methods;
 
@@ -33,7 +35,7 @@ const FirstStep: React.FC<Props> = ({expanded, handleChange, setExpanded}) => {
     return (
         <Accordion expanded={expanded === StepTypes.firstStep} onChange={handleChange(StepTypes.firstStep)}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content" id="panel1bh-header">
-                <Typography sx={{width: '33%', flexShrink: 0}}>Type of activities</Typography>
+                <Typography sx={{width: '33%', flexShrink: 0}}>{t('plan.activities')}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -43,7 +45,7 @@ const FirstStep: React.FC<Props> = ({expanded, handleChange, setExpanded}) => {
                         </Grid>
                     </Grid>
                     <Button variant="contained" color="primary" type="submit" minWidth={100}>
-                        NEXT
+                        {t('plan.nextButton')}
                     </Button>
                 </form>
             </AccordionDetails>
