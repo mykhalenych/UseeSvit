@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
-import {Box, Grid, IconButton} from '@mui/material';
+import {Grid, IconButton} from '@mui/material';
 import {changeLanguage} from 'i18next';
 import {useRouter} from 'next/navigation';
 
