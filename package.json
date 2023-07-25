@@ -33,6 +33,7 @@
         "eslint-plugin-prettier": "^4.2.1",
         "i18next": "^23.2.6",
         "i18next-http-backend": "^2.2.1",
+        "little-state-machine": "^4.8.0",
         "lodash": "^4.17.21",
         "next": "13.4.9",
         "notistack": "^3.0.1",
