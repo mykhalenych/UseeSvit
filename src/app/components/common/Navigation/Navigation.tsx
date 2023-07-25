@@ -54,7 +54,7 @@ const Navigation = () => {
             <Grid container justifyContent="space-between" px={2}>
                 <Grid item display="flex" alignItems="center">
                     {user.id && (
-                        <Box style={{width: 120}}>
+                        <Box>
                             <IconButton color="primary" onClick={handleThemeChange}>
                                 {user.theme === IThemeNames.light ? <DarkModeIcon /> : <LightModeIcon />}
                             </IconButton>

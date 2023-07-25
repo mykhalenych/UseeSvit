@@ -1,17 +1,17 @@
 import React from 'react';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+
+import {StyledToggleButton} from './Styles';
 
 type CustomizedSwitchesProps = {
     language: string;
     onLanguageChange: (language: string) => void;
 };
 
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import {StyledToggleButton} from './Styles';
-
 export default function ColorToggleButton({language, onLanguageChange}: CustomizedSwitchesProps) {
-    const handleChange = (event: React.MouseEvent<HTMLElement>, newAlignment: string) => {
-        if (newAlignment) {
-            onLanguageChange(newAlignment);
+    const handleChange = (event: React.MouseEvent<HTMLElement>, newLanguage: string) => {
+        if (newLanguage) {
+            onLanguageChange(newLanguage);
         }
     };
 
