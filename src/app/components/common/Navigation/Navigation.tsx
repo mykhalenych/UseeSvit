@@ -54,13 +54,12 @@ const Navigation = () => {
             <Grid container justifyContent="space-between" px={2}>
                 <Grid item display="flex" alignItems="center">
                     {user.id && (
-                        <Box>
+                        <>
                             <IconButton color="primary" onClick={handleThemeChange}>
                                 {user.theme === IThemeNames.light ? <DarkModeIcon /> : <LightModeIcon />}
                             </IconButton>
-
                             <ColorToggleButton language={user.language} onLanguageChange={handleLanguageChange} />
-                        </Box>
+                        </>
                     )}
                 </Grid>
                 <IconButton color="primary" onClick={() => handleRedirect('/')}>
