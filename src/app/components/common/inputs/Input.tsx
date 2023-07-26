@@ -56,6 +56,7 @@ const Input: React.FC<IInputProps & TextFieldProps> = ({
             margin={margin}
             value={currentValue}
             color="primary"
+            InputLabelProps={{shrink: true}}
             {...textFieldProps}
         />
     );
