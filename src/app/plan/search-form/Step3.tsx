@@ -19,6 +19,7 @@ type Props = {
 };
 
 const ThirdStep: React.FC<Props> = ({expanded, handleChange, setExpanded}) => {
+    //TODO: Add types after it's known what will be in the useForm
     const methods = useForm<any>();
 
     const {handleSubmit} = methods;
