@@ -38,5 +38,11 @@
         "newName": "New name",
         "confirmPassword": "Confirm password",
         "change": "Change"
+    },
+    "plan": {
+        "activities": "Type of activities",
+        "location": "Location",
+        "nextButton": "Next",
+        "searchButton": "Search"
     }
 }

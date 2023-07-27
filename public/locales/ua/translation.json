@@ -38,5 +38,11 @@
         "newName": "Нове ім'я",
         "confirmPassword": "Новий пароль",
         "change": "Змінити"
+    },
+    "plan": {
+        "activities": "Вид активності",
+        "location": "Місцезнаходження",
+        "nextButton": "Далі",
+        "searchButton": "Пошук"
     }
 }
