@@ -68,7 +68,7 @@
                 ...
         auth
             login
-                page.tsx
+                Step.tsx
                 ...otherFiles
 
 
