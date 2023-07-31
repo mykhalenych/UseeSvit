@@ -1,27 +1,39 @@
 import {useState} from 'react';
-import {FieldValues, useFieldArray, useForm} from 'react-hook-form';
+import {useFieldArray, useForm} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
+import {useStateMachine} from 'little-state-machine';
 import {Grid, IconButton} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 
 import GoogleAutocompleteControl from '@/app/components/common/form/GoogleAutocompleteControl';
+import Button from '@/app/components/common/Button';
 import {StyledButton} from '@/app/plan/FieldArray/Styles';
+import {StepTypes} from '@/app/plan/search-form/StepTypes';
+import updateAction from '@/app/plan/search-form/updateAction';
 
 type Props = {
-    control: any;
+    setExpanded: any;
 };
 
-const FieldArray: React.FC<Props> = ({control}) => {
+const FieldArray: React.FC<Props> = ({setExpanded}) => {
     const [hoveredElement, setHoveredElement] = useState<null | string>(null);
+
     const {t} = useTranslation();
-    const {register} = useForm<FieldValues>({
+    const methods = useForm<any>({
         defaultValues: {
             additional: [{value: ''}, {value: ''}],
         },
     });
-    const {fields, append, remove, move} = useFieldArray({control, name: 'additional'});
+    const {handleSubmit, control, register} = methods;
+    const {fields, append, remove, move} = useFieldArray({control, name: 'fields'});
+    const {actions} = useStateMachine({updateAction});
+
+    const onSubmit = (data: string) => {
+        actions.updateAction(data);
+        setExpanded(StepTypes.thirdStep);
+    };
 
     const onAppend = () => {
         append({value: ''});
@@ -36,7 +48,7 @@ const FieldArray: React.FC<Props> = ({control}) => {
     };
 
     return (
-        <>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Grid container alignItems="center">
                 <Grid item xs>
                     {fields.map(({id}, index) => (
@@ -79,7 +91,10 @@ const FieldArray: React.FC<Props> = ({control}) => {
                     </StyledButton>
                 </Grid>
             </Grid>
-        </>
+            <Button variant="contained" color="primary" type="submit" minWidth={100}>
+                {t('plan.nextButton')}
+            </Button>
+        </form>
     );
 };
 
