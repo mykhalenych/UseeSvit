@@ -6,6 +6,7 @@ import FieldArray from '@/app/plan/FieldArray';
 import Map from '@/app/components/Map';
 import {IPlan} from '@/app/plan/types';
 import {libraries} from './constants';
+import SearchForm from '../search-form/search-form';
 
 type Props = {
     children?: React.ReactNode;
@@ -18,12 +19,18 @@ const GoogleMapsLoader: React.FC<Props> = ({children, methods}) => {
     return (
         <LoadScript googleMapsApiKey={googleMapsApiKey} libraries={libraries} loadingElement={<div>Loading...</div>}>
             <Grid container height="100%">
-                <Grid item xs={6} px={2}>
+                <Grid item xs={4} px={2}>
                     <FormProvider {...methods}>
                         <FieldArray />
+                        <Grid container>
+                            <Grid item xs={10}>
+                                <GoogleAutocompleteControl name="search" control={methods.control} />
+                                <SearchForm />
+                            </Grid>
+                        </Grid>
                     </FormProvider>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={8}>
                     <Map />
                 </Grid>
             </Grid>
