@@ -38,7 +38,7 @@ const SecondStep: React.FC<Props> = ({expanded, handleChange, setExpanded}) => {
             </AccordionSummary>
             <AccordionDetails>
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                    <FieldArray />
+                    <FieldArray control={control} />
                     <Button variant="contained" color="primary" type="submit" minWidth={100}>
                         {t('plan.nextButton')}
                     </Button>

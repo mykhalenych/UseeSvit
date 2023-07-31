@@ -9,10 +9,14 @@ import SwapVertIcon from '@mui/icons-material/SwapVert';
 import GoogleAutocompleteControl from '@/app/components/common/form/GoogleAutocompleteControl';
 import {StyledButton} from '@/app/plan/FieldArray/Styles';
 
-const FieldArray = () => {
+type Props = {
+    control: any;
+};
+
+const FieldArray: React.FC<Props> = ({control}) => {
     const [hoveredElement, setHoveredElement] = useState<null | string>(null);
     const {t} = useTranslation();
-    const {register, control} = useForm<FieldValues>({
+    const {register} = useForm<FieldValues>({
         defaultValues: {
             additional: [{value: ''}, {value: ''}],
         },
