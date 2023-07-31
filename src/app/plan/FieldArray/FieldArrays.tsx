@@ -31,11 +31,6 @@ const FieldArray = () => {
         move(0, 1);
     };
 
-    const onNext = () => {
-        // eslint-disable-next-line no-console
-        console.log('next');
-    };
-
     return (
         <>
             <Grid container alignItems="center">
@@ -77,11 +72,6 @@ const FieldArray = () => {
                     <StyledButton type="button" onClick={onAppend}>
                         <AddIcon />
                         {t('addDestination')}
-                    </StyledButton>
-                </Grid>
-                <Grid item>
-                    <StyledButton type="button" onClick={onNext}>
-                        {t('next')}
                     </StyledButton>
                 </Grid>
             </Grid>

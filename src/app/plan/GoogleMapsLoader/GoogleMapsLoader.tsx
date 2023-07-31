@@ -2,12 +2,10 @@ import {LoadScript} from '@react-google-maps/api';
 import {FormProvider, UseFormReturn} from 'react-hook-form';
 import {Grid} from '@mui/material';
 
-import FieldArray from '@/app/plan/FieldArray';
 import Map from '@/app/components/Map';
 import {IPlan} from '@/app/plan/types';
 import {libraries} from './constants';
 import SearchForm from '../search-form/search-form';
-import GoogleAutocompleteControl from '@/app/components/common/form/GoogleAutocompleteControl';
 
 type Props = {
     children?: React.ReactNode;
@@ -22,10 +20,8 @@ const GoogleMapsLoader: React.FC<Props> = ({children, methods}) => {
             <Grid container height="100%">
                 <Grid item xs={4} px={2}>
                     <FormProvider {...methods}>
-                        <FieldArray />
                         <Grid container>
                             <Grid item xs={10}>
-                                <GoogleAutocompleteControl name="search" control={methods.control} />
                                 <SearchForm />
                             </Grid>
                         </Grid>
