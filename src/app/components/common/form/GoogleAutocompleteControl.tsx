@@ -10,11 +10,13 @@ import Autocomplete from '../inputs/Autocomplete';
 interface IGoogleAutocompleteProps<T extends FieldValues> {
     control: Control<T>;
     name: string;
+    placeholder: string;
 }
 
 const GoogleAutocompleteControl = <T extends FieldValues>({
     control,
     name,
+    placeholder,
 }: IGoogleAutocompleteProps<T> & TextFieldProps) => {
     const {placesService, placePredictions, getPlacePredictions} = usePlacesService({});
 
@@ -55,6 +57,7 @@ const GoogleAutocompleteControl = <T extends FieldValues>({
         <Autocomplete
             field={field as ControllerRenderProps<T, Path<T>> & ControllerRenderProps}
             options={options}
+            placeholder={placeholder}
             labelKey="long_name"
             valueKey="short_name"
             textFieldProps={errorProps}
