@@ -23,7 +23,7 @@ const FieldArray: React.FC<Props> = ({setExpanded}) => {
     const {t} = useTranslation();
     const methods = useForm<any>({
         defaultValues: {
-            additional: [{value: ''}, {value: ''}],
+            fields: [{value: ''}, {value: ''}],
         },
     });
     const {handleSubmit, control, register} = methods;
