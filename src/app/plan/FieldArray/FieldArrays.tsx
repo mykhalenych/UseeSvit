@@ -51,7 +51,6 @@ const FieldArray = () => {
                             <Grid item xs mr="10px">
                                 <GoogleAutocompleteControl
                                     control={control}
-                                    placeholder={'...'}
                                     {...register(`additional.${index}.value`)}
                                 />
                             </Grid>

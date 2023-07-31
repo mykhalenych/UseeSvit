@@ -7,6 +7,7 @@ import Map from '@/app/components/Map';
 import {IPlan} from '@/app/plan/types';
 import {libraries} from './constants';
 import SearchForm from '../search-form/search-form';
+import GoogleAutocompleteControl from '@/app/components/common/form/GoogleAutocompleteControl';
 
 type Props = {
     children?: React.ReactNode;
