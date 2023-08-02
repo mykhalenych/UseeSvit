@@ -1,3 +1,5 @@
+import {NextPage} from 'next';
+
 export interface SignInRequest {
     email: string;
     password: string;
@@ -18,3 +20,13 @@ export interface RecoveryPasswordRequest {
     newPassword: string;
     passwordConfirmation: string;
 }
+
+export type TypeRoles = {
+    isOnlyUser?: boolean;
+};
+
+export type NextPageAuth<P = null> = NextPage<P> & TypeRoles;
+
+export type TypeComponentAuthFields = {Component: TypeRoles};
+
+export type TypeUser = null | {name: string};

@@ -17,13 +17,11 @@ import {DarkModeIcon} from '@/icons/dark-mode-icon';
 import {LightModeIcon} from '@/icons/light-mode-icon';
 import ColorToggleButton from '../Toggle';
 import {IThemeNames} from '../../../redux/common/types';
-
 import {BackgroundDiv} from './Styles';
 
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const router = useRouter();
-
     const dispatch = useAppDispatch();
     const user = useSelector(selectUser);
 

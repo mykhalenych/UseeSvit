@@ -6,6 +6,8 @@ import Theme from './Theme';
 import Navigation from './components/common/Navigation/Navigation';
 import {Main} from './components/main/Styles';
 import {Footer} from './components/footer/Styles';
+import AuthProvider from './components/common/Providers/AuthProvider';
+import {TypeComponentAuthFields} from './services/auth/types';
 
 const roboto = Roboto({
     subsets: ['cyrillic', 'latin'],
@@ -21,19 +23,21 @@ export const metadata: Metadata = {
 
 type Props = {
     children: React.ReactNode;
-};
+} & TypeComponentAuthFields;
 
-const RootLayout: React.FC<Props> = ({children}) => {
+const RootLayout: React.FC<Props> = ({children, Component}) => {
     return (
         <html lang="en">
             <body className={roboto.className}>
-                <ReduxProvider>
-                    <Theme>
-                        <Navigation />
-                        <Main>{children}</Main>
-                        <Footer />
-                    </Theme>
-                </ReduxProvider>
+                <AuthProvider Component={Component}>
+                    <ReduxProvider>
+                        <Theme>
+                            <Navigation />
+                            <Main>{children}</Main>
+                            <Footer />
+                        </Theme>
+                    </ReduxProvider>
+                </AuthProvider>
             </body>
         </html>
     );
