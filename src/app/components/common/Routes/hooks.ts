@@ -6,7 +6,7 @@ import {LOGIN_PATH} from '@/Routes/constants';
 
 export const useAuthentication = () => {
     const router = useRouter();
-    const isAuthenticated = getAuthTokens(); // Implement your authentication logic here
+    const isAuthenticated = getAuthTokens();
 
     useEffect(() => {
         if (!isAuthenticated) {
