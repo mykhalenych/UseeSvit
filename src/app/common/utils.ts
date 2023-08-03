@@ -1,4 +1,4 @@
-export const isUserHasAuthTokens = () => localStorage.getItem('token') !== null;
+export const isUserHasAuthTokens = () => typeof window !== 'undefined' && localStorage.getItem('token') !== null;
 
 export const getAuthTokens = () => {
     if (isUserHasAuthTokens()) {
