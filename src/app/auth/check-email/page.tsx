@@ -6,7 +6,7 @@ import {useRouter} from 'next/navigation';
 
 import Button from '@/app/components/common/Button';
 import {LOGIN_PATH} from '@/Routes/constants';
-import WithPrivateRoute from '@/app/components/common/Routes/WithAuthRoute';
+import WithAuthRoute from '@/app/components/common/Routes/WithAuthRoute';
 
 const CheckEmail = () => {
     const router = useRouter();
@@ -30,4 +30,4 @@ const CheckEmail = () => {
     );
 };
 
-export default WithPrivateRoute(CheckEmail);
+export default WithAuthRoute(CheckEmail);

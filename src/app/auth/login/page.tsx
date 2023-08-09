@@ -17,7 +17,7 @@ import {selectLoading} from '@/app/redux/selectors';
 import {useSelector} from 'react-redux';
 import {ISlicesNames} from '@/app/redux/types';
 import {authThunkNames} from '@/app/redux/auth/constants';
-import WithPrivateRoute from '@/app/components/common/Routes/WithAuthRoute';
+import WithAuthRoute from '@/app/components/common/Routes/WithAuthRoute';
 
 const Login = () => {
     const router = useRouter();
@@ -80,4 +80,4 @@ const Login = () => {
     );
 };
 
-export default WithPrivateRoute(Login);
+export default WithAuthRoute(Login);

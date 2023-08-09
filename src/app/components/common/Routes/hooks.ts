@@ -4,17 +4,18 @@ import {useEffect} from 'react';
 import {getAuthTokens} from '@/app/common/utils';
 import {LOGIN_PATH} from '@/Routes/constants';
 
-export const useAuthentication = () => {
+export const useAuthentication = (isProtected: boolean) => {
     const router = useRouter();
     const isAuthenticated = getAuthTokens();
 
     useEffect(() => {
-        if (!isAuthenticated) {
+        if (!isAuthenticated && isProtected) {
             router.replace(LOGIN_PATH);
-        } else {
+        }
+        if (isAuthenticated && !isProtected) {
             router.replace('/');
         }
-    }, [isAuthenticated, router]);
+    }, [isAuthenticated, isProtected, router]);
 
     return isAuthenticated;
 };

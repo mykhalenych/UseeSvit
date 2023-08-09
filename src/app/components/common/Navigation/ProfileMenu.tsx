@@ -31,6 +31,7 @@ const ProfileMenu: React.FC<IProps> = ({handleClose, anchorEl}) => {
             if (res.meta.requestStatus === 'fulfilled') {
                 resetAuthToken();
                 handleClose();
+                router.replace('/');
             }
         });
     };

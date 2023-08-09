@@ -17,7 +17,7 @@ import {CHECK_EMAIL_PATH, LOGIN_PATH} from '../../../Routes/constants';
 import InputControl from '@/app/components/common/form/InputControl';
 import Button from '@/app/components/common/Button';
 import {IForgotPassProps} from './types';
-import WithPrivateRoute from '@/app/components/common/Routes/WithAuthRoute';
+import WithAuthRoute from '@/app/components/common/Routes/WithAuthRoute';
 
 const ForgotPassword = () => {
     const dispatch = useAppDispatch();
@@ -66,4 +66,4 @@ const ForgotPassword = () => {
     );
 };
 
-export default WithPrivateRoute(ForgotPassword);
+export default WithAuthRoute(ForgotPassword);

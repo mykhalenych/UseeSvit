@@ -4,9 +4,9 @@ import {useAuthentication} from '@/app/components/common/Routes/hooks';
 
 const WithPrivateRoute = <P extends object>(Component: React.ComponentType<P>) => {
     const PrivateRouteWrapper: React.FC<P> = (props) => {
-        const isAuthenticated = useAuthentication();
+        useAuthentication(true);
 
-        return isAuthenticated && <Component {...props} />;
+        return <Component {...props} />;
     };
 
     return PrivateRouteWrapper;

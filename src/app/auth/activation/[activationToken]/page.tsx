@@ -7,7 +7,7 @@ import {useParams, useRouter} from 'next/navigation';
 
 import {useAppDispatch} from '../../../redux/store';
 import {activateUser} from '../../../redux/auth/thunks';
-import WithPrivateRoute from '@/app/components/common/Routes/WithAuthRoute';
+import WithAuthRoute from '@/app/components/common/Routes/WithAuthRoute';
 
 const Activation = () => {
     const route = useRouter();
@@ -32,4 +32,4 @@ const Activation = () => {
     );
 };
 
-export default WithPrivateRoute(Activation);
+export default WithAuthRoute(Activation);

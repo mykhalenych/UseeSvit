@@ -17,7 +17,7 @@ import InputControl from '@/app/components/common/form/InputControl';
 import Button from '@/app/components/common/Button';
 import {ISlicesNames} from '@/app/redux/types';
 import {ISignInProps} from './types';
-import WithPrivateRoute from '@/app/components/common/Routes/WithAuthRoute';
+import WithAuthRoute from '@/app/components/common/Routes/WithAuthRoute';
 
 const SignUp = () => {
     const dispatch = useAppDispatch();
@@ -83,4 +83,4 @@ const SignUp = () => {
     );
 };
 
-export default WithPrivateRoute(SignUp);
+export default WithAuthRoute(SignUp);
