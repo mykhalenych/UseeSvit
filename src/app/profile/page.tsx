@@ -16,6 +16,7 @@ import Button from '../components/common/Button';
 import InputControl from '../components/common/form/InputControl';
 import {selectLoading} from '../redux/selectors';
 import {ISlicesNames} from '../redux/types';
+import WithPrivateRoute from '@/app/components/common/Routes/WithPrivateRoute';
 
 const Profile = () => {
     const dispatch = useAppDispatch();
@@ -147,4 +148,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default WithPrivateRoute(Profile);

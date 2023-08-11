@@ -13,6 +13,7 @@ import {newPassword} from '@/app/redux/auth/thunks';
 import InputControl from '@/app/components/common/form/InputControl';
 import Button from '@/app/components/common/Button';
 import {LOGIN_PATH} from '@/Routes/constants';
+import WithAuthRoute from '@/app/components/common/Routes/WithAuthRoute';
 
 const RecoveryPassword = () => {
     const route = useRouter();
@@ -79,4 +80,4 @@ const RecoveryPassword = () => {
     );
 };
 
-export default RecoveryPassword;
+export default WithAuthRoute(RecoveryPassword);
