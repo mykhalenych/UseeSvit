@@ -8,6 +8,8 @@
     "goToLogin": "Go to login",
     "welcomeToUseeSvit": "Welcome to UseeSvit.",
     "somethingWentWrong": "Something went wrong",
+    "addDestination": "add destination",
+    "next": "next",
     "logIn": {
         "title": "Log In",
         "btn": "Login"
